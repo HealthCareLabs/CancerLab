@@ -1,0 +1,378 @@
+@import url(font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic);
+
+/* BEGIN RESET
+--------------------------------------------------------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, section, summary, audio, video,
+input, textarea, select, button
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    vertical-align: baseline;
+
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+{
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 400;
+}
+
+img
+{
+    max-width: 100%;
+    height: auto;
+
+    border: 0;
+}
+
+ul
+{
+    list-style: none;
+}
+
+input,
+textarea
+{
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+textarea
+{
+    resize: vertical;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-moz-placeholder,
+:-ms-input-placeholder
+{
+    color: #bdc1c4;
+}
+
+input[placeholder],
+input::-moz-placeholder,
+input:-moz-placeholder,
+input:-ms-input-placeholder
+{
+    text-overflow: ellipsis;
+}
+
+.clearfix:before,
+.clearfix:after
+{
+    display: table;
+
+    content: '';
+}
+
+.clearfix:after
+{
+    clear: both;
+}
+
+.clearboth
+{
+    clear: both;
+}
+/* END RESET
+--------------------------------------------------------------------------------------------------*/
+
+
+/* BEGIN Components' Styles
+--------------------------------------------------------------------------------------------------*/
+.input
+{
+    font: 14px 'Roboto', Arial, sans-serif;
+
+    height: 40px;
+    padding: 10px;
+
+    vertical-align: middle;
+
+    color: inherit;
+    border: solid 1px #e5e5e5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: #fff;
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+.input:focus
+{
+    border-color: #0a81d1;
+}
+
+.textarea
+{
+    font: 14px 'Roboto', Arial, sans-serif;
+
+    min-height: 70px;
+    padding: 10px;
+
+    vertical-align: middle;
+
+    color: inherit;
+    border: solid 1px #e5e5e5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: #fff;
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+.button
+{
+    font: 14px 'Roboto', Arial, sans-serif;
+
+
+    display: inline-block;
+
+    height: 40px;
+    padding: 10px;
+
+    cursor: pointer;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: #fff;
+    border: 1px solid transparent;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: #666;
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+.button:disabled
+{
+    background: #777;
+}
+
+.button[type="submit"]
+{
+    color: #ffffff !important;
+    background: #0a81d1;
+}
+
+.button[type="submit"]:hover
+{
+    background: #4f92d1;
+}
+
+.button[type="submit"]:active
+{
+    background: #5396d1;
+}
+
+.checkbox
+{
+    margin: 0 8px 2px 0;
+
+    vertical-align: middle;
+}
+
+.radio
+{
+    margin: 0 6px 2px 0;
+
+    vertical-align: middle;
+}
+
+.link
+{
+    text-decoration: none;
+
+    color: #0a81d1;
+}
+
+.link:hover
+{
+    text-decoration: underline;
+}
+
+.table
+{
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.table__cell
+{
+    padding: 10px;
+
+    vertical-align: middle;
+}
+
+.table__body .table__row:nth-child(odd) .table__cell
+{
+    background: #f1f1f1;
+}
+
+.col,
+div[class*='col-']
+{
+    float: left;
+
+    padding: 0 10px;
+}
+/* END Components' Styles
+--------------------------------------------------------------------------------------------------*/
+
+
+/* BEGIN Page Styles
+--------------------------------------------------------------------------------------------------*/
+.page
+{
+    font: 14px 'Roboto', Arial, sans-serif;
+
+    color: #666;
+}
+
+.page__body
+{
+    min-width: 1080px;
+    margin: auto;
+}
+
+.logo
+{
+    display: inline-block;
+
+    width: 35px;
+    height: 28px;
+
+}
+
+.content
+{
+    padding: 10px;
+}
+/* END Page Styles
+--------------------------------------------------------------------------------------------------*/
+
+
+/* BEGIN Login Styles
+--------------------------------------------------------------------------------------------------*/
+.page_type_login .page__body
+{
+    min-width: 420px;
+    margin: auto;
+}
+
+.login
+{
+    width: 380px;
+    min-height: 300px;
+    margin: 100px auto;
+    padding: 45px 60px;
+
+    text-align: center;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background: #fff;
+    -webkit-box-shadow: 0 0 30px 0 #bbb;
+    -moz-box-shadow: 0 0 30px 0 #bbb;
+    box-shadow: 0 0 30px 0 #bbb;
+}
+
+.error
+{
+    margin: 10px 0 20px;
+    padding: 5px 0;
+
+    color: #ff6058;
+    border: 1px solid #ff6058;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+/* END Login Styles
+--------------------------------------------------------------------------------------------------*/
+
+
+
+
+/* BEGIN Form Styles
+--------------------------------------------------------------------------------------------------*/
+.form
+{
+
+}
+
+.form__group
+{
+    clear: both;
+}
+
+.form__group:before,
+.form__group:after
+{
+    display: table;
+
+    content: '';
+}
+
+.form__group:after
+{
+    clear: both;
+}
+
+.form_action_login
+{
+    margin: 20px 0 0;
+}
+
+.form_action_login .input,
+.form_action_login .button
+{
+    width: 100%;
+    margin: 10px 0;
+}
+/* END Form Styles
+--------------------------------------------------------------------------------------------------*/
