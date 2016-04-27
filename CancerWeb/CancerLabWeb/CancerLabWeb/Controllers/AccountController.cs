@@ -35,9 +35,12 @@ namespace CancerLabWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.Email, model.Password, persistCookie: model.RememberMe))
+
+            if (ModelState.IsValid)
             {
-                return RedirectToLocal(returnUrl);
+                bool rememberMe = Request.Form["RememberMe"] == "on";
+                if(WebSecurity.Login(model.Email, model.Password, persistCookie: rememberMe))
+                    return RedirectToLocal(returnUrl);
             }
 
             // Появление этого сообщения означает наличие ошибки; повторное отображение формы
@@ -114,112 +117,12 @@ namespace CancerLabWeb.Controllers
             }
         }
 
-        //
-        // POST: /Account/Disassociate
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Disassociate(string provider, string providerUserId)
+        [HttpGet]
+        public ActionResult RecoverPassword()
         {
-            string ownerAccount = OAuthWebSecurity.GetUserName(provider, providerUserId);
-            ManageMessageId? message = null;
-
-            // Удалять связь учетной записи, только если текущий пользователь — ее владелец
-            if (ownerAccount == User.Identity.Name)
-            {
-                // Транзакция используется, чтобы помешать пользователю удалить учетные данные последнего входа
-                using (var scope = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.Serializable }))
-                {
-                    bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-                    if (hasLocalAccount || OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name).Count > 1)
-                    {
-                        OAuthWebSecurity.DeleteAccount(provider, providerUserId);
-                        scope.Complete();
-                        message = ManageMessageId.RemoveLoginSuccess;
-                    }
-                }
-            }
-
-            return RedirectToAction("Manage", new { Message = message });
-        }
-
-        //
-        // GET: /Account/Manage
-
-        public ActionResult Manage(ManageMessageId? message)
-        {
-            ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Пароль изменен."
-                : message == ManageMessageId.SetPasswordSuccess ? "Пароль задан."
-                : message == ManageMessageId.RemoveLoginSuccess ? "Внешняя учетная запись удалена."
-                : "";
-            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
         }
 
-        //
-        // POST: /Account/Manage
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Manage(LocalPasswordModel model)
-        {
-            bool hasLocalAccount = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
-            ViewBag.HasLocalPassword = hasLocalAccount;
-            ViewBag.ReturnUrl = Url.Action("Manage");
-            if (hasLocalAccount)
-            {
-                if (ModelState.IsValid)
-                {
-                    // В ряде случаев при сбое ChangePassword породит исключение, а не вернет false.
-                    bool changePasswordSucceeded;
-                    try
-                    {
-                        changePasswordSucceeded = WebSecurity.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword);
-                    }
-                    catch (Exception)
-                    {
-                        changePasswordSucceeded = false;
-                    }
-
-                    if (changePasswordSucceeded)
-                    {
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "Неправильный текущий пароль или недопустимый новый пароль.");
-                    }
-                }
-            }
-            else
-            {
-                // У пользователя нет локального пароля, уберите все ошибки проверки, вызванные отсутствующим
-                // полем OldPassword
-                ModelState state = ModelState["OldPassword"];
-                if (state != null)
-                {
-                    state.Errors.Clear();
-                }
-
-                if (ModelState.IsValid)
-                {
-                    try
-                    {
-                        WebSecurity.CreateAccount(User.Identity.Name, model.NewPassword);
-                        return RedirectToAction("Manage", new { Message = ManageMessageId.SetPasswordSuccess });
-                    }
-                    catch (Exception)
-                    {
-                        ModelState.AddModelError("", String.Format("Не удалось создать локальную учетную запись. Возможно, учетная запись \"{0}\" уже существует.", User.Identity.Name));
-                    }
-                }
-            }
-
-            // Появление этого сообщения означает наличие ошибки; повторное отображение формы
-            return View(model);
-        }
         #region Вспомогательные методы
         private ActionResult RedirectToLocal(string returnUrl)
         {

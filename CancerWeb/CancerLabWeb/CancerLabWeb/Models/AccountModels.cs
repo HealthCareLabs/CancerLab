@@ -36,6 +36,12 @@ namespace CancerLabWeb.Models
 
     }
 
+    public class ResetPasswordModel
+    {
+        [Required]
+        public string Email { get; set; }
+    }
+
     public class LocalPasswordModel
     {
         [Required]
