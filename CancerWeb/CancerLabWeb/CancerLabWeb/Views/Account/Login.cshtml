@@ -5,18 +5,28 @@
     ViewBag.Title = "CancerLab - вход";
 }
 <section class="login">
-        <header class="login__header">
-            <h1 class="title">Cancer Lab</h1>
-        </header>
-        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new {@class = "form form_action_login"}))
-        {
-            @Html.AntiForgeryToken()
-            @Html.ValidationMessage("Email")
-            <label class="label"><input class="input" type="text" name="Email" placeholder="Логин" tabindex="1"></label>
+    <header class="login__header">
+        <h1 class="title">Cancer Lab</h1>
+    </header>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form form_action_login" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationMessage("Email")
+        <label class="label"><input class="input" type="text" name="Email" placeholder="Логин" tabindex="1"></label>
             <label class="label"><input class="input" type="password" name="Password" placeholder="Пароль" tabindex="2"></label>
-            <label class="label"><input class="checkbox" type="checkbox" name="RememberMe" checked tabindex="3">Запомнить меня</label>
+            <label class="label"><input class="checkbox" type="checkbox" name="RememberMe" value="true" checked tabindex="3">Запомнить меня</label>
             <button class="button" type="submit" tabindex="4">Войти</button>
+    }
+    <a class="link" href="@Url.Action("RecoverPassword", "Account")">Восстановить пароль</a>
+    @{
+        foreach (var modelState in ViewData.ModelState.Values)
+        {
+            foreach (var error in modelState.Errors)
+            {
+                <div class="alert alert_type_error">@error.ErrorMessage</div>
+            }
         }
-        <a class="link" href="@Url.Action("RecoverPassword","Account")">Восстановить пароль</a>
+    }
+
 </section>
 

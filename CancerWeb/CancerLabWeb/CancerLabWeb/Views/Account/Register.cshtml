@@ -11,7 +11,6 @@
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form form_action_register" }))
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary()
         <input class="input" type="text" name="Email" placeholder="E-mail" tabindex="1">
         <input class="input" type="password" name="Password" placeholder="Пароль" tabindex="2">
         <input class="input" type="password" name="ConfirmPassword" placeholder="Повторите пароль" tabindex="3">
@@ -27,5 +26,14 @@
             <button class="button" type="submit" tabindex="10">Регистрация</button>
         </div>
     }
-    <a class="link" href="@Url.Action("Login","Account")">Вход в систему</a>
+    <a class="link" href="@Url.Action("Login", "Account")">Вход в систему</a>
+    @{
+        foreach (var modelState in ViewData.ModelState.Values)
+        {
+            foreach (var error in modelState.Errors)
+            {
+                <div class="alert alert_type_error">@error.ErrorMessage</div>
+            }
+        }
+    }
 </section>

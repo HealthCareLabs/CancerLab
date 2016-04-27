@@ -35,7 +35,6 @@ namespace CancerLabWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-
             if (ModelState.IsValid)
             {
                 bool rememberMe = Request.Form["RememberMe"] == "on";
