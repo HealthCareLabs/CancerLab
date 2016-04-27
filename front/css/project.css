@@ -363,16 +363,24 @@ div[class*='col-']
     clear: both;
 }
 
-.form_action_login
+.form_action_login,
+.form_action_recovery
 {
     margin: 20px 0 0;
 }
 
 .form_action_login .input,
-.form_action_login .button
+.form_action_login .button,
+.form_action_recovery .input,
+.form_action_recovery .button
 {
     width: 100%;
     margin: 10px 0;
+}
+
+.form_action_recovery .label
+{
+    padding: 10px 0 5px;
 }
 /* END Form Styles
 --------------------------------------------------------------------------------------------------*/
