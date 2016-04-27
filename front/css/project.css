@@ -270,21 +270,13 @@ div[class*='col-']
     font: 14px 'Roboto', Arial, sans-serif;
 
     color: #666;
+    background: #f5f5f5;
 }
 
 .page__body
 {
     min-width: 1080px;
     margin: auto;
-}
-
-.logo
-{
-    display: inline-block;
-
-    width: 35px;
-    height: 28px;
-
 }
 
 .content
@@ -295,7 +287,7 @@ div[class*='col-']
 --------------------------------------------------------------------------------------------------*/
 
 
-/* BEGIN Login Styles
+/* BEGIN Auth Styles
 --------------------------------------------------------------------------------------------------*/
 .page_type_login .page__body
 {
@@ -312,27 +304,55 @@ div[class*='col-']
 
     text-align: center;
 
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
     background: #fff;
     -webkit-box-shadow: 0 0 30px 0 #bbb;
     -moz-box-shadow: 0 0 30px 0 #bbb;
     box-shadow: 0 0 30px 0 #bbb;
 }
 
-.error
+.registration
+{
+    width: 420px;
+    min-height: 400px;
+    margin: 100px auto;
+    padding: 45px 60px;
+
+    text-align: center;
+
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background: #fff;
+    -webkit-box-shadow: 0 0 30px 0 #bbb;
+    -moz-box-shadow: 0 0 30px 0 #bbb;
+    box-shadow: 0 0 30px 0 #bbb;
+}
+
+.alert
 {
     margin: 10px 0 20px;
     padding: 5px 0;
 
-    color: #ff6058;
-    border: 1px solid #ff6058;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
 }
-/* END Login Styles
+
+.alert_type_error
+{
+    color: #ff6058;
+    border: 1px solid #ff6058;
+}
+
+.alert_type_success
+{
+    color: #60de6f;
+    border: 1px solid #60de6f;
+}
+/* END Auth Styles
 --------------------------------------------------------------------------------------------------*/
 
 
@@ -381,6 +401,37 @@ div[class*='col-']
 .form_action_recovery .label
 {
     padding: 10px 0 5px;
+}
+
+.form_action_register
+{
+    margin: 20px 0 0;
+}
+
+.form_action_register .input
+{
+    width: 100%;
+    margin: 10px 0;
+}
+
+.form_action_register .form__group
+{
+    margin: 10px 0 30px;
+}
+
+.form_action_register .button
+{
+    padding: 10px 20px;
+}
+
+.form_action_register .button[type="reset"]
+{
+    float: left;
+}
+
+.form_action_register .button[type="submit"]
+{
+    float: right;
 }
 /* END Form Styles
 --------------------------------------------------------------------------------------------------*/
