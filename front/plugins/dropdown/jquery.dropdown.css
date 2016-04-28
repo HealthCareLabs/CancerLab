@@ -1,0 +1,136 @@
+/* jQuery Dropdown: A simple dropdown plugin*/
+.jq-dropdown
+{
+    position: absolute;
+    z-index: 1039;
+
+    display: none;
+}
+
+.jq-dropdown .jq-dropdown-menu,
+.jq-dropdown .jq-dropdown-panel
+{
+    overflow: visible;
+
+    min-width: 160px;
+    max-width: 360px;
+    margin: 0;
+    padding: 4px 0;
+
+    list-style: none;
+
+    border: solid 1px #ddd;
+    border-radius: 4px;
+    background: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.jq-dropdown .jq-dropdown-panel
+{
+    padding: 10px;
+}
+
+.jq-dropdown.jq-dropdown-tip
+{
+    margin-top: 8px;
+}
+
+.jq-dropdown.jq-dropdown-tip:before
+{
+    position: absolute;
+    top: -6px;
+    left: 9px;
+
+    display: inline-block;
+
+    content: "";
+
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ddd;
+    border-left: 7px solid transparent;
+}
+
+.jq-dropdown.jq-dropdown-tip:after
+{
+    position: absolute;
+    top: -5px;
+    left: 10px;
+
+    display: inline-block;
+
+    content: "";
+
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid white;
+    border-left: 6px solid transparent;
+}
+
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-right:before
+{
+    right: 9px;
+    left: auto;
+}
+
+.jq-dropdown.jq-dropdown-tip.jq-dropdown-anchor-right:after
+{
+    right: 10px;
+    left: auto;
+}
+
+.jq-dropdown.jq-dropdown-scroll .jq-dropdown-menu,
+.jq-dropdown.jq-dropdown-scroll .jq-dropdown-panel
+{
+    overflow: auto;
+
+    max-height: 180px;
+}
+
+.jq-dropdown .jq-dropdown-menu li
+{
+    line-height: 18px;
+
+    margin: 0;
+    padding: 0 10px;
+
+    list-style: none;
+}
+
+.jq-dropdown .jq-dropdown-menu li:hover
+{
+    background: #f5f5f5;
+}
+
+.jq-dropdown .jq-dropdown-menu li > a,
+.jq-dropdown .jq-dropdown-menu label
+{
+    line-height: 26px;
+
+    display: block;
+
+    margin: 0;
+    padding: 5px 15px;
+
+    white-space: nowrap;
+    text-decoration: none;
+
+    color: inherit;
+}
+
+.jq-dropdown .jq-dropdown-menu li > a:hover,
+.jq-dropdown .jq-dropdown-menu label:hover
+{
+    cursor: pointer;
+
+    color: inherit;
+    background-color: #f2f2f2;
+}
+
+.jq-dropdown .jq-dropdown-menu .jq-dropdown-divider
+{
+    font-size: 1px;
+
+    margin: 5px 0;
+    padding: 0;
+
+    border-top: solid 1px #e5e5e5;
+}
