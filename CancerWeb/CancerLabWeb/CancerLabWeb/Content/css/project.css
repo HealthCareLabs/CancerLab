@@ -156,7 +156,6 @@ input:-ms-input-placeholder
 {
     font: 14px 'Roboto', Arial, sans-serif;
 
-
     display: inline-block;
 
     height: 40px;
@@ -289,36 +288,10 @@ div[class*='col-']
 
 /* BEGIN Auth Styles
 --------------------------------------------------------------------------------------------------*/
-.page_type_login .page__body
-{
-    min-width: 420px;
-    margin: auto;
-}
-
-.login
-{
-    width: 380px;
-    min-height: 300px;
-    margin: 100px auto;
-    padding: 45px 60px;
-
-    text-align: center;
-
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
-    background: #fff;
-    -webkit-box-shadow: 0 0 30px 0 #bbb;
-    -moz-box-shadow: 0 0 30px 0 #bbb;
-    box-shadow: 0 0 30px 0 #bbb;
-}
-
-.registration
+.auth
 {
     width: 420px;
-    min-height: 400px;
     margin: 100px auto;
-    padding: 45px 60px;
 
     text-align: center;
 
@@ -329,28 +302,76 @@ div[class*='col-']
     -webkit-box-shadow: 0 0 30px 0 #bbb;
     -moz-box-shadow: 0 0 30px 0 #bbb;
     box-shadow: 0 0 30px 0 #bbb;
+}
+
+.auth__header
+{
+    padding: 30px 60px 20px;
+
+    color: #fff;
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+    background: #0a81d1;
+}
+
+.auth__footer
+{
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+}
+
+.auth .form
+{
+    padding: 0 60px 10px;
+}
+
+.auth .link
+{
+    display: inline-block;
+
+    margin: 0 0 20px;
 }
 
 .alert
 {
-    margin: 10px 0 20px;
-    padding: 5px 0;
-
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
+    padding: 10px 30px;
 }
 
 .alert_type_error
 {
-    color: #ff6058;
-    border: 1px solid #ff6058;
+    color: #a94442;
+    border-color: #ebccd1;
+    background-color: #f2dede;
 }
 
 .alert_type_success
 {
-    color: #60de6f;
-    border: 1px solid #60de6f;
+    color: #3c763d;
+    border-color: #d6e9c6;
+    background-color: #dff0d8;
+}
+
+.alert_type_warning
+{
+    color: #8a6d3b;
+    border-color: #faebcc;
+    background-color: #fcf8e3;
+}
+
+.alert_type_info
+{
+    color: #31708f;
+    border-color: #bce8f1;
+    background-color: #d9edf7;
+}
+
+.alert__item
+{
+    padding: 5px 0;
+
+    text-align: left;
 }
 /* END Auth Styles
 --------------------------------------------------------------------------------------------------*/

@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
     ViewBag.Title = "CancerLab - вход";
 }
-<section class="login">
-    <header class="login__header">
+<section class="auth">
+    <header class="auth__header">
         <h1 class="title">Cancer Lab</h1>
     </header>
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form form_action_login" }))
@@ -22,19 +22,17 @@
 
     @if (ViewData.ModelState.Values.Count(x => x.Errors.Count > 0) > 0)
     {
-        <ul class="alert alert_type_error">
+        <footer class="auth__footer alert alert_type_error">
             @foreach (var modelState in ViewData.ModelState.Values)
             {
                 if (modelState.Errors.Count > 0)
                 {
                     foreach (var error in modelState.Errors)
                     {
-                        <li class="alert__item">@error.ErrorMessage</li>
+                        <div class="alert__item">@error.ErrorMessage</div>
                     }
                 }
             }
-        </ul>
+        </footer>
     }
-
-
 </section>
