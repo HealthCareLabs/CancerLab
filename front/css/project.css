@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic);
 @import url(font-awesome.min.css);
 @import url(../plugins/dropdown/jquery.dropdown.css);
+@import url(../plugins/chartist/chartist.min.css);
 
 
 /* BEGIN RESET
@@ -36,7 +37,7 @@ h5,
 h6
 {
     font-family: 'Roboto', Arial, sans-serif;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 img
@@ -301,6 +302,66 @@ div[class*='col-']
 
     padding: 0 10px;
 }
+
+.col-1
+{
+    width: 8.33333333%;
+}
+
+.col-2
+{
+    width: 16.66666667%;
+}
+
+.col-3
+{
+    width: 25%;
+}
+
+.col-4
+{
+    width: 33.33333333%;
+}
+
+.col-5
+{
+    width: 41.66666667%;
+}
+
+.col-6
+{
+    width: 50%;
+}
+
+.col-7
+{
+    width: 58.33333333%;
+}
+
+.col-8
+{
+    width: 66.66666667%;
+}
+
+.col-9
+{
+    width: 75%;
+}
+
+.col-10
+{
+    width: 83.33333333%;
+}
+
+.col-11
+{
+    width: 91.66666667%;
+}
+
+.col-12
+{
+    width: 100%;
+}
 /* END Components' Styles
 --------------------------------------------------------------------------------------------------*/
 
@@ -310,6 +371,8 @@ div[class*='col-']
 .page
 {
     font: 14px 'Roboto', Arial, sans-serif;
+
+    position: relative;
 
     color: #666;
     background: #f5f5f5;
@@ -323,9 +386,6 @@ div[class*='col-']
 
 .page__wrapper
 {
-    position: relative;
-    top: 0;
-
     height: 100vh;
 }
 
@@ -401,8 +461,7 @@ div[class*='col-']
     float: right;
 
     width: calc(100% - 260px);
-    height: 100%;
-    max-height: 100%;
+    min-height: 100%;
     padding-bottom: 60px;
 }
 
@@ -455,6 +514,11 @@ div[class*='col-']
 .user-panel .fa
 {
     margin: 0 10px 0 0;
+}
+
+.content
+{
+    padding: 30px 20px;
 }
 
 .footer
@@ -534,6 +598,91 @@ div[class*='col-']
     margin: 0 0 20px;
 }
 /* END Auth Styles
+--------------------------------------------------------------------------------------------------*/
+
+
+/* BEGIN Dashboard Styles
+--------------------------------------------------------------------------------------------------*/
+.widget
+{
+    margin: 0 0 2em 0;
+    padding: 10px;
+
+    background: #fff;
+    box-shadow: 0 2px 0 0 #e5e5e5;
+}
+
+.widget__header
+{
+    font-size: 18px;
+    font-weight: 300;
+
+    padding: 0 0 10px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.widget_status_new .widget__header,
+.widget_status_new .treatment-item__link
+{
+    color: #31708f;
+}
+
+.widget_status_waiting .widget__header,
+.widget_status_waiting .treatment-item__link
+{
+    color: #a94442;
+}
+
+.widget__header .fa
+{
+    margin: 0 10px 0 0;
+}
+
+.widget__body
+{
+    padding: 10px 0;
+}
+
+.widget__footer
+{
+    font-weight: 300;
+
+    padding: 10px 0 0;
+
+    color: #a9a9a9;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.content .title
+{
+    padding: 30px 10px 20px;
+}
+
+.treatment-item
+{
+    padding: 10px 5px;
+}
+
+.treatment-item:hover
+{
+    background: #f5f5f5;
+}
+
+.treatment-item__time
+{
+    font-size: 12px;
+
+    float: right;
+
+    color: #666;
+}
+
+.statistics
+{
+
+}
+/* END Dashboard Styles
 --------------------------------------------------------------------------------------------------*/
 
 
@@ -622,7 +771,7 @@ div[class*='col-']
 .form_action_search .input
 {
     width: 100%;
-    padding: 0;
+    padding: 0 20px 0 10px;
 
     color: #fff;
     border-color: #e5e5e5;

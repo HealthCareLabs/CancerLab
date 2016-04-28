@@ -65,8 +65,110 @@
                     </div>
                 </header>
 
-                <div class="content">
+                <div class="content clearfix">
+                    <div class="col col-6">
+                        <section class="widget widget_status_new">
+                            <header class="widget__header"><i class="fa fa-envelope-o"></i>Новые обращения</header>
+                            <div class="widget__body">
+                                <ul class="list-group">
+                                    <li class="list-group__item treatment-item">
+                                        <a class="link treatment-item__link" href="treatment.html">
+                                            <span class="treatment-item__number">#124</span>
+                                            <span class="treatment-item__patient">Иванов Иван Иванович</span>
+                                        </a>
+                                        <span class="treatment-item__time">(20/04/2015, 15:40)</span>
+                                    </li>
 
+                                    <li class="list-group__item treatment-item">
+                                        <a class="link treatment-item__link" href="treatment.html">
+                                            <span class="treatment-item__number">#124</span>
+                                            <span class="treatment-item__patient">Иванов Иван Иванович</span>
+                                        </a>
+                                        <span class="treatment-item__time">(20/04/2015, 15:40)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="col col-6">
+                        <section class="widget widget_status_waiting">
+                            <header class="widget__header"><i class="fa fa-warning"></i>Обращения без ответа</header>
+                            <div class="widget__body">
+                                <ul class="list-group">
+                                    <li class="list-group__item treatment-item">
+                                        <a class="link treatment-item__link" href="treatment.html">
+                                            <span class="treatment-item__number">#124</span>
+                                            <span class="treatment-item__patient">Иванов Иван Иванович</span>
+                                        </a>
+                                        <span class="treatment-item__time">(20/04/2015, 15:40)</span>
+                                    </li>
+
+                                    <li class="list-group__item treatment-item">
+                                        <a class="link treatment-item__link" href="treatment.html">
+                                            <span class="treatment-item__number">#124</span>
+                                            <span class="treatment-item__patient">Иванов Иван Иванович</span>
+                                        </a>
+                                        <span class="treatment-item__time">(20/04/2015, 15:40)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+
+                    <h2 class="title clearboth">Статистика</h2>
+
+                    <div class="col col-12">
+                        <section class="widget statistics">
+                            <header class="widget__header">Количество обращений</header>
+                            <div class="widget__body">
+                                <section class="chart chart_type_treatment-num"></section>
+                            </div>
+                            <footer class="widget__footer">
+                                <i class="fa fa-clock-o"></i>
+                                <span class="text">Обновлено 10 минут назад</span>
+                            </footer>
+                        </section>
+                    </div>
+
+                    <div class="col col-4">
+                        <section class="widget statistics">
+                            <header class="widget__header">Размер образований</header>
+                            <div class="widget__body">
+                                <section class="chart chart_type_tumor-size"></section>
+                            </div>
+                            <footer class="widget__footer">
+                                <i class="fa fa-clock-o"></i>
+                                <span class="text">Обновлено 10 минут назад</span>
+                            </footer>
+                        </section>
+                    </div>
+
+                    <div class="col col-4">
+                        <section class="widget statistics">
+                            <header class="widget__header">Возраст</header>
+                            <div class="widget__body">
+                                <section class="chart chart_type_patient-age"></section>
+                            </div>
+                            <footer class="widget__footer">
+                                <i class="fa fa-clock-o"></i>
+                                <span class="text">Обновлено 10 минут назад</span>
+                            </footer>
+                        </section>
+                    </div>
+
+                    <div class="col col-4">
+                        <section class="widget statistics">
+                            <header class="widget__header">Пол пациентов</header>
+                            <div class="widget__body">
+                                <section class="chart chart_type_patient-sex"></section>
+                            </div>
+                            <footer class="widget__footer">
+                                <i class="fa fa-clock-o"></i>
+                                <span class="text">Обновлено 10 минут назад</span>
+                            </footer>
+                        </section>
+                    </div>
                 </div>
 
                 <footer class="footer">
@@ -87,6 +189,7 @@
         <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
         <script type="text/javascript" src="js/jquery-ui.min.js"></script>
         <script type="text/javascript" src="plugins/dropdown/jquery.dropdown.min.js"></script>
+        <script type="text/javascript" src="plugins/chartist/chartist.min.js"></script>
         <script type="text/javascript" src="js/project.js"></script>
     </body>
 
