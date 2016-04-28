@@ -5,6 +5,7 @@ using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using CancerLabWeb.Context;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
@@ -100,7 +101,7 @@ namespace CancerLabWeb.Controllers
 
         private void FinalizeRegistration(RegisterModel model)
         {
-            using (DoctorsContext context = new DoctorsContext())
+            using (BaseContext context = new BaseContext())
             {
                 var doctor = context.DoctorProfiles.First(x => x.Email == model.Email);
 
@@ -135,7 +136,7 @@ namespace CancerLabWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (DoctorsContext context = new DoctorsContext())
+                using (BaseContext context = new BaseContext())
                 {
                     bool found = context.DoctorProfiles.Any(x => x.Email == model.Email);
                     if (!found)

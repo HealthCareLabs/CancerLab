@@ -8,15 +8,6 @@ using System.Web.Security;
 
 namespace CancerLabWeb.Models
 {
-    public class DoctorsContext : DbContext
-    {
-        public DoctorsContext()
-            : base("DefaultConnection")
-        {
-        }
-
-        public DbSet<DoctorProfile> DoctorProfiles { get; set; }
-    }
 
     [Table("DoctorProfile")]
     public class DoctorProfile

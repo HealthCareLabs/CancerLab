@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
+using CancerLabWeb.Context;
 using WebMatrix.WebData;
 using CancerLabWeb.Models;
 
@@ -25,11 +26,11 @@ namespace CancerLabWeb.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<DoctorsContext>(null);
+                Database.SetInitializer<BaseContext>(null);
 
                 try
                 {
-                    using (var context = new DoctorsContext())
+                    using (var context = new BaseContext())
                     {
                         if (!context.Database.Exists())
                         {
