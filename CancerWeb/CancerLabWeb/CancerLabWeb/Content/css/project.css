@@ -1,5 +1,7 @@
-@import url(font-awesome.min.css);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic);
+@import url(font-awesome.min.css);
+@import url(../plugins/dropdown/jquery.dropdown.css);
+
 
 /* BEGIN RESET
 --------------------------------------------------------------------------------------------------*/
@@ -114,9 +116,6 @@ input:-ms-input-placeholder
 
     color: inherit;
     border: solid 1px #e5e5e5;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
     background: #fff;
 
     -moz-appearance: none;
@@ -141,9 +140,6 @@ input:-ms-input-placeholder
 
     color: inherit;
     border: solid 1px #e5e5e5;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
     background: #fff;
 
     -moz-appearance: none;
@@ -174,9 +170,6 @@ input:-ms-input-placeholder
 
     color: #fff;
     border: 1px solid transparent;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
     background: #666;
 
     -moz-appearance: none;
@@ -232,6 +225,56 @@ input:-ms-input-placeholder
     text-decoration: underline;
 }
 
+.badge_type_warn
+{
+    color: #a94442;
+}
+
+.badge_type_success
+{
+    color: #3c763d;
+}
+
+.alert
+{
+    padding: 10px 30px;
+}
+
+.alert_type_error
+{
+    color: #a94442;
+    border-color: #ebccd1;
+    background-color: #f2dede;
+}
+
+.alert_type_success
+{
+    color: #3c763d;
+    border-color: #d6e9c6;
+    background-color: #dff0d8;
+}
+
+.alert_type_warning
+{
+    color: #8a6d3b;
+    border-color: #faebcc;
+    background-color: #fcf8e3;
+}
+
+.alert_type_info
+{
+    color: #31708f;
+    border-color: #bce8f1;
+    background-color: #d9edf7;
+}
+
+.alert__item
+{
+    padding: 5px 0;
+
+    text-align: left;
+}
+
 .table
 {
     width: 100%;
@@ -278,9 +321,178 @@ div[class*='col-']
     margin: auto;
 }
 
-.content
+.page__wrapper
 {
-    padding: 10px;
+    position: relative;
+    top: 0;
+
+    height: 100vh;
+}
+
+.sidebar
+{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 260px;
+    padding: 0 20px;
+
+    color: #fff;
+    background: #164c89;
+}
+
+.sidebar__logo
+{
+    height: 56px;
+    margin: 0 -20px;
+    padding: 15px;
+
+    text-align: center;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.logo
+{
+    font-size: 18px;
+    font-weight: 300;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: #fff;
+}
+
+.menu
+{
+    margin: 20px 0 0;
+}
+
+.menu__link
+{
+    display: block;
+
+    width: 100%;
+    margin: 0 0 10px;
+    padding: 10px 15px;
+
+    text-decoration: none !important;
+    text-transform: uppercase;
+
+    color: #fff;
+}
+
+.menu__link:hover,
+.menu__link_state_active
+{
+    background: rgba(255, 255, 255, 0.23);
+}
+
+.menu .fa
+{
+    margin: 0 15px 0 0;
+}
+
+.section
+{
+    float: right;
+
+    width: calc(100% - 260px);
+    height: 100%;
+    max-height: 100%;
+    padding-bottom: 60px;
+}
+
+.header
+{
+    height: 56px;
+    padding: 8px 20px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.header .title
+{
+    font-weight: 300;
+
+    float: left;
+
+    padding: 6px 30px 6px 0;
+}
+
+.notifications
+{
+    float: left;
+
+    margin: 8px 0;
+}
+
+.notifications__link
+{
+    font-size: 18px;
+
+    text-decoration: none;
+
+    color: #a94442;
+}
+
+.notifications .badge
+{
+    font-size: 15px;
+}
+
+.user-panel
+{
+    float: right;
+
+    text-align: right;
+}
+
+.user-panel .fa
+{
+    margin: 0 10px 0 0;
+}
+
+.footer
+{
+    font-size: 15px;
+
+    position: absolute;
+    bottom: 0;
+
+    overflow: hidden;
+
+    width: calc(100% - 260px);
+    height: 56px;
+    padding: 18px 20px;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.footer__navigation
+{
+    float: left;
+
+    width: 50%;
+}
+
+.footer .link
+{
+    margin: 0 15px 0 0;
+}
+
+.copyright
+{
+    float: right;
+
+    width: 50%;
+
+    text-align: right;
 }
 /* END Page Styles
 --------------------------------------------------------------------------------------------------*/
@@ -295,9 +507,6 @@ div[class*='col-']
 
     text-align: center;
 
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
     background: #fff;
     -webkit-box-shadow: 0 0 30px 0 #bbb;
     -moz-box-shadow: 0 0 30px 0 #bbb;
@@ -309,18 +518,9 @@ div[class*='col-']
     padding: 30px 60px 20px;
 
     color: #fff;
-    -webkit-border-radius: 6px 6px 0 0;
-    -moz-border-radius: 6px 6px 0 0;
-    border-radius: 6px 6px 0 0;
     background: #0a81d1;
 }
 
-.auth__footer
-{
-    -webkit-border-radius: 0 0 6px 6px;
-    -moz-border-radius: 0 0 6px 6px;
-    border-radius: 0 0 6px 6px;
-}
 
 .auth .form
 {
@@ -333,57 +533,15 @@ div[class*='col-']
 
     margin: 0 0 20px;
 }
-
-.alert
-{
-    padding: 10px 30px;
-}
-
-.alert_type_error
-{
-    color: #a94442;
-    border-color: #ebccd1;
-    background-color: #f2dede;
-}
-
-.alert_type_success
-{
-    color: #3c763d;
-    border-color: #d6e9c6;
-    background-color: #dff0d8;
-}
-
-.alert_type_warning
-{
-    color: #8a6d3b;
-    border-color: #faebcc;
-    background-color: #fcf8e3;
-}
-
-.alert_type_info
-{
-    color: #31708f;
-    border-color: #bce8f1;
-    background-color: #d9edf7;
-}
-
-.alert__item
-{
-    padding: 5px 0;
-
-    text-align: left;
-}
 /* END Auth Styles
 --------------------------------------------------------------------------------------------------*/
-
-
 
 
 /* BEGIN Form Styles
 --------------------------------------------------------------------------------------------------*/
 .form
 {
-
+    position: static;
 }
 
 .form__group
@@ -453,6 +611,22 @@ div[class*='col-']
 .form_action_register .button[type="submit"]
 {
     float: right;
+}
+
+.form_action_search
+{
+    margin: 0 -20px;
+    padding: 20px;
+}
+
+.form_action_search .input
+{
+    width: 100%;
+    padding: 0;
+
+    color: #fff;
+    border-color: #e5e5e5;
+    background: rgba(255, 255, 255, 0.15);
 }
 /* END Form Styles
 --------------------------------------------------------------------------------------------------*/

@@ -1,0 +1,9 @@
+﻿@model CancerLabWeb.Models.DoctorProfile
+@{
+    Layout = null;
+}
+
+<div class="user-panel">
+    <p class="user-panel__name">Врач: @Model.LastName @Model.Name @Model.SecondName</p>
+    <a class="link" href="@Url.Action("LogOff", "Account")"><i class="fa fa-arrow-circle-o-right"></i>Выход</a>
+</div>
