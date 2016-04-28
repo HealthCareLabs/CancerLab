@@ -27,13 +27,19 @@
         </div>
     }
     <a class="link" href="@Url.Action("Login", "Account")">Вход в систему</a>
-    @{
-        foreach (var modelState in ViewData.ModelState.Values)
+   @if (ViewData.ModelState.Values.Count(x => x.Errors.Count > 0) > 0)
+   {
+    <footer class="auth__footer alert alert_type_error">
+        @foreach (var modelState in ViewData.ModelState.Values)
         {
-            foreach (var error in modelState.Errors)
+            if (modelState.Errors.Count > 0)
             {
-                <div class="alert alert_type_error">@error.ErrorMessage</div>
+                foreach (var error in modelState.Errors)
+                {
+                    <div class="alert__item">@error.ErrorMessage</div>
+                }
             }
         }
-    }
+    </footer>
+   }
 </section>

@@ -116,9 +116,32 @@ namespace CancerLabWeb.Controllers
             }
         }
 
+        //
+        //GET:/Account/RecoverPassword
+
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult RecoverPassword()
         {
+            return View();
+        }
+
+        //
+        //POST:/Account/RecoverPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult RecoverPassword(ResetPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (DoctorsContext context = new DoctorsContext())
+                {
+                    bool found = context.DoctorProfiles.Any(x => x.Email == model.Email);
+                    if (!found)
+                        ModelState.AddModelError("Email", "Пользователь с указанным адресом не найден");
+                }
+            }
             return View();
         }
 

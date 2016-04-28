@@ -39,6 +39,7 @@ namespace CancerLabWeb.Models
     public class ResetPasswordModel
     {
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
     }
 
@@ -101,7 +102,9 @@ namespace CancerLabWeb.Models
         [Required] [Display(Name = "Отчество")] public string SecondName { get; set; }
         [Required] [Display(Name = "Фамилия")] public string LastName { get; set; }
 
+        [Required]
         [Phone]
+        [Display(Name="Номер телефона")]
         [DataType(DataType.PhoneNumber)] public string PhoneNumber { get; set; }
 
         [Required]
