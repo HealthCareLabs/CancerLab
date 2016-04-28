@@ -5,19 +5,20 @@ namespace CancerLabWeb
 {
     public class BundleConfig
     {
-        // Дополнительные сведения о Bundling см. по адресу http://go.microsoft.com/fwlink/?LinkId=254725
+
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Content/js/jquery-{version}.min.js"));
+                        "~/Content/js/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Content/js/jquery-ui-{version}.min.js"));
+                        "~/Content/js/jquery-ui.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryvalidate").Include(
+                        "~/Content/js/jquery.validate.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/project").Include(
-                        "~/Content/js/jquery-ui-{version}.min.js"));
-            // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
-            // используйте средство построения на сайте http://modernizr.com, чтобы выбрать только нужные тесты.
+                        "~/Content/js/project.js"));
+
 
             bundles.Add(new StyleBundle("~/Content/css")
                 .Include("~/Content/css/project.css"));

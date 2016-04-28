@@ -1,4 +1,5 @@
-﻿@model CancerLabWeb.Models.LoginModel
+﻿@using CancerLabWeb.Helpers
+@model CancerLabWeb.Models.LoginModel
 
 @{
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
@@ -12,21 +13,28 @@
     {
         @Html.AntiForgeryToken()
         @Html.ValidationMessage("Email")
-        <label class="label"><input class="input" type="text" name="Email" placeholder="Логин" tabindex="1"></label>
-            <label class="label"><input class="input" type="password" name="Password" placeholder="Пароль" tabindex="2"></label>
-            <label class="label"><input class="checkbox" type="checkbox" name="RememberMe" value="true" checked tabindex="3">Запомнить меня</label>
-            <button class="button" type="submit" tabindex="4">Войти</button>
+        <label class="label">@Html.TextBoxFor(x=>x.Email, new {@class="input", @placeholder="Логин", @tabindex="1"})</label>
+        <label class="label">@Html.PasswordFor(x => x.Password, new { @class = "input", @placeholder = "Пароль", @tabindex = "2" })</label>
+        <label class="label">@Html.CheckBoxFor(x => x.RememberMe, new { @class = "checkbox", @tabindex = "3" })Запомнить меня</label>
+        @Html.Button("Войти",new { @class="button", @tabindex="4", @type="submit"})
     }
     <a class="link" href="@Url.Action("RecoverPassword", "Account")">Восстановить пароль</a>
-    @{
-        foreach (var modelState in ViewData.ModelState.Values)
-        {
-            foreach (var error in modelState.Errors)
+
+    @if (ViewData.ModelState.Values.Count(x => x.Errors.Count > 0) > 0)
+    {
+        <ul class="alert alert_type_error">
+            @foreach (var modelState in ViewData.ModelState.Values)
             {
-                <div class="alert alert_type_error">@error.ErrorMessage</div>
+                if (modelState.Errors.Count > 0)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                }
             }
-        }
+        </ul>
     }
 
-</section>
 
+</section>

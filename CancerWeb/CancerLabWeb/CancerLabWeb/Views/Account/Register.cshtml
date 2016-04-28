@@ -1,4 +1,5 @@
-﻿@model CancerLabWeb.Models.RegisterModel
+﻿@using CancerLabWeb.Helpers
+@model CancerLabWeb.Models.RegisterModel
 @{
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
     ViewBag.Title = "Регистрация";
@@ -11,19 +12,18 @@
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form form_action_register" }))
     {
         @Html.AntiForgeryToken()
-        <input class="input" type="text" name="Email" placeholder="E-mail" tabindex="1">
-        <input class="input" type="password" name="Password" placeholder="Пароль" tabindex="2">
-        <input class="input" type="password" name="ConfirmPassword" placeholder="Повторите пароль" tabindex="3">
-        <input class="input" type="text" name="LastName" placeholder="Фамилия" tabindex="4">
-        <input class="input" type="text" name="Name" placeholder="Имя" tabindex="5">
-        <input class="input" type="text" name="SecondName" placeholder="Отчество" tabindex="6">
-        <input class="input" type="text" name="PhoneNumber" placeholder="Номер телефона" tabindex="7">
-        <input class="input" type="text" name="Organisation" placeholder="Организация" tabindex="8">
-        <input class="input" type="text" name="Position" placeholder="Должность" tabindex="9">
-
+        @Html.TextBoxFor(x=>x.Email, new {@class="input", @placeholder="E-Mail", @tabindex="1"})
+        @Html.PasswordFor(x=>x.Password, new {@class="input", @placeholder="Пароль", @tabindex="2"})
+        @Html.PasswordFor(x=>x.ConfirmPassword, new {@class="input", @placeholder= "Повторите пароль", @tabindex="3"})
+        @Html.TextBoxFor(x => x.LastName, new { @class = "input", @placeholder = "Фамилия", @tabindex = "4" })
+        @Html.TextBoxFor(x => x.Name, new { @class = "input", @placeholder = "Имя", @tabindex = "5" })
+        @Html.TextBoxFor(x => x.SecondName, new { @class = "input", @placeholder = "Отчество", @tabindex = "6" })
+        @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "input", @placeholder = "Номер телефона", @tabindex = "7" })
+        @Html.TextBoxFor(x => x.Organisation, new { @class = "input", @placeholder = "Организация", @tabindex = "8" })
+        @Html.TextBoxFor(x => x.Position, new { @class = "input", @placeholder = "Должность", @tabindex = "9" })
         <div class="form__group">
-            <button class="button" type="reset" tabindex="11">Сбросить</button>
-            <button class="button" type="submit" tabindex="10">Регистрация</button>
+            @Html.Button("Сбросить", new { @class="button", @type="reset", @tabindex="11"})
+            @Html.Button("Регистрация", new { @class="button", @type="submit", @tabindex="10"})
         </div>
     }
     <a class="link" href="@Url.Action("Login", "Account")">Вход в систему</a>

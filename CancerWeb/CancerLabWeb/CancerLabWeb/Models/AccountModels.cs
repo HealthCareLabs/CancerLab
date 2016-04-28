@@ -25,7 +25,7 @@ namespace CancerLabWeb.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int DoctorId { get; set; }
         public string Email { get; set; }
-
+        
         public string Name { get; set; }
         public string LastName { get; set; }
         public string SecondName { get; set; }
@@ -64,6 +64,7 @@ namespace CancerLabWeb.Models
     public class LoginModel
     {
         [Required]
+        [EmailAddress]
         [Display(Name = "Имя пользователя")]
         public string Email { get; set; }
 
@@ -79,6 +80,8 @@ namespace CancerLabWeb.Models
     public class RegisterModel
     {
         [Required]
+        [EmailAddress]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Имя пользователя")]
         public string Email { get; set; }
 
@@ -98,6 +101,7 @@ namespace CancerLabWeb.Models
         [Required] [Display(Name = "Отчество")] public string SecondName { get; set; }
         [Required] [Display(Name = "Фамилия")] public string LastName { get; set; }
 
+        [Phone]
         [DataType(DataType.PhoneNumber)] public string PhoneNumber { get; set; }
 
         [Required]
