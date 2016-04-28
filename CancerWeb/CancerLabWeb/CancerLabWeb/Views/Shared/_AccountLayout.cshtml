@@ -13,17 +13,16 @@
 
     <!-- Project's styles -->
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/jqueryvalidate")
+
 </head>
 
 <body class="page__body">
     @RenderBody()
 
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryvalidate")
     @Scripts.Render("~/bundles/project")
-   
 </body>
 </html>
 
