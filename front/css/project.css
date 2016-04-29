@@ -1,8 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic);
 @import url(font-awesome.min.css);
 @import url(../plugins/dropdown/jquery.dropdown.css);
-@import url(../plugins/chartist/chartist.min.css);
-
 
 /* BEGIN RESET
 --------------------------------------------------------------------------------------------------*/
@@ -623,12 +621,29 @@ div[class*='col-']
 }
 
 .widget_status_new .widget__header,
-.widget_status_new .treatment-item__link
+.widget_status_waiting .widget__header
 {
-    color: #31708f;
+    margin: -10px -10px 0;
+    padding: 10px 20px;
+
+    color: #fff;
 }
 
-.widget_status_waiting .widget__header,
+.widget_status_new .widget__header
+{
+    background: #164c89;
+}
+
+.widget_status_waiting .widget__header
+{
+    background: #a94442;
+}
+
+.widget_status_new .treatment-item__link
+{
+    color: #164c89;
+}
+
 .widget_status_waiting .treatment-item__link
 {
     color: #a94442;
@@ -664,7 +679,8 @@ div[class*='col-']
     padding: 10px 5px;
 }
 
-.treatment-item:hover
+.treatment-item:hover,
+.treatment-item:nth-child(even)
 {
     background: #f5f5f5;
 }
@@ -678,9 +694,25 @@ div[class*='col-']
     color: #666;
 }
 
-.statistics
+.chart_type_treatment-num
 {
+    width: 100%;
+    height: 300px;
+}
 
+.chart_type_tumor-size,
+.chart_type_patient-sex,
+.chart_type_patient-age
+{
+    width: 100%;
+    height: 200px;
+}
+
+.canvasjs-chart-credit
+{
+    display: none;
+
+    color: transparent;
 }
 /* END Dashboard Styles
 --------------------------------------------------------------------------------------------------*/

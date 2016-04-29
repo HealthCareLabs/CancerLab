@@ -1,57 +1,74 @@
 jQuery(document).ready(function ($) {
+    chartInit();
+});
+
+function chartInit() {
     getNumStatistics();
     getSizeStatistics();
     getAgeStatistics();
     getSexStatistics();
-});
-
+}
 
 function getNumStatistics() {
-    var url = "js/json/treatment_number.json";
+    var url = 'js/json/treatment_number.json';
 
     $.getJSON(url, function (data) {
-        new Chartist.Line('.chart_type_treatment-num', data['data']);
+        var dataStat = data['data'];
+
+        var chart = new CanvasJS.Chart('chart_treatment', {
+            data: [{
+                type: 'line',
+                dataPoints: dataStat
+            }]
+        });
+        chart.render();
     });
 }
 
 function getSizeStatistics() {
-    var url = "js/json/tumor_size.json";
+    var url = 'js/json/tumor_size.json';
 
     $.getJSON(url, function (data) {
-        var nData = data['data'];
-        var sum = function(a, b) { return a + b };
-        new Chartist.Pie('.chart_type_tumor-size', nData, {
-            labelInterpolationFnc: function(value) {
-                return Math.round(value / nData.series.reduce(sum) * 100) + '%';
-            }
+        var dataStat = data['data'];
+
+        var chart = new CanvasJS.Chart('chart_size', {
+            data: [{
+                type: 'doughnut',
+                dataPoints: dataStat
+            }]
         });
+        chart.render();
     });
 }
 
 function getAgeStatistics() {
-    var url = "js/json/age.json";
+    var url = 'js/json/age.json';
 
     $.getJSON(url, function (data) {
-        var nData = data['data'];
-        var sum = function(a, b) { return a + b };
-        new Chartist.Pie('.chart_type_age', nData, {
-            labelInterpolationFnc: function(value) {
-                return Math.round(value / nData.series.reduce(sum) * 100) + '%';
-            }
+        var dataStat = data['data'];
+
+        var chart = new CanvasJS.Chart('chart_age', {
+            data: [{
+                type: 'doughnut',
+                dataPoints: dataStat
+            }]
         });
+        chart.render();
     });
 }
 
 function getSexStatistics() {
-    var url = "js/json/sex.json";
+    var url = 'js/json/sex.json';
 
     $.getJSON(url, function (data) {
-        var nData = data['data'];
-        var sum = function(a, b) { return a + b };
-        new Chartist.Pie('.chart_type_sex', nData, {
-            labelInterpolationFnc: function(value) {
-                return Math.round(value / nData.series.reduce(sum) * 100) + '%';
-            }
+        var dataStat = data['data'];
+
+        var chart = new CanvasJS.Chart('chart_sex', {
+            data: [{
+                type: 'doughnut',
+                dataPoints: dataStat
+            }]
         });
+        chart.render();
     });
 }
