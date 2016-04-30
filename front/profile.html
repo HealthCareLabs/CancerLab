@@ -68,9 +68,33 @@
                 <div class="content clearfix">
                     <div class="col col-12">
                         <section class="widget">
-                            <header class="widget__header">Профиль врача</header>
+                            <header class="widget__header">Редактирование личных данных</header>
                             <div class="widget__body">
-                                <form class="form form_action_"></form>
+                                <form class="form form_action_edit" action="" method="post">
+                                    <div class="form__group">
+                                        <input class="input" type="text" name="LastName" placeholder="Фамилия">
+                                        <input class="input" type="text" name="Name" placeholder="Имя">
+                                        <input class="input" type="text" name="SecondName" placeholder="Отчество">
+                                    </div>
+
+                                    <div class="form__group">
+                                        <input class="input" type="password" name="Password" placeholder="Пароль">
+                                        <input class="input" type="password" name="NewPassword" placeholder="Новый пароль">
+                                        <input class="input" type="password" name="ConfirmNewPassword" placeholder="Повторите пароль">
+                                    </div>
+
+                                    <div class="form__group">
+                                        <input class="input" type="text" name="Email" placeholder="E-mail">
+                                        <input class="input" type="text" name="PhoneNumber" placeholder="Номер телефона">
+                                    </div>
+
+                                    <div class="form__group">
+                                        <input class="input" type="text" name="Organisation" placeholder="Организация">
+                                        <input class="input" type="text" name="Position" placeholder="Должность">
+                                    </div>
+
+                                    <button class="button" type="submit">Сохранить изменения</button>
+                                </form>
                             </div>
                         </section>
                     </div>

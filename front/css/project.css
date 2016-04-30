@@ -185,17 +185,17 @@ input:-ms-input-placeholder
 .button[type="submit"]
 {
     color: #ffffff !important;
-    background: #0a81d1;
+    background: #1976D2;
 }
 
 .button[type="submit"]:hover
 {
-    background: #4f92d1;
+    background: #2196F3;
 }
 
 .button[type="submit"]:active
 {
-    background: #5396d1;
+    background: #1E88E5;
 }
 
 .checkbox
@@ -216,7 +216,7 @@ input:-ms-input-placeholder
 {
     text-decoration: none;
 
-    color: #0a81d1;
+    color: #1976D2;
 }
 
 .link:hover
@@ -241,14 +241,14 @@ input:-ms-input-placeholder
 
 .alert_type_error
 {
-    color: #a94442;
+    color: #D32F2F;
     border-color: #ebccd1;
     background-color: #f2dede;
 }
 
 .alert_type_success
 {
-    color: #3c763d;
+    color: #388E3C;
     border-color: #d6e9c6;
     background-color: #dff0d8;
 }
@@ -262,7 +262,7 @@ input:-ms-input-placeholder
 
 .alert_type_info
 {
-    color: #164c89;
+    color: #1976D2;
     border-color: #bce8f1;
     background-color: #d9edf7;
 }
@@ -399,7 +399,7 @@ div[class*='col-']
     padding: 0 20px;
 
     color: #fff;
-    background: #164c89;
+    background: #0D47A1;
 }
 
 .sidebar__logo
@@ -494,7 +494,7 @@ div[class*='col-']
 
     text-decoration: none;
 
-    color: #a94442;
+    color: #D32F2F;
 }
 
 .notifications .badge
@@ -580,7 +580,7 @@ div[class*='col-']
     padding: 30px 60px 20px;
 
     color: #fff;
-    background: #0a81d1;
+    background: #1976D2;
 }
 
 
@@ -615,9 +615,10 @@ div[class*='col-']
     font-weight: 300;
 
     padding: 10px 20px;
-    background: #0a81d1;
+
     color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: #1976D2;
 }
 
 .widget_status_new .widget__header,
@@ -628,22 +629,22 @@ div[class*='col-']
 
 .widget_status_new .widget__header
 {
-    background: #164c89;
+    background: #388E3C;
 }
 
 .widget_status_waiting .widget__header
 {
-    background: #a94442;
+    background: #D32F2F;
 }
 
 .widget_status_new .treatment-item__link
 {
-    color: #164c89;
+    color: #388E3C;
 }
 
 .widget_status_waiting .treatment-item__link
 {
-    color: #a94442;
+    color: #D32F2F;
 }
 
 .widget__header .fa
@@ -805,6 +806,27 @@ div[class*='col-']
     color: #fff;
     border-color: #e5e5e5;
     background: rgba(255, 255, 255, 0.15);
+}
+
+.form_action_edit
+{
+    padding: 10px;
+}
+
+.form_action_edit .form__group
+{
+    padding: 0 0 20px;
+}
+
+.form_action_edit .form__group:nth-child(2)
+{
+    padding: 0 0 50px;
+}
+
+.form_action_edit .input
+{
+    min-width: 20%;
+    margin: 0 20px 0 0;
 }
 /* END Form Styles
 --------------------------------------------------------------------------------------------------*/
