@@ -1,5 +1,9 @@
 jQuery(document).ready(function ($) {
-    chartInit();
+
+    if ($('.statistics section').hasClass('chart')) {
+        chartInit();
+    }
+
 });
 
 function chartInit() {

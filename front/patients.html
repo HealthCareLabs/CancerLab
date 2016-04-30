@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="page" lang="ru">
     <head>
-        <title>CancerLab – Профиль</title>
+        <title>CancerLab – Пациенты</title>
         <meta charset="utf-8"/>
         <meta name="author" content="Elena Musatova, Vladimir Milenko"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -27,7 +27,7 @@
                         <i class="fa fa-dashboard"></i><span class="menu__text">Главная</span>
                     </a>
 
-                    <a class="link menu__link" href="patients.html">
+                    <a class="link menu__link menu__link_state_active" href="patients.html">
                         <i class="fa fa-users"></i><span class="menu__text">Пациенты</span>
                     </a>
 
@@ -35,7 +35,7 @@
                         <i class="fa fa-clipboard"></i><span class="menu__text">Обращения</span>
                     </a>
 
-                    <a class="link menu__link menu__link_state_active" href="profile.html">
+                    <a class="link menu__link" href="profile.html">
                         <i class="fa fa-user"></i><span class="menu__text">Профиль</span>
                     </a>
                 </nav>
@@ -68,34 +68,21 @@
                 <div class="content clearfix">
                     <div class="col col-12">
                         <section class="widget">
-                            <header class="widget__header">Редактирование личных данных</header>
+                            <header class="widget__header">Список всех пациентов</header>
                             <div class="widget__body">
-                                <form class="form form_action_edit" action="" method="post">
-                                    <div class="form__group">
-                                        <input class="input" type="text" name="LastName" placeholder="Фамилия">
-                                        <input class="input" type="text" name="Name" placeholder="Имя">
-                                        <input class="input" type="text" name="SecondName" placeholder="Отчество">
-                                    </div>
-
-                                    <div class="form__group">
-                                        <input class="input" type="password" name="Password" placeholder="Пароль">
-                                        <input class="input" type="password" name="NewPassword" placeholder="Новый пароль">
-                                        <input class="input" type="password" name="ConfirmNewPassword" placeholder="Повторите пароль">
-                                    </div>
-
-                                    <div class="form__group">
-                                        <input class="input" type="text" name="Email" placeholder="E-mail">
-                                        <input class="input" type="text" name="PhoneNumber" placeholder="Номер телефона">
-                                    </div>
-
-                                    <div class="form__group">
-                                        <input class="input" type="text" name="Organisation" placeholder="Организация">
-                                        <input class="input" type="text" name="Position" placeholder="Должность">
-                                    </div>
-
-                                    <button class="button" type="button">Отменить</button>
-                                    <button class="button" type="submit">Сохранить изменения</button>
-                                </form>
+                                <ul class="pagination">
+                                   <li class="pagination__item"><a class="link fa fa-arrow-circle-o-left" href="#prev"></a></li>
+                                   <li class="pagination__item"><a class="link" href="#1-3">А–В</a></li>
+                                   <li class="pagination__item"><a class="link" href="#4-7">Г–Ё</a></li>
+                                   <li class="pagination__item"><a class="link" href="#8-11">Ж–Й</a></li>
+                                   <li class="pagination__item"><a class="link" href="#12-15">К–Н</a></li>
+                                   <li class="pagination__item"><a class="link" href="#16-18">О–Р</a></li>
+                                   <li class="pagination__item"><a class="link" href="#19-21">С–У</a></li>
+                                   <li class="pagination__item"><a class="link" href="#22-25">Ф–Ч</a></li>
+                                   <li class="pagination__item"><a class="link" href="#26-31">Ш–Э</a></li>
+                                   <li class="pagination__item"><a class="link" href="#32-33">Ю–Я</a></li>
+                                   <li class="pagination__item"><a class="link fa fa-arrow-circle-o-right" href="#next"></a></li>
+                                </ul>
                             </div>
                         </section>
                     </div>

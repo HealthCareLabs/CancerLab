@@ -556,6 +556,37 @@ div[class*='col-']
 
     text-align: right;
 }
+
+.pagination
+{
+    overflow: hidden;
+
+    margin: 0 0 20px;
+}
+
+.pagination__item
+{
+    float: left;
+
+    border: 1px solid #1976D2;
+    border-right: 0;
+}
+
+.pagination__item:last-child
+{
+    border-right: 1px solid #1976D2;
+}
+
+.pagination__item .link
+{
+    line-height: 14px;
+
+    display: inline-block;
+
+    padding: 10px;
+
+    text-decoration: none;
+}
 /* END Page Styles
 --------------------------------------------------------------------------------------------------*/
 
@@ -713,6 +744,13 @@ div[class*='col-']
     color: transparent;
 }
 /* END Dashboard Styles
+--------------------------------------------------------------------------------------------------*/
+
+
+/* BEGIN Patients' Styles
+--------------------------------------------------------------------------------------------------*/
+
+/* END Patients' Styles
 --------------------------------------------------------------------------------------------------*/
 
 
