@@ -262,7 +262,7 @@ input:-ms-input-placeholder
 
 .alert_type_info
 {
-    color: #31708f;
+    color: #164c89;
     border-color: #bce8f1;
     background-color: #d9edf7;
 }
@@ -604,7 +604,6 @@ div[class*='col-']
 .widget
 {
     margin: 0 0 2em 0;
-    padding: 10px;
 
     background: #fff;
     box-shadow: 0 2px 0 0 #e5e5e5;
@@ -615,17 +614,15 @@ div[class*='col-']
     font-size: 18px;
     font-weight: 300;
 
-    padding: 0 0 10px;
-
+    padding: 10px 20px;
+    background: #0a81d1;
+    color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .widget_status_new .widget__header,
 .widget_status_waiting .widget__header
 {
-    margin: -10px -10px 0;
-    padding: 10px 20px;
-
     color: #fff;
 }
 
@@ -656,14 +653,14 @@ div[class*='col-']
 
 .widget__body
 {
-    padding: 10px 0;
+    padding: 10px;
 }
 
 .widget__footer
 {
     font-weight: 300;
 
-    padding: 10px 0 0;
+    padding: 10px;
 
     color: #a9a9a9;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
