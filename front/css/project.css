@@ -288,6 +288,11 @@ input:-ms-input-placeholder
     vertical-align: middle;
 }
 
+.table__head .table__cell
+{
+    font-weight: 500;
+}
+
 .table__body .table__row:nth-child(odd) .table__cell
 {
     background: #f1f1f1;
@@ -586,6 +591,28 @@ div[class*='col-']
     padding: 10px;
 
     text-decoration: none;
+}
+
+.info-table
+{
+    margin: 10px 0;
+}
+
+.info-table .table__head .table__cell
+{
+    text-align: left;
+}
+
+.info-table .table__cell:last-child
+{
+    text-align: center;
+}
+
+.info-table .link.fa
+{
+    padding: 2px 6px;
+
+    border: 1px solid;
 }
 /* END Page Styles
 --------------------------------------------------------------------------------------------------*/
