@@ -224,14 +224,23 @@ input:-ms-input-placeholder
     text-decoration: underline;
 }
 
+.badge
+{
+    font-size: 12px;
+
+    padding: 3px 8px 5px;
+}
+
 .badge_type_warn
 {
-    color: #a94442;
+    color: #fff;
+    background: #FF9500;
 }
 
 .badge_type_success
 {
-    color: #3c763d;
+    color: #fff;
+    background: #87CB16;
 }
 
 .alert
@@ -290,12 +299,23 @@ input:-ms-input-placeholder
 
 .table__head .table__cell
 {
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
+
+    text-transform: uppercase;
+
+    color: #9a9a9a;
+}
+
+.table__body .table__cell
+{
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .table__body .table__row:nth-child(odd) .table__cell
 {
-    background: #f1f1f1;
+    background: #f9f9f9;
 }
 
 .col,
@@ -378,7 +398,7 @@ div[class*='col-']
     position: relative;
 
     color: #666;
-    background: #f5f5f5;
+    background: #f9f9f9;
 }
 
 .page__body
@@ -736,9 +756,9 @@ div[class*='col-']
 }
 
 .treatment-item:hover,
-.treatment-item:nth-child(even)
+.treatment-item:nth-child(odd)
 {
-    background: #f5f5f5;
+    background: #f9f9f9;
 }
 
 .treatment-item__time
@@ -774,10 +794,32 @@ div[class*='col-']
 --------------------------------------------------------------------------------------------------*/
 
 
-/* BEGIN Patients' Styles
+/* BEGIN Patient Styles
 --------------------------------------------------------------------------------------------------*/
+.card
+{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
 
-/* END Patients' Styles
+.card__item
+{
+    overflow: hidden;
+
+    padding: 10px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card__item:last-child
+{
+    border: 0;
+}
+
+.card__item .col-3
+{
+    text-align: right;
+}
+/* END Patient Styles
 --------------------------------------------------------------------------------------------------*/
 
 
