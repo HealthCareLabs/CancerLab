@@ -2,7 +2,6 @@
 @import url(font-awesome.min.css);
 @import url(../plugins/dropdown/jquery.dropdown.css);
 
-
 /* BEGIN RESET
 --------------------------------------------------------------------------------------------------*/
 html, body, div, span, applet, object, iframe,
@@ -36,7 +35,7 @@ h5,
 h6
 {
     font-family: 'Roboto', Arial, sans-serif;
-    font-weight: 400;
+    font-weight: 300;
 }
 
 img
@@ -186,17 +185,17 @@ input:-ms-input-placeholder
 .button[type="submit"]
 {
     color: #ffffff !important;
-    background: #0a81d1;
+    background: #1976D2;
 }
 
 .button[type="submit"]:hover
 {
-    background: #4f92d1;
+    background: #2196F3;
 }
 
 .button[type="submit"]:active
 {
-    background: #5396d1;
+    background: #1E88E5;
 }
 
 .checkbox
@@ -217,7 +216,7 @@ input:-ms-input-placeholder
 {
     text-decoration: none;
 
-    color: #0a81d1;
+    color: #1976D2;
 }
 
 .link:hover
@@ -242,14 +241,14 @@ input:-ms-input-placeholder
 
 .alert_type_error
 {
-    color: #a94442;
+    color: #D32F2F;
     border-color: #ebccd1;
     background-color: #f2dede;
 }
 
 .alert_type_success
 {
-    color: #3c763d;
+    color: #388E3C;
     border-color: #d6e9c6;
     background-color: #dff0d8;
 }
@@ -263,7 +262,7 @@ input:-ms-input-placeholder
 
 .alert_type_info
 {
-    color: #31708f;
+    color: #1976D2;
     border-color: #bce8f1;
     background-color: #d9edf7;
 }
@@ -289,6 +288,11 @@ input:-ms-input-placeholder
     vertical-align: middle;
 }
 
+.table__head .table__cell
+{
+    font-weight: 500;
+}
+
 .table__body .table__row:nth-child(odd) .table__cell
 {
     background: #f1f1f1;
@@ -301,6 +305,66 @@ div[class*='col-']
 
     padding: 0 10px;
 }
+
+.col-1
+{
+    width: 8.33333333%;
+}
+
+.col-2
+{
+    width: 16.66666667%;
+}
+
+.col-3
+{
+    width: 25%;
+}
+
+.col-4
+{
+    width: 33.33333333%;
+}
+
+.col-5
+{
+    width: 41.66666667%;
+}
+
+.col-6
+{
+    width: 50%;
+}
+
+.col-7
+{
+    width: 58.33333333%;
+}
+
+.col-8
+{
+    width: 66.66666667%;
+}
+
+.col-9
+{
+    width: 75%;
+}
+
+.col-10
+{
+    width: 83.33333333%;
+}
+
+.col-11
+{
+    width: 91.66666667%;
+}
+
+.col-12
+{
+    width: 100%;
+}
 /* END Components' Styles
 --------------------------------------------------------------------------------------------------*/
 
@@ -310,6 +374,8 @@ div[class*='col-']
 .page
 {
     font: 14px 'Roboto', Arial, sans-serif;
+
+    position: relative;
 
     color: #666;
     background: #f5f5f5;
@@ -323,9 +389,6 @@ div[class*='col-']
 
 .page__wrapper
 {
-    position: relative;
-    top: 0;
-
     height: 100vh;
 }
 
@@ -341,7 +404,7 @@ div[class*='col-']
     padding: 0 20px;
 
     color: #fff;
-    background: #164c89;
+    background: #0D47A1;
 }
 
 .sidebar__logo
@@ -401,8 +464,7 @@ div[class*='col-']
     float: right;
 
     width: calc(100% - 260px);
-    height: 100%;
-    max-height: 100%;
+    min-height: 100%;
     padding-bottom: 60px;
 }
 
@@ -437,7 +499,7 @@ div[class*='col-']
 
     text-decoration: none;
 
-    color: #a94442;
+    color: #D32F2F;
 }
 
 .notifications .badge
@@ -455,6 +517,11 @@ div[class*='col-']
 .user-panel .fa
 {
     margin: 0 10px 0 0;
+}
+
+.content
+{
+    padding: 30px 20px;
 }
 
 .footer
@@ -494,6 +561,59 @@ div[class*='col-']
 
     text-align: right;
 }
+
+.pagination
+{
+    overflow: hidden;
+
+    margin: 0 0 20px;
+}
+
+.pagination__item
+{
+    float: left;
+
+    border: 1px solid #1976D2;
+    border-right: 0;
+}
+
+.pagination__item:last-child
+{
+    border-right: 1px solid #1976D2;
+}
+
+.pagination__item .link
+{
+    line-height: 14px;
+
+    display: inline-block;
+
+    padding: 10px;
+
+    text-decoration: none;
+}
+
+.info-table
+{
+    margin: 10px 0;
+}
+
+.info-table .table__head .table__cell
+{
+    text-align: left;
+}
+
+.info-table .table__cell:last-child
+{
+    text-align: center;
+}
+
+.info-table .link.fa
+{
+    padding: 2px 6px;
+
+    border: 1px solid;
+}
 /* END Page Styles
 --------------------------------------------------------------------------------------------------*/
 
@@ -518,7 +638,7 @@ div[class*='col-']
     padding: 30px 60px 20px;
 
     color: #fff;
-    background: #0a81d1;
+    background: #1976D2;
 }
 
 
@@ -534,6 +654,130 @@ div[class*='col-']
     margin: 0 0 20px;
 }
 /* END Auth Styles
+--------------------------------------------------------------------------------------------------*/
+
+
+/* BEGIN Dashboard Styles
+--------------------------------------------------------------------------------------------------*/
+.widget
+{
+    margin: 0 0 2em 0;
+
+    background: #fff;
+    box-shadow: 0 2px 0 0 #e5e5e5;
+}
+
+.widget__header
+{
+    font-size: 18px;
+    font-weight: 300;
+
+    padding: 10px 20px;
+
+    color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: #1976D2;
+}
+
+.widget_status_new .widget__header,
+.widget_status_waiting .widget__header
+{
+    color: #fff;
+}
+
+.widget_status_new .widget__header
+{
+    background: #388E3C;
+}
+
+.widget_status_waiting .widget__header
+{
+    background: #D32F2F;
+}
+
+.widget_status_new .treatment-item__link
+{
+    color: #388E3C;
+}
+
+.widget_status_waiting .treatment-item__link
+{
+    color: #D32F2F;
+}
+
+.widget__header .fa
+{
+    margin: 0 10px 0 0;
+}
+
+.widget__body
+{
+    padding: 10px;
+}
+
+.widget__footer
+{
+    font-weight: 300;
+
+    padding: 10px;
+
+    color: #a9a9a9;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.content .title
+{
+    padding: 30px 10px 20px;
+}
+
+.treatment-item
+{
+    padding: 10px 5px;
+}
+
+.treatment-item:hover,
+.treatment-item:nth-child(even)
+{
+    background: #f5f5f5;
+}
+
+.treatment-item__time
+{
+    font-size: 12px;
+
+    float: right;
+
+    color: #666;
+}
+
+.chart_type_treatment-num
+{
+    width: 100%;
+    height: 300px;
+}
+
+.chart_type_tumor-size,
+.chart_type_patient-sex,
+.chart_type_patient-age
+{
+    width: 100%;
+    height: 200px;
+}
+
+.canvasjs-chart-credit
+{
+    display: none;
+
+    color: transparent;
+}
+/* END Dashboard Styles
+--------------------------------------------------------------------------------------------------*/
+
+
+/* BEGIN Patients' Styles
+--------------------------------------------------------------------------------------------------*/
+
+/* END Patients' Styles
 --------------------------------------------------------------------------------------------------*/
 
 
@@ -622,11 +866,37 @@ div[class*='col-']
 .form_action_search .input
 {
     width: 100%;
-    padding: 0;
+    padding: 0 20px 0 10px;
 
     color: #fff;
     border-color: #e5e5e5;
     background: rgba(255, 255, 255, 0.15);
+}
+
+.form_action_edit
+{
+    padding: 10px;
+}
+
+.form_action_edit .form__group
+{
+    padding: 0 0 20px;
+}
+
+.form_action_edit .form__group:nth-child(2)
+{
+    padding: 0 0 50px;
+}
+
+.form_action_edit .input
+{
+    min-width: 20%;
+    margin: 0 20px 0 0;
+}
+
+.form_action_edit .button
+{
+    margin: 0 20px 0 0;
 }
 /* END Form Styles
 --------------------------------------------------------------------------------------------------*/

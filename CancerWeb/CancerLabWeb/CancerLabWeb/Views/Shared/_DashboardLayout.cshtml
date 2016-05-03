@@ -30,7 +30,7 @@
             </form>
 
             <nav class="menu">
-                <a class="link menu__link @Html.IsSelected("Dashboard","", "menu__link_state_active")" href="@Url.Action("Index","Dashboard")">
+                <a class="link menu__link @Html.IsSelected("Dashboard","Index", "menu__link_state_active")" href="@Url.Action("Index","Dashboard")">
                     <i class="fa fa-dashboard"></i><span class="menu__text">Главная</span>
                 </a>
 
@@ -42,7 +42,7 @@
                     <i class="fa fa-clipboard"></i><span class="menu__text">Обращения</span>
                 </a>
 
-                <a class="link menu__link @Html.IsSelected("Account","Manage","menu__link_state_active")" href="#">
+                <a class="link menu__link @Html.IsSelected("Dashboard","ManageProfile","menu__link_state_active")" href="@Url.Action("ManageProfile","Dashboard")">
                     <i class="fa fa-user"></i><span class="menu__text">Профиль</span>
                 </a>
             </nav>
@@ -59,7 +59,7 @@
                
             </header>
 
-            <div class="content">
+            <div class="content clearfix">
                 @RenderBody()
             </div>
 

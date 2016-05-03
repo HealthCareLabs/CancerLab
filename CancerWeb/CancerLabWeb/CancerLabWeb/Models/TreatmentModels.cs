@@ -14,7 +14,7 @@ namespace CancerLabWeb.Models
         public int TreatmentId { get; set; }
         public int ParentTreatmentId { get; set; }
 
-        public int PatientId { get; set; }
+        public PatientProfile Patient { get; set; }
         public DateTime DateOfTreatment { get; set; }
         public string Title { get; set; }
         public string BodyField { get; set; }
@@ -28,6 +28,7 @@ namespace CancerLabWeb.Models
         public List<TreatmentComment> TreatmentComments { get; set; }
 
         public bool IsAnswered { get; set; }
+        public bool IsViewed { get; set; }
 
     }
 

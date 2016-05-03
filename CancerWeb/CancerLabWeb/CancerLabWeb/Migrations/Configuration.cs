@@ -33,6 +33,29 @@ namespace CancerLabWeb.Migrations
                 }
             );
             context.SaveChanges();
+            context.Treatments.AddOrUpdate(new TreatmentModel()
+            {
+                BodyField = "Рука",
+                ColorModification = ColorModification.Brighter,
+                DateOfAppear =  DateTime.Now.AddMonths(-6).Date,
+                DateOfTreatment = DateTime.Now,
+                IsAnswered = false,
+                IsViewed = false,
+                LymphNodeEnlarging = LymphNodeEnlarging.No,
+                Patient = context.PatientProfiles.First()
+            });
+            context.Treatments.AddOrUpdate(new TreatmentModel()
+            {
+                BodyField = "Рука",
+                ColorModification = ColorModification.Brighter,
+                DateOfAppear =  DateTime.Now.AddMonths(-6).Date,
+                DateOfTreatment = DateTime.Now,
+                IsAnswered = false,
+                IsViewed = true,
+                LymphNodeEnlarging = LymphNodeEnlarging.No,
+                Patient = context.PatientProfiles.First()
+            });
+            context.SaveChanges();
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

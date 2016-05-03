@@ -12,11 +12,18 @@ namespace CancerLabWeb.Context
         public BaseContext()
             : base("DefaultConnection")
         {
+            this.Configuration.LazyLoadingEnabled = false;
         }
+
 
         public DbSet<DoctorProfile> DoctorProfiles { get; set; }
         public DbSet<PatientProfile> PatientProfiles { get; set; }
         public DbSet<TreatmentModel> Treatments { get; set; }
+
+        public DbSet<SexStatisticsModel> SexStatistics { get; set; }
+        public DbSet<AgeStatisticsModel> AgeStatistics { get; set; }
+        public DbSet<TumorSizeStatisticsModel> TumorSizeStatistics { get; set; }
+        public DbSet<TreatmentsStatisticsModel> TreatmentsStatistics { get; set; }
     }
 
 }

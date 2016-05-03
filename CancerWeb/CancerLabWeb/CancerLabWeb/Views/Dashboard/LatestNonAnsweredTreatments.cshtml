@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CancerLabWeb.Models.TreatmentModel>
+
+@{
+    Layout = null;
+}
+
+<div class="col col-6">
+    <section class="widget widget_status_waiting">
+        <header class="widget__header"><i class="fa fa-warning"></i>Обращения без ответа</header>
+        <div class="widget__body">
+            @if (Model.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var treatmentModel in Model)
+                    {
+                        <li class="list-group__item treatment-item">
+                            <a class="link treatment-item__link" href="#treatment">
+                                <span class="treatment-item__number">@treatmentModel.TreatmentId</span>
+                                <span class="treatment-item__patient">@treatmentModel.Patient.LastName @treatmentModel.Patient.Name @treatmentModel.Patient.SecondName</span>
+                            </a>
+                            <span class="treatment-item__time">(@treatmentModel.DateOfTreatment.ToString())</span>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+    </section>
+</div>
