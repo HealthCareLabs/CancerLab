@@ -34,7 +34,7 @@
                     <i class="fa fa-dashboard"></i><span class="menu__text">Главная</span>
                 </a>
 
-                <a class="link menu__link @Html.IsSelected("Patients","Index","menu__link_state_active")" href="#">
+                <a class="link menu__link @Html.IsSelected("Dashboard","PatientsList,ViewPatientProfile","menu__link_state_active")" href="@Url.Action("PatientsList","Dashboard")">
                     <i class="fa fa-users"></i><span class="menu__text">Пациенты</span>
                 </a>
 

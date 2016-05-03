@@ -17,7 +17,8 @@ namespace CancerLabWeb
                         "~/Content/js/jquery.validate.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/project").Include(
-                        "~/Content/js/project.js"));
+                        "~/Content/js/project.js")
+                        .Include("~/Content/js/canvasjs.js"));
 
 
             bundles.Add(new StyleBundle("~/Content/css")

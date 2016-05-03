@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CancerLabWeb.Models.TreatmentModel>
+
+@{
+    Layout = null;
+}
+
+<div class="col col-12">
+    <section class="widget">
+        <header class="widget__header">История обращений</header>
+        <div class="widget__body">
+            <div class="info-table">
+                <table class="table">
+                    <thead class="table__head">
+                        <tr class="table__row">
+                            <th class="table__cell">№</th>
+                            <th class="table__cell">Статус обращения</th>
+                            <th class="table__cell">Дата и время</th>
+                            <th class="table__cell">Повторные запросы</th>
+                            <th class="table__cell">Количество фото</th>
+                            <th class="table__cell">Просмотр</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table__body">
+                    @foreach (var treatment in Model)
+                    {
+                        <tr class="table__row">
+                            <td class="table__cell"><span class="string">@treatment.TreatmentId</span></td>
+                           @if (treatment.IsAnswered)
+                           {
+                               <td class="table__cell"><span class="badge badge_type_success">Проверено</span></td>
+                           }
+                           else
+                           {
+                            <td class="table__cell"><span class="badge badge_type_warn">Ожидает проверки</span></td>
+                           }
+                            <td class="table__cell"><span class="string">@treatment.DateOfTreatment.ToString()</span></td>
+                            <td class="table__cell"><span class="string">@treatment.RepeatedTreatments</span></td>
+                            <td class="table__cell"><span class="string">@treatment.PhotosNumber</span></td>
+                            <td class="table__cell"><a class="link fa fa-sticky-note" href="treatment.html"></a></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

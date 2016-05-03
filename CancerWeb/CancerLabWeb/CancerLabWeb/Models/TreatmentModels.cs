@@ -15,9 +15,17 @@ namespace CancerLabWeb.Models
         public int ParentTreatmentId { get; set; }
 
         public PatientProfile Patient { get; set; }
+        [Index]
         public DateTime DateOfTreatment { get; set; }
         public string Title { get; set; }
         public string BodyField { get; set; }
+
+        public int RepeatedTreatments { get; set; }
+
+        [Index]
+        public int Size { get; set; }
+
+        public int PhotosNumber { get; set; }
 
         public DateTime DateOfAppear { get; set; }
         public ColorModification ColorModification { get; set; }

@@ -1,0 +1,59 @@
+﻿@using PagedList.Mvc
+@model PagedList.PagedList<CancerLabWeb.Models.PatientProfile>
+
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="col col-12">
+    <section class="widget">
+        <header class="widget__header">Список всех пациентов</header>
+        <div class="widget__body">
+            @Html.PagedListPager(Model, page => Url.Action("PatientsList", new { page=page }), new PagedListRenderOptions()
+       {
+           LiElementClasses = new List<string> { "pagination__item" },
+           UlElementClasses = new List<string>() { "pagination" },
+           DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+           DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+           LinkToNextPageFormat = "<i class=\"fa fa-arrow-circle-o-right\"></i>",
+           LinkToPreviousPageFormat = "<i class=\"fa fa-arrow-circle-o-left\"></i>",
+           FunctionToTransformEachPageLink = (liTag, aTag) =>
+           {
+               aTag.AddCssClass("link");
+               liTag.InnerHtml = aTag.ToString();
+               return liTag;
+           }
+
+       })
+
+            <div class="info-table">
+                <table class="table">
+                    <thead class="table__head">
+                        <tr class="table__row">
+                            <th class="table__cell">ID пациента</th>
+                            <th class="table__cell">ФИО пациента</th>
+                            <th class="table__cell">Номер медицинского полиса</th>
+                            <th class="table__cell">Дата регистрации в системе</th>
+                            <th class="table__cell">Дата последнего обращения</th>
+                            <th class="table__cell">Профиль</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="table__body">
+                        @foreach (var patient in Model)
+                        {
+                            <tr class="table__row">
+                                <td class="table__cell"><span class="string">@patient.PatientId</span></td>
+                                <td class="table__cell"><a class="link" href="@Url.Action("ViewPatientProfile",new {id=patient.PatientId})">@patient.LastName @patient.Name @patient.SecondName</a></td>
+                                <td class="table__cell"><span class="string">@patient.PolicyNumber</span></td>
+                                <td class="table__cell"><span class="string">@patient.RegisterDate.ToLongDateString()</span></td>
+                                <td class="table__cell"><span class="string">@patient.LastMessageTime.ToLongDateString()</span></td>
+                                <td class="table__cell"><a class="link fa fa-user" href="#user123456"></a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

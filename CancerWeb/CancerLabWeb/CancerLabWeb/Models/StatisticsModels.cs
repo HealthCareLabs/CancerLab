@@ -11,8 +11,10 @@ namespace CancerLabWeb.Models
     public class SexStatisticsModel
     {
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int SexType { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
+        public string SexType { get; set; }
 
         public int PatientsCount { get; set; }
         public DateTime LastUpdateTime { get; set; }
@@ -22,7 +24,9 @@ namespace CancerLabWeb.Models
     public class AgeStatisticsModel
     {
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
         public int Age { get; set; }
 
         public int PatientsCount { get; set; }
@@ -33,7 +37,7 @@ namespace CancerLabWeb.Models
     public class TumorSizeStatisticsModel
     {
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TumorSize { get; set; }
 
         public int PatientsCount { get; set; }
@@ -44,12 +48,14 @@ namespace CancerLabWeb.Models
     public class TreatmentsStatisticsModel
     {
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int StatId { get; set; }
 
         public int TotalCount { get; set; }
-        public int AnsweredCount { get; set; }
-        public DateTime StatsDate { get; set; }
+
+        public int Month { get; set; }
+        public int Year { get; set; }
+
         public DateTime LastUpdateTime { get; set; }
     }
 
