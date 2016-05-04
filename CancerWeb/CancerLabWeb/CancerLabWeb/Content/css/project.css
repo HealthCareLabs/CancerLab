@@ -604,11 +604,12 @@ div[class*='col-']
 
 .pagination__item .link
 {
-    line-height: 14px;
+    line-height: 35px;
 
     display: inline-block;
 
-    padding: 10px;
+    height: 35px;
+    padding: 0 10px;
 
     text-decoration: none;
 }
