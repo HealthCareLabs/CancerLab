@@ -4,6 +4,7 @@ jQuery(document).ready(function ($) {
         chartInit();
     }
 
+    $('.tabs').lightTabs();
 });
 
 function chartInit() {

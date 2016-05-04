@@ -243,6 +243,18 @@ input:-ms-input-placeholder
     background: #87CB16;
 }
 
+.badge_type_info
+{
+    color: #fff;
+    background: #2cb8cb;
+}
+
+.badge_type_error
+{
+    color: #fff;
+    background: #cb5524;
+}
+
 .alert
 {
     padding: 10px 30px;
@@ -821,6 +833,61 @@ div[class*='col-']
     text-align: right;
 }
 /* END Patient Styles
+--------------------------------------------------------------------------------------------------*/
+
+
+/* BEGIN Treatments' Styles
+--------------------------------------------------------------------------------------------------*/
+.tabs
+{
+
+}
+.tabs > div
+{
+    padding-top: 10px;
+}
+
+.tabs__navigation
+{
+    margin: 0 0 20px;
+}
+
+.tabs__navigation:after
+{
+    display: block;
+    clear: both;
+
+    height: 3px;
+
+    content: '';
+
+    background: #1976D2;
+}
+
+.tabs__item
+{
+    display: block;
+    float: left;
+
+    padding: 10px 15px;
+
+    cursor: pointer;
+
+    background: #f9f9f9;
+}
+
+.tabs__item.active,
+.tabs__item.active:hover
+{
+    color: #fff;
+    background: #1976D2;
+}
+
+.tabs__item:hover
+{
+    background: #d6d6d7;
+}
+/* END Treatments' Styles
 --------------------------------------------------------------------------------------------------*/
 
 
