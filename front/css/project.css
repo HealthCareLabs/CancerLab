@@ -889,6 +889,16 @@ div[class*='col-']
 {
     background: #d6d6d7;
 }
+
+.tabs__section
+{
+    display: none;
+}
+
+.tabs__section.active
+{
+    display: block;
+}
 /* END Treatments' Styles
 --------------------------------------------------------------------------------------------------*/
 

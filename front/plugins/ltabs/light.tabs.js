@@ -5,13 +5,13 @@
             i = 0;
 
             showPage = function(i){
-                $(tabs).children('div').children('div').hide();
-                $(tabs).children('div').children('div').eq(i).show();
+                $(tabs).children('div').children('div').removeClass('active');
+                $(tabs).children('div').children('div').eq(i).addClass('active');
                 $(tabs).children('ul').children('li').removeClass('active');
                 $(tabs).children('ul').children('li').eq(i).addClass('active');
             };
 
-            showPage(0);
+            showPage($(tabs).children('ul').children('li.active').index());
 
             $(tabs).children('ul').children('li').each(function(index, element){
                 $(element).attr('data-page', i);
