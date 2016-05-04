@@ -1,0 +1,8 @@
+﻿@model CancerLabWeb.Areas.Dashboard.Models.Notification
+@{ Layout = null; }
+<div class="notifications">
+    <a class="notifications__link" href="#" data-jq-dropdown="#jq-dropdown-1">
+        <i class="fa fa-bell-o"></i>
+        <span class="badge">@Model.Count</span>
+    </a>
+</div>

@@ -1,0 +1,64 @@
+﻿@model System.Collections.Generic.List<CancerLabWeb.Areas.Dashboard.Models.TreatmentModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Dashboard/Views/Shared/_DashboardLayout.cshtml";
+}
+
+@Html.Action("LatestNewTreatments", "Treatments")
+
+@Html.Action("LatestNonAnsweredTreatments", "Treatments")
+
+<h2 class="title clearboth">Статистика</h2>
+
+<div class="col col-12">
+    <section class="widget statistics">
+        <header class="widget__header">Количество обращений</header>
+        <div class="widget__body">
+            <section class="chart chart_type_treatment-num" id="chart_treatment"></section>
+        </div>
+        <footer class="widget__footer">
+            <i class="fa fa-clock-o"></i>
+            <span class="text">Обновлено @DateTime.Now.ToShortDateString() в @DateTime.Now.ToShortTimeString()</span>
+        </footer>
+    </section>
+</div>
+
+<div class="col col-4">
+    <section class="widget statistics">
+        <header class="widget__header">Размер образований</header>
+        <div class="widget__body">
+            <section class="chart chart_type_tumor-size" id="chart_size"></section>
+        </div>
+        <footer class="widget__footer">
+            <i class="fa fa-clock-o"></i>
+            <span class="text">Обновлено @DateTime.Now.ToShortDateString() в @DateTime.Now.ToShortTimeString()</span>
+        </footer>
+    </section>
+</div>
+
+<div class="col col-4">
+    <section class="widget statistics">
+        <header class="widget__header">Возраст</header>
+        <div class="widget__body">
+            <section class="chart chart_type_patient-age" id="chart_age"></section>
+        </div>
+        <footer class="widget__footer">
+            <i class="fa fa-clock-o"></i>
+            <span class="text">Обновлено @DateTime.Now.ToShortDateString() в @DateTime.Now.ToShortTimeString()</span>
+        </footer>
+    </section>
+</div>
+
+<div class="col col-4">
+    <section class="widget statistics">
+        <header class="widget__header">Пол пациентов</header>
+        <div class="widget__body">
+            <section class="chart chart_type_patient-sex" id="chart_sex"></section>
+        </div>
+        <footer class="widget__footer">
+            <i class="fa fa-clock-o"></i>
+            <span class="text">Обновлено @DateTime.Now.ToShortDateString() в @DateTime.Now.ToShortTimeString()</span>
+        </footer>
+    </section>
+</div>

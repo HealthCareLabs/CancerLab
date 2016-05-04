@@ -1,0 +1,38 @@
+﻿@using CancerLabWeb.Helpers
+@model CancerLabWeb.Areas.Dashboard.Models.LoginModel
+
+@{
+    Layout = "~/Areas/Dashboard/Views/Shared/_AccountLayout.cshtml";
+    ViewBag.Title = "CancerLab - вход";
+}
+<section class="auth">
+    <header class="auth__header">
+        <h1 class="title">Cancer Lab</h1>
+    </header>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form form_action_login" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationMessage("Email")
+        <label class="label">@Html.TextBoxFor(x=>x.Email, new {@class="input", @placeholder="Логин", @tabindex="1"})</label>
+        <label class="label">@Html.PasswordFor(x => x.Password, new { @class = "input", @placeholder = "Пароль", @tabindex = "2" })</label>
+        <label class="label">@Html.CheckBoxFor(x => x.RememberMe, new { @class = "checkbox", @tabindex = "3" })Запомнить меня</label>
+        @Html.Button("Войти",new { @class="button", @tabindex="4", @type="submit"})
+    }
+    <a class="link" href="@Url.Action("RecoverPassword", "Account")">Восстановить пароль</a>
+
+    @if (ViewData.ModelState.Values.Count(x => x.Errors.Count > 0) > 0)
+    {
+        <footer class="auth__footer alert alert_type_error">
+            @foreach (var modelState in ViewData.ModelState.Values)
+            {
+                if (modelState.Errors.Count > 0)
+                {
+                    foreach (var error in modelState.Errors)
+                    {
+                        <div class="alert__item">@error.ErrorMessage</div>
+                    }
+                }
+            }
+        </footer>
+    }
+</section>

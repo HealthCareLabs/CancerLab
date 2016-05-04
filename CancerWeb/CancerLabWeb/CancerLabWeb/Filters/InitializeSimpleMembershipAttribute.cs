@@ -5,7 +5,6 @@ using System.Threading;
 using System.Web.Mvc;
 using CancerLabWeb.Context;
 using WebMatrix.WebData;
-using CancerLabWeb.Models;
 
 namespace CancerLabWeb.Filters
 {

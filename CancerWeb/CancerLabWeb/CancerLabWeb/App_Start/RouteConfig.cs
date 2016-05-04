@@ -12,16 +12,22 @@ namespace CancerLabWeb
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+           // routes.MapRoute(
+           //     name: "Dashboard",
+           //     url: "Dashobard/{controller}/{action}/{id}",
+           //     defaults: new { id = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "CancerLabWeb.Controllers" }
             );
             routes.MapRoute(
                 name: "Api",
                 url: "api/{controller}/{action}/{id}",
                 defaults: new {id = UrlParameter.Optional});
+            
         }
     }
 }

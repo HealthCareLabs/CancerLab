@@ -1,5 +1,5 @@
+using CancerLabWeb.Areas.Dashboard.Models;
 using CancerLabWeb.Context;
-using CancerLabWeb.Models;
 
 namespace CancerLabWeb.Migrations
 {

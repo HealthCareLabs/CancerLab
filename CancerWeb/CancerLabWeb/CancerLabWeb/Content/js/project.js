@@ -14,7 +14,7 @@ function chartInit() {
 }
 
 function getNumStatistics() {
-    var url = '/Statistics/TreatmentsCount';
+    var url = '/Dashboard/Statistics/TreatmentsCount';
 
     $.getJSON(url, function (data) {
         var dataStat = data['data'];
@@ -30,7 +30,7 @@ function getNumStatistics() {
 }
 
 function getSizeStatistics() {
-    var url = '/Statistics/SizeStatistics';
+    var url = '/Dashboard/Statistics/SizeStatistics';
 
     $.getJSON(url, function (data) {
         var dataStat = data['data'];
@@ -46,7 +46,7 @@ function getSizeStatistics() {
 }
 
 function getAgeStatistics() {
-    var url = '/Statistics/AgeStatistics';
+    var url = '/Dashboard/Statistics/AgeStatistics';
 
     $.getJSON(url, function (data) {
         var dataStat = data['data'];
@@ -62,7 +62,7 @@ function getAgeStatistics() {
 }
 
 function getSexStatistics() {
-    var url = '/Statistics/SexStatistics';
+    var url = '/Dashboard/Statistics/SexStatistics';
 
     $.getJSON(url, function (data) {
         var dataStat = data['data'];

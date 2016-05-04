@@ -198,23 +198,27 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\NotificationsController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\PatientController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\StatisticsController.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\TreatmentsController.cs" />
+    <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Context\MainContext.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PatientController.cs" />
-    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Helpers.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\PatientModels.cs" />
-    <Compile Include="Models\SecondaryModels.cs" />
-    <Compile Include="Models\StatisticsModels.cs" />
-    <Compile Include="Models\TreatmentModels.cs" />
+    <Compile Include="Areas\Dashboard\Models\AccountModels.cs" />
+    <Compile Include="Areas\Dashboard\Models\PatientModels.cs" />
+    <Compile Include="Areas\Dashboard\Models\SecondaryModels.cs" />
+    <Compile Include="Areas\Dashboard\Models\StatisticsModels.cs" />
+    <Compile Include="Areas\Dashboard\Models\TreatmentModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +228,22 @@
     <Content Include="Content\js\canvasjs.js" />
     <Content Include="Content\js\jquery-2.1.3.js" />
     <Content Include="Content\js\jquery-ui.js" />
+    <Content Include="Areas\Dashboard\Views\Web.config" />
+    <Content Include="Areas\Dashboard\Views\Shared\_DashboardLayout.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Patient\List.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Patient\View.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Profile\Manage.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Treatments\LatestNewTreatments.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Treatments\LatestNonAnsweredTreatments.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Treatments\TreatmentList.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Notifications\Notifications.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Account\RecoverPassword.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Account\RecoverPasswordResult.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Shared\_AccountLayout.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Profile\DoctorInfo.cshtml" />
     <None Include="Content\js\jquery.validate-vsdoc.js" />
     <Content Include="Content\js\jquery.validate.js" />
     <Content Include="Content\js\jquery.validate.min.js" />
@@ -239,8 +259,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -248,20 +266,10 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Account\RecoverPasswordResult.cshtml" />
-    <Content Include="Views\Dashboard\Index.cshtml" />
-    <Content Include="Views\Shared\_DashboardLayout.cshtml" />
-    <Content Include="Views\Dashboard\Notifications.cshtml" />
-    <Content Include="Views\Dashboard\DoctorInfo.cshtml" />
-    <Content Include="Views\Dashboard\LatestNewTreatments.cshtml" />
-    <Content Include="Views\Dashboard\LatestNonAnsweredTreatments.cshtml" />
-    <None Include="Views\Dashboard\ManageProfile.cshtml" />
-    <Content Include="Views\Dashboard\PatientsList.cshtml" />
-    <Content Include="Views\Dashboard\ViewPatientProfile.cshtml" />
-    <Content Include="Views\Patient\GetTreatmentList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
@@ -273,12 +281,6 @@
     <Content Include="Content\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\fonts\FontAwesome.otf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Shared\_AccountLayout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Views\Account\RecoverPassword.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
