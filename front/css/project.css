@@ -228,6 +228,8 @@ input:-ms-input-placeholder
 {
     font-size: 12px;
 
+    display: inline-block;
+
     padding: 3px 8px 5px;
 }
 
