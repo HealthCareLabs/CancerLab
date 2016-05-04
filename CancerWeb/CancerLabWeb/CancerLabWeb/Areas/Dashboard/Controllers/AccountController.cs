@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using CancerLabWeb.Areas.Dashboard.Filters;
 using CancerLabWeb.Areas.Dashboard.Models;
 using CancerLabWeb.Context;
-using CancerLabWeb.Filters;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 
@@ -47,10 +47,9 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
         }
 
         //
-        // POST: Dashboard/Account/LogOff
+        // GET: Dashboard/Account/LogOff
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public ActionResult LogOff()
         {
             WebSecurity.Logout();

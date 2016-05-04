@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using CancerLabWeb.Context;
 using WebMatrix.WebData;
 
-namespace CancerLabWeb.Filters
+namespace CancerLabWeb.Areas.Dashboard.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public sealed class InitializeSimpleMembershipAttribute : ActionFilterAttribute

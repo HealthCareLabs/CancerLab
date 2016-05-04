@@ -1,5 +1,5 @@
 ﻿@model CancerLabWeb.Areas.Dashboard.Models.DoctorProfile
 <div class="user-panel">
     <p class="user-panel__name">Врач: @Model.LastName @Model.Name @Model.SecondName</p>
-    <a class="link" href="@Url.Action("LogOff", "Account")"><i class="fa fa-arrow-circle-o-right"></i>Выход</a>
+        <a class="link" href="@Url.Action("LogOff", "Account")" onclick="submit"><i class="fa fa-arrow-circle-o-right"></i>Выход</a>
 </div>

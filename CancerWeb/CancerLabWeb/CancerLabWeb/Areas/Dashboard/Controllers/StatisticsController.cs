@@ -8,6 +8,7 @@ using CancerLabWeb.Controllers;
 
 namespace CancerLabWeb.Areas.Dashboard.Controllers
 {
+    [Authorize]
     public class StatisticsController : Controller
     {
         public JsonResult TreatmentsCount()
