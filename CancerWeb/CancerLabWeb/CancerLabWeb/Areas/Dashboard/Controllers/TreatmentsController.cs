@@ -4,13 +4,33 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CancerLabWeb.Context;
+using PagedList;
 
 namespace CancerLabWeb.Areas.Dashboard.Controllers
 {
     public class TreatmentsController : Controller
     {
+        public int ResultsPerPage { get; } = 20;
         //
         // GET: /Dashboard/Treatments/
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult NewTreatments()
+        {
+            using (var context = new BaseContext())
+            {
+                return
+                    View(
+                        context.Treatments.Where(x => !x.IsAnswered && !x.IsViewed)
+                            .OrderByDescending(x => x.DateOfTreatment)
+                            .ToList()
+                            .ToPagedList());
+            }
+        }
 
         [ChildActionOnly]
         public ActionResult LatestNewTreatments(int count = 5)

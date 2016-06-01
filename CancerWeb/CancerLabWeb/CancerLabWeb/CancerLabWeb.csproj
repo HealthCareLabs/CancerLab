@@ -244,6 +244,8 @@
     <Content Include="Areas\Dashboard\Views\Account\Register.cshtml" />
     <Content Include="Areas\Dashboard\Views\Shared\_AccountLayout.cshtml" />
     <Content Include="Areas\Dashboard\Views\Profile\DoctorInfo.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Treatments\Index.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Treatments\NewTreatments.cshtml" />
     <None Include="Content\js\jquery.validate-vsdoc.js" />
     <Content Include="Content\js\jquery.validate.js" />
     <Content Include="Content\js\jquery.validate.min.js" />
