@@ -5,6 +5,12 @@ jQuery(document).ready(function ($) {
     }
 
     $('.tabs').lightTabs();
+
+    if ($('.widget').hasClass('request')) {
+        initGallery();
+        initAccordion();
+        initActionButton();
+    }
 });
 
 function chartInit() {
@@ -75,5 +81,27 @@ function getSexStatistics() {
             }]
         });
         chart.render();
+    });
+}
+
+function initAccordion() {
+    $('.request .widget__header').click(function() {
+       $(this).parent().find('.widget__body').slideToggle('slow');
+    });
+}
+
+function initGallery() {
+    $('.gallery').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        gallery: { enabled: true }
+    });
+}
+
+function initActionButton() {
+    $('.button_type_action').magnificPopup({
+        type:'inline',
+        closeOnBgClick: false,
+        closeBtnInside: true
     });
 }

@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic);
 @import url(font-awesome.min.css);
 @import url(../plugins/dropdown/jquery.dropdown.css);
+@import url(../plugins/magnific-popup/magnific-popup.css);
 
 /* BEGIN RESET
 --------------------------------------------------------------------------------------------------*/
@@ -295,6 +296,11 @@ input:-ms-input-placeholder
     padding: 5px 0;
 
     text-align: left;
+}
+
+.param
+{
+    font-weight: 500;
 }
 
 .table
@@ -840,10 +846,6 @@ div[class*='col-']
 
 /* BEGIN Treatments' Styles
 --------------------------------------------------------------------------------------------------*/
-.tabs
-{
-
-}
 .tabs > div
 {
     padding-top: 10px;
@@ -898,6 +900,170 @@ div[class*='col-']
 .tabs__section.active
 {
     display: block;
+}
+
+.treatment
+{
+    overflow: hidden;
+}
+
+.treatment .title
+{
+    padding: 20px 10px;
+}
+
+.treatment .title:first-child
+{
+    padding: 10px 10px 20px;
+}
+
+.treatment__list
+{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.treatment__info
+{
+    overflow: hidden;
+
+    padding: 10px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.treatment__info:last-child
+{
+    border: 0;
+}
+
+.treatment__info .col-3,
+.treatment__info .col-4,
+.treatment__info .col-5
+{
+    text-align: right;
+}
+
+.treatment__conclusion
+{
+    clear: both;
+
+    margin: 10px 0 0;
+    padding-bottom: 10px !important;
+
+    border-top: 3px solid #1976D2;
+    background: rgba(33, 150, 243, 0.05);
+}
+
+.treatment__conclusion .title
+{
+    font-weight: 400;
+
+    text-decoration: underline;
+
+    color: #1976D2;
+}
+
+.treatment__conclusion .text
+{
+    padding: 0 10px 10px;
+}
+
+.request .widget__header
+{
+    font-size: 15px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    background: #2196F3;
+}
+
+.request .widget__header:after
+{
+    font: 18px 'FontAwesome';
+
+    float: right;
+
+    margin: 3px 0 0;
+
+    content: '\f0d7';
+
+    color: #fff;
+}
+
+.request .widget__body
+{
+    display: none;
+}
+
+.request:first-of-type .widget__body
+{
+    display: block;
+}
+
+.request .title
+{
+    font-size: 15px;
+
+    padding: 10px;
+}
+
+.request .title:first-child
+{
+    padding: 5px 10px 10px;
+}
+
+.request__list
+{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.request__info
+{
+    overflow: hidden;
+
+    padding: 5px;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.request__info:last-child
+{
+    border: 0;
+}
+
+.request__info .col-3
+{
+    text-align: right;
+}
+
+.request__action
+{
+    margin: 10px 0 0;
+    padding: 10px 0 0;
+}
+
+.request__action .button_type_action
+{
+    display: block;
+
+    width: 300px;
+    margin: auto;
+
+    background: #D32F2F !important;
+}
+
+.gallery
+{
+    padding: 5px 0;
+}
+
+.gallery__image
+{
+    display: inline-block;
+
+    margin: 0 5px 5px 0;
 }
 /* END Treatments' Styles
 --------------------------------------------------------------------------------------------------*/
@@ -1019,6 +1185,46 @@ div[class*='col-']
 .form_action_edit .button
 {
     margin: 0 20px 0 0;
+}
+
+.form_action_request
+{
+    position: relative;
+
+    width: 420px;
+    margin: auto;
+    padding: 30px;
+
+    background: #fff;
+}
+
+.form_action_request .form__header
+{
+    font-size: 16px;
+
+    margin: 0 0 10px;
+    padding: 0 0 20px;
+
+    text-transform: uppercase;
+
+    border-bottom: 3px solid #1976D2;
+}
+
+.form_action_request .form__group
+{
+    padding: 15px 0 10px;
+}
+
+.form_action_request .form__group .label
+{
+    display: inline-block;
+
+    margin: 0 10px 0 0;
+}
+
+.form_action_request .textarea
+{
+    width: 100%;
 }
 /* END Form Styles
 --------------------------------------------------------------------------------------------------*/
