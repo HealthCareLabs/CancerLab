@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using CancerLabWeb.Areas.Client.Models;
 
 namespace CancerLabWeb.Areas.Dashboard.Models
 {
@@ -10,43 +11,51 @@ namespace CancerLabWeb.Areas.Dashboard.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TreatmentId { get; set; }
-        public int ParentTreatmentId { get; set; }
 
         public PatientProfile Patient { get; set; }
+
         [Index]
         public DateTime DateOfTreatment { get; set; }
         public string Title { get; set; }
         public string BodyField { get; set; }
 
-        public int RepeatedTreatments { get; set; }
-
-        [Index]
-        public int Size { get; set; }
-
-        public int PhotosNumber { get; set; }
-
         public DateTime DateOfAppear { get; set; }
-        public ColorModification ColorModification { get; set; }
-        public SurfaceModification SurfaceModification { get; set; }
-        public LymphNodeEnlarging LymphNodeEnlarging { get; set; }
 
-        public string PatientComment { get; set; }
-        public List<TreatmentComment> TreatmentComments { get; set; }
+        public virtual List<TreatmentIssue> Issues { get; set; }
 
         public bool IsAnswered { get; set; }
         public bool IsViewed { get; set; }
 
     }
 
+    public class TreatmentIssue
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int IssueId { get; set; }
+
+        [Index]
+        public int Size { get; set; }
+
+        public ColorModification ColorModification { get; set; }
+        public SurfaceModification SurfaceModification { get; set; }
+        public LymphNodeEnlarging LymphNodeEnlarging { get; set; }
+
+        public string PatientComment { get; set; }
+
+        public virtual IEnumerable<TreatmentComment> Comments { get; set; }
+        public virtual IEnumerable<ImageModel> Images { get; set; }
+
+
+
+    }
     public class TreatmentComment
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CommentId { get; set; }
-        public int AuthorId { get; set; }
-        public int OrderNum { get; set; }
-        public DateTime CommenTime { get; set; }
-        public bool IsDoctorComment { get; set; }
+        public DoctorProfile Author { get; set; }
+        public DateTime CommentDate { get; set; }
     }
 
     public enum ColorModification

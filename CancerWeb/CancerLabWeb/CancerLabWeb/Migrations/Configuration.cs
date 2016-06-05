@@ -17,7 +17,7 @@ namespace CancerLabWeb.Migrations
 
         protected override void Seed(BaseContext context)
         {
-            context.PatientProfiles.AddOrUpdate(
+          /*  context.PatientProfiles.AddOrUpdate(
       new PatientProfile()
       {
           BirthdayDate = DateTime.Parse("14.01.1997"),
@@ -36,28 +36,28 @@ namespace CancerLabWeb.Migrations
             context.Treatments.AddOrUpdate(new TreatmentModel()
             {
                 BodyField = "Рука",
-                ColorModification = ColorModification.Brighter,
+                //ColorModification = ColorModification.Brighter,
                 DateOfAppear = DateTime.Now.AddMonths(-6).Date,
                 DateOfTreatment = DateTime.Now,
                 IsAnswered = false,
                 IsViewed = false,
-                LymphNodeEnlarging = LymphNodeEnlarging.No,
+                //LymphNodeEnlarging = LymphNodeEnlarging.No,
                 Patient = context.PatientProfiles.First()
             });
             context.Treatments.AddOrUpdate(new TreatmentModel()
             {
                 BodyField = "Рука",
-                ColorModification = ColorModification.Brighter,
+                //ColorModification = ColorModification.Brighter,
                 DateOfAppear = DateTime.Now.AddMonths(-6).Date,
                 DateOfTreatment = DateTime.Now,
                 IsAnswered = false,
                 IsViewed = true,
-                LymphNodeEnlarging = LymphNodeEnlarging.No,
+                //LymphNodeEnlarging = LymphNodeEnlarging.No,
                 Patient = context.PatientProfiles.First()
             });
             context.SaveChanges();
 
-            foreach (var group in context.PatientProfiles.GroupBy(x => x.BirthdayDate.Year).ToList())
+            foreach (var group in context.PatientProfiles.GroupBy(x => ((DateTime)x.BirthdayDate).Year).ToList())
             {
                 context.AgeStatistics.AddOrUpdate(new AgeStatisticsModel()
                 {
@@ -98,7 +98,7 @@ namespace CancerLabWeb.Migrations
             }
 
             context.SaveChanges();
-
+            */
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

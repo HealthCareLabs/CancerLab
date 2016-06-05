@@ -38,7 +38,7 @@ namespace CancerLabWeb.Areas.Dashboard.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "DoctorProfile", "DoctorId", "Email", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("RemoteConnection", "DoctorProfile", "DoctorId", "Email", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {

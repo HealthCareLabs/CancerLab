@@ -11,6 +11,7 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
     [Authorize]
     public class PatientController : Controller
     {
+        private readonly BaseContext _dbContext = new BaseContext();
         //
         // GET: /Dashboard/Patient/
 
@@ -19,19 +20,16 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
             using (var context = new BaseContext())
             {
                 ViewBag.PageName = "Пациенты";
-                int pageSize = 3;
+                int pageSize = 10;
                 int pageNumber = (page ?? 1);
-                return View(context.PatientProfiles.OrderBy(x => x.LastName).ToPagedList(pageNumber, pageSize));
+                return View(_dbContext.PatientProfiles.OrderBy(x => x.LastName).ToPagedList(pageNumber, pageSize));
             }
         }
 
         public ActionResult View(int id)
         {
-            using (var context = new BaseContext())
-            {
                 ViewBag.PageName = "Профиль пациента";
-                return View(context.PatientProfiles.First(x => x.PatientId == id));
-            }
+                return View(_dbContext.PatientProfiles.First(x => x.PatientId == id));
         }
 
     }
