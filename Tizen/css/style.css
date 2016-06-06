@@ -1,0 +1,168 @@
+/* BEGIN RESET
+--------------------------------------------------------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, section, summary, audio, video,
+input, textarea, select, button
+{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    vertical-align: baseline;
+
+    outline: none;
+}
+/* END RESET
+--------------------------------------------------------------------------------------------------*/
+
+
+/* BEGIN Base
+--------------------------------------------------------------------------------------------------*/
+.button
+{
+    font-size: 20px;
+
+    display: inline-block;
+
+    height: 46px;
+    padding: 12px 15px;
+
+    cursor: pointer;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 0 !important;
+    background: #666;
+
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+}
+
+.button:disabled
+{
+    background: #777;
+}
+
+.button[type="submit"],
+.ui-btn[type="submit"],
+.button_type_special
+{
+    color: #ffffff !important;
+    background: #1976D2 !important;
+}
+
+.button[type="submit"]:hover,
+.ui-btn[type="submit"]:hover,
+.button_type_special:hover
+{
+    background: #2196F3 !important;
+}
+
+.button[type="submit"]:active,
+.ui-btn[type="submit"]:active,
+.button_type_special:active
+{
+    background: #1E88E5 !important;
+}
+
+.ui-page
+{
+    background: #f9f9f9 !important;
+}
+
+.ui-scrollview-view
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.ui-page .ui-header
+{
+    background: #1976d2;
+}
+
+.ui-page .ui-content
+{
+    padding: 5%;
+}
+/* END Base
+--------------------------------------------------------------------------------------------------*/
+
+
+/* BEGIN Pages
+--------------------------------------------------------------------------------------------------*/
+.splash
+{
+    background: #0d47a1 !important;
+}
+
+.splash .ui-content
+{
+    text-align: center;
+    padding: 10%;
+    color: #fff;
+}
+
+.splash__title
+{
+    flex-grow: 1;
+}
+
+.splash__description
+{
+    flex-grow: 3;
+}
+
+.splash__footer
+{
+    flex-grow: 1;
+
+}
+
+.splash .button
+{
+    color: #1976D2;
+    width: 100%;
+    margin: 0 0 20px;
+    background: #fff;
+}
+
+.auth__description
+{
+    flex-grow: 3;
+}
+
+.auth__footer
+{
+    flex-grow: 1;
+}
+
+.auth__footer .button
+{
+    width: 100%;
+    margin: 20px 0 0;
+}
+/* END Pages
+--------------------------------------------------------------------------------------------------*/
+

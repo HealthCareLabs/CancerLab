@@ -503,7 +503,7 @@ div[class*='col-']
 {
     float: right;
 
-    width: calc(100% - 260px);
+    width: calc((100%) - 260px);
     min-height: 100%;
     padding-bottom: 60px;
 }
@@ -573,7 +573,7 @@ div[class*='col-']
 
     overflow: hidden;
 
-    width: calc(100% - 260px);
+    width: calc((100%) - 260px);
     height: 56px;
     padding: 18px 20px;
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/CancerLab" version="1.0.0" viewmodes="maximized">
+    <access origin="*" subdomains="true"/>
+    <tizen:application id="4a1Nw290BR.CancerLab" package="4a1Nw290BR" required_version="2.4"/>
+    <author>Innopolis University Team</author>
+    <content src="index.html"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="icon.png"/>
+    <name>CancerLab</name>
+    <tizen:profile name="mobile"/>
+    <tizen:setting context-menu="disable"/>
+</widget>
