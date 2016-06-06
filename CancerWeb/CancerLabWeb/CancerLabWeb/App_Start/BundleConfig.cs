@@ -21,7 +21,7 @@ namespace CancerLabWeb
                         .Include("~/Content/js/canvasjs.js"));
 
 
-            bundles.Add(new StyleBundle("~/Content/css")
+            bundles.Add(new StyleBundle("~/Content/projectcss")
                 .Include("~/Content/css/project.css"));
 
             bundles.Add(new StyleBundle("~/Content/cssfont").Include("~/Content/css/font-awesome.min.css"));

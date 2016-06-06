@@ -10,19 +10,16 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
     [Authorize]
     public class ProfileController : Controller
     {
+        private readonly BaseContext _dbContext = new BaseContext();
         public ActionResult Manage()
         {
-            using (var context = new BaseContext())
-            {
                 ViewBag.PageName = "Профиль";
-                return View(context.DoctorProfiles.First(x => x.Email == User.Identity.Name));
-            }
+                return View(_dbContext.DoctorProfiles.First(x => x.Email == User.Identity.Name));
         }
         [ChildActionOnly]
         public ActionResult DoctorInfo()
         {
-            BaseContext context = new BaseContext();
-            var doctor = context.DoctorProfiles.First(x => x.Email == User.Identity.Name);
+            var doctor = _dbContext.DoctorProfiles.First(x => x.Email == User.Identity.Name);
             return PartialView(doctor);
         }
     }

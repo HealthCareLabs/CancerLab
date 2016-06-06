@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500&subset=latin,cyrillic);
-@import url(font-awesome.min.css);
-@import url(../plugins/dropdown/jquery.dropdown.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css);
 
 /* BEGIN RESET
 --------------------------------------------------------------------------------------------------*/
@@ -483,7 +482,7 @@ div[class*='col-']
 {
     float: right;
 
-    width: calc(100% - 260px);
+    width: calc((100%) - 260px);
     min-height: 100%;
     padding-bottom: 60px;
 }
@@ -553,7 +552,7 @@ div[class*='col-']
 
     overflow: hidden;
 
-    width: calc(100% - 260px);
+    width: calc((100%) - 260px);
     height: 56px;
     padding: 18px 20px;
 

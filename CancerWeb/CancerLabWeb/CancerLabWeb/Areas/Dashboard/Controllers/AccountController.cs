@@ -16,6 +16,8 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+
+        private readonly BaseContext _dbContext = new BaseContext();
         //
         // GET: Dashboard/Account/Login
 
@@ -98,20 +100,17 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
 
         private void FinalizeRegistration(RegisterModel model)
         {
-            using (BaseContext context = new BaseContext())
-            {
-                var doctor = context.DoctorProfiles.First(x => x.Email == model.Email);
+            var doctor = _dbContext.DoctorProfiles.First(x => x.Email == model.Email);
 
-                doctor.Name = model.Name;
-                doctor.LastName = model.LastName;
-                doctor.SecondName = model.SecondName;
+            doctor.Name = model.Name;
+            doctor.LastName = model.LastName;
+            doctor.SecondName = model.SecondName;
 
-                doctor.PhoneNumber = model.PhoneNumber;
+            doctor.PhoneNumber = model.PhoneNumber;
 
-                doctor.Organisation = model.Organisation;
-                doctor.Position = model.Position;
-                context.SaveChanges();
-            }
+            doctor.Organisation = model.Organisation;
+            doctor.Position = model.Position;
+            _dbContext.SaveChanges();
         }
 
         //
@@ -133,12 +132,9 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (BaseContext context = new BaseContext())
-                {
-                    bool found = context.DoctorProfiles.Any(x => x.Email == model.Email);
-                    if (!found)
-                        ModelState.AddModelError("Email", "Пользователь с указанным адресом не найден");
-                }
+                bool found = _dbContext.DoctorProfiles.Any(x => x.Email == model.Email);
+                if (!found)
+                    ModelState.AddModelError("Email", "Пользователь с указанным адресом не найден");
             }
             return View();
         }

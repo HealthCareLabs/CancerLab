@@ -15,7 +15,7 @@
                 </li>
                 <li class="card__item">
                     <div class="col col-3"><span class="string">Дата рождения:</span></div>
-                    <div class="col col-9"><span class="string">@Model.BirthdayDate.ToLongDateString()</span></div>
+                    <div class="col col-9"><span class="string">@(((DateTime)Model.BirthdayDate).ToLongDateString())</span></div>
                 </li>
                 <li class="card__item">
                     <div class="col col-3"><span class="string">Пол:</span></div>
@@ -31,11 +31,22 @@
                 </li>
                 <li class="card__item">
                     <div class="col col-3"><span class="string">Дата регистрации в системе:</span></div>
-                    <div class="col col-9"><span class="string">@Model.RegisterDate.ToLongDateString()</span></div>
+                    <div class="col col-9"><span class="string">@(((DateTime)Model.RegisterDate).ToLongDateString())</span></div>
                 </li>
                 <li class="card__item">
                     <div class="col col-3"><span class="string">Дата последнего обращения:</span></div>
-                    <div class="col col-9"><span class="string">@Model.LastMessageTime.ToLongDateString()</span></div>
+                    <div class="col col-9">
+                        <span class="string">
+                            @if (Model.LastMessageTime != null)
+                            {
+                                @(((DateTime) Model.LastMessageTime).ToLongDateString());
+                            }
+                            else
+                            {
+                                @:Нет обращений
+                            }
+                        </span>
+                    </div>
                 </li>
                 <li class="card__item">
                     <div class="col col-3"><span class="string">Контактный телефон:</span></div>

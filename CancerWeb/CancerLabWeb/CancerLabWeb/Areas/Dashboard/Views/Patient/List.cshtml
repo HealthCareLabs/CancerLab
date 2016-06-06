@@ -46,11 +46,30 @@
                             <tr class="table__row">
                                 <td class="table__cell"><span class="string">@patient.PatientId</span></td>
                                 <td class="table__cell"><a class="link" href="@Url.Action("View",new {id=patient.PatientId})">@patient.LastName @patient.Name @patient.SecondName</a></td>
+
                                 <td class="table__cell"><span class="string">@patient.PolicyNumber</span></td>
-                                <td class="table__cell"><span class="string">@patient.RegisterDate.ToLongDateString()</span></td>
-                                <td class="table__cell"><span class="string">@patient.LastMessageTime.ToLongDateString()</span></td>
-                                <td class="table__cell"><a class="link fa fa-user" href="#user123456"></a></td>
-                            </tr>
+                                <td class="table__cell">
+                                    <span class="string">
+                                        @if (patient.RegisterDate != null)
+                                    {
+                                        @Html.Raw(((DateTime)patient.RegisterDate).ToLongDateString())
+                                    }
+                                </span>
+                            </td>
+                            <td class="table__cell">
+                                <span class="string">
+                                    @if (patient.LastMessageTime != null)
+                                    {
+                                        @Html.Raw(((DateTime) patient.LastMessageTime).ToLongDateString())
+                                    }
+                                    else
+                                    {
+                                        @:Нет обращений
+                                    }
+                            </span>
+                        </td>
+                        <td class="table__cell"><a class="link fa fa-user" href="@Url.Action("View",new {id=patient.PatientId})"></a></td>
+                    </tr>
                         }
                     </tbody>
                 </table>

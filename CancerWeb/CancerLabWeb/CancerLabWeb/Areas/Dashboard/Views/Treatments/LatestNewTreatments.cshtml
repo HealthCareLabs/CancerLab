@@ -14,7 +14,7 @@
                                 <span class="treatment-item__number">@treatmentModel.TreatmentId</span>
                                 <span class="treatment-item__patient">@treatmentModel.Patient.LastName @treatmentModel.Patient.Name @treatmentModel.Patient.SecondName</span>
                             </a>
-                            <span class="treatment-item__time">(@treatmentModel.DateOfTreatment.ToString())</span>
+                            <span class="treatment-item__time">(@treatmentModel.CreationDate.ToString())</span>
                         </li>
                     }
                 </ul>
