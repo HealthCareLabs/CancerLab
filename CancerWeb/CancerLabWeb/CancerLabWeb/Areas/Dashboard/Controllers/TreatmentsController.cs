@@ -26,7 +26,7 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
                 return
                     View(
                         _dbContext.Treatments.Where(x => !x.IsAnswered && !x.IsViewed)
-                            .OrderByDescending(x => x.DateOfTreatment)
+                            .OrderByDescending(x => x.CreationDate)
                             .ToList()
                             .ToPagedList(pageNumber,ResultsPerPage));
            
@@ -35,7 +35,7 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
         [ChildActionOnly]
         public ActionResult LatestNewTreatments(int count = 5)
         {
-                var temp = _dbContext.Treatments.Where(x => x.IsViewed == false).OrderByDescending(x => x.DateOfTreatment).ToList();
+                var temp = _dbContext.Treatments.Where(x => x.IsViewed == false).OrderByDescending(x => x.CreationDate).ToList();
                 if (temp.Count() > count)
                 {
                     temp = temp.Take(count).ToList();
@@ -50,7 +50,7 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
         [ChildActionOnly]
         public ActionResult LatestNonAnsweredTreatments(int count = 5)
         {
-                var temp = _dbContext.Treatments.Where(x => x.IsViewed && !x.IsAnswered).OrderByDescending(x => x.DateOfTreatment).ToList();
+                var temp = _dbContext.Treatments.Where(x => x.IsViewed && !x.IsAnswered).OrderByDescending(x => x.CreationDate).ToList();
                 if (temp.Count() > count)
                 {
                     temp = temp.Take(count).ToList();

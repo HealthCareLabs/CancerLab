@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using CancerLabWeb.Areas.Client.Handlers;
 
 namespace CancerLabWeb
 {
@@ -17,12 +18,13 @@ namespace CancerLabWeb
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
+            //GlobalConfiguration.Configuration.MessageHandlers.Add(new AuthorizationHeaderHandler());
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
             GlobalConfiguration.Configuration.EnsureInitialized();
         }
     }

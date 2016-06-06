@@ -17,13 +17,10 @@ namespace CancerLabWeb.Areas.Dashboard.Controllers
 
         public ActionResult List(int? page)
         {
-            using (var context = new BaseContext())
-            {
                 ViewBag.PageName = "Пациенты";
                 int pageSize = 10;
                 int pageNumber = (page ?? 1);
                 return View(_dbContext.PatientProfiles.OrderBy(x => x.LastName).ToPagedList(pageNumber, pageSize));
-            }
         }
 
         public ActionResult View(int id)

@@ -15,7 +15,7 @@ namespace CancerLabWeb.Areas.Dashboard.Models
         public PatientProfile Patient { get; set; }
 
         [Index]
-        public DateTime DateOfTreatment { get; set; }
+        public DateTime CreationDate { get; set; }
         public string Title { get; set; }
         public string BodyField { get; set; }
 
@@ -26,6 +26,17 @@ namespace CancerLabWeb.Areas.Dashboard.Models
         public bool IsAnswered { get; set; }
         public bool IsViewed { get; set; }
 
+    }
+
+    public class ApiTreatmentModel
+    {
+        [Required]
+        [Index]
+        public string Title { get; set; }
+        [Required]
+        public string BodyField { get; set; }
+        [Required]
+        public DateTime DateOfAppear { get; set; }
     }
 
     public class TreatmentIssue
@@ -45,10 +56,27 @@ namespace CancerLabWeb.Areas.Dashboard.Models
 
         public virtual IEnumerable<TreatmentComment> Comments { get; set; }
         public virtual IEnumerable<ImageModel> Images { get; set; }
-
-
-
     }
+
+    public class ApiTreatmentIssue
+    {
+        [Required]
+        public int ParentTreatmentId { get; set; }
+        [Required]
+        [Index]
+        public int Size { get; set; }
+        [Required]
+        public ColorModification ColorModification { get; set; }
+        [Required]
+        public SurfaceModification SurfaceModification { get; set; }
+        [Required]
+        public LymphNodeEnlarging LymphNodeEnlarging { get; set; }
+        [Required]
+        public string PatientComment { get; set; }
+        [Required]
+        public List<int> Images { get; set; }
+    }
+
     public class TreatmentComment
     {
         [Key]

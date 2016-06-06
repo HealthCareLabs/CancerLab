@@ -15,7 +15,7 @@ namespace CancerLabWeb.Context
         {
             this.Configuration.LazyLoadingEnabled = true;
         }
-
+        public DbSet<ApiLoginModel> ApiAuthentication { get; set; }
         public DbSet<DoctorProfile> DoctorProfiles { get; set; }
         public DbSet<PatientProfile> PatientProfiles { get; set; }
         public DbSet<TreatmentModel> Treatments { get; set; }

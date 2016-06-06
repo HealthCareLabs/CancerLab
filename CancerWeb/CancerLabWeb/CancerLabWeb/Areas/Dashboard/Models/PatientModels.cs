@@ -12,8 +12,6 @@ namespace CancerLabWeb.Areas.Dashboard.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PatientId { get; set; }
 
-        public string SessionId { get; set; }
-
         public string Name { get; set; }
         public string SecondName { get; set; }
         public string LastName { get; set; }
@@ -61,16 +59,5 @@ namespace CancerLabWeb.Areas.Dashboard.Models
         [DataMember(IsRequired = true)]
         [Required]
         public string Email { get; set; }
-    }
-
-    [DataContract]
-    public class PatientLoginModel
-    {
-        [DataMember(IsRequired = true)]
-        [Required]
-        public int PatientId { get; set; }
-        [DataMember(IsRequired = true)]
-        [Required]
-        public string SessionId { get; set; }
     }
 }

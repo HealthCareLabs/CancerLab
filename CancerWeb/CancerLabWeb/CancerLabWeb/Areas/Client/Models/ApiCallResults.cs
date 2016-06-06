@@ -29,12 +29,19 @@ namespace CancerLabWeb.Areas.Client.Models
     public class RegisterResult : ApiCallResult
     {
         /// <summary>
-        /// Patient's profile ID
-        /// </summary>
-        public int PatientId { get; set; }
-        /// <summary>
         /// Patient's API key for login
         /// </summary>
-        public string SessionId { get; set; }
+        public string ApiKey { get; set; }
+    }
+
+    public class CreateTreatmentResult : ApiCallResult
+    {
+        public int TreatmentId { get; set; }
+
+    }
+
+    public class IssueCreateApiCall : ApiCallResult
+    {
+        public int IssueId { get; set; }
     }
 }

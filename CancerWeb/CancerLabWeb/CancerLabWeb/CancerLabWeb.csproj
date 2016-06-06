@@ -206,7 +206,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Client\Controllers\IssuesController.cs" />
+    <Compile Include="Areas\Client\Controllers\TreatmentController.cs" />
     <Compile Include="Areas\Client\Controllers\UploadController.cs" />
+    <Compile Include="Areas\Client\Filters\ApiAllowAnonymous.cs" />
+    <Compile Include="Areas\Client\Handlers\AuthorizationHeaderHandler.cs" />
+    <Compile Include="Areas\Client\Models\ApiAuthenticationModels.cs" />
     <Compile Include="Areas\Client\Models\ApiCallResults.cs" />
     <Compile Include="Areas\Client\Models\UploadModels.cs" />
     <Compile Include="Areas\Dashboard\Controllers\AccountController.cs" />
@@ -247,6 +252,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\TreatmentsController.cs" />
     <Compile Include="Context\MainContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -331,6 +337,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <None Include="Properties\PublishProfiles\cancer.pubxml" />
+    <None Include="Properties\PublishProfiles\local.pubxml" />
     <None Include="Properties\PublishProfiles\еуые.pubxml" />
   </ItemGroup>
   <ItemGroup>

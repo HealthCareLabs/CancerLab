@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
@@ -25,7 +26,7 @@ namespace CancerLabWeb.Areas.Client.Controllers
         /// <param name="loginModel">Login model, which provides user ID and API Key</param>
         /// <returns></returns>
         [ApiAuthorize, System.Web.Http.Route("api/account/login")]
-        public ApiCallResult Login([FromUri]PatientLoginModel loginModel)
+        public ApiCallResult Login()
         {
             return new ApiCallResult { Success = true };
         }
@@ -39,12 +40,11 @@ namespace CancerLabWeb.Areas.Client.Controllers
         [ApiAuthorize]
         [System.Web.Http.HttpGet]
         [System.Web.Http.Route("api/account/getProfile")]
-        public GetProfileResult GetProfile([FromUri]PatientLoginModel loginModel)
+        public GetProfileResult GetProfile()
         {
-            var profile = _dbContext.PatientProfiles.FirstOrDefault(
-                x => x.SessionId == loginModel.SessionId && x.PatientId == loginModel.PatientId);
-            if (profile == null)
-                return new GetProfileResult { Success = false, Message = "User not found" };
+            int patientId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
+            var profile =
+                _dbContext.PatientProfiles.First(x => x.PatientId == patientId);
             return new GetProfileResult(){ Success = true, PatientProfile = profile };
         }
 
@@ -53,6 +53,7 @@ namespace CancerLabWeb.Areas.Client.Controllers
         /// </summary>
         /// <param name="registerModel">Register model from request</param>
         /// <returns></returns>
+        [ApiAllowAnonymous]
         [System.Web.Http.Route("api/account/register")]
         [System.Web.Http.HttpPost]
         public RegisterResult Register([FromBody]PatientRegistrationModel registerModel)
@@ -76,12 +77,18 @@ namespace CancerLabWeb.Areas.Client.Controllers
                     SecondName = registerModel.SecondName,
                     PhoneNumber = registerModel.PhoneNumber,
                     PolicyNumber = registerModel.PolicyNumber,
-                    SessionId = apiKey
 
                 };
                 _dbContext.PatientProfiles.Add(patient);
                 _dbContext.SaveChanges();
-                return new RegisterResult() { Success = true, SessionId = apiKey, PatientId = patient.PatientId };
+                ApiLoginModel apiLogin = new ApiLoginModel
+                {
+                    PatientProfile = patient,
+                    ApiKey = apiKey
+                };
+                _dbContext.ApiAuthentication.Add(apiLogin);
+                _dbContext.SaveChanges();
+                return new RegisterResult() { Success = true, ApiKey = apiKey };
 
             }
             return new RegisterResult() { Success = false, Message = "Пользователь с таким номером уже зарегистрирован" };
@@ -90,7 +97,7 @@ namespace CancerLabWeb.Areas.Client.Controllers
 
         private static string GenerateApiKey()
         {
-            return new Guid().ToString();
+            return Guid.NewGuid().ToString();
         }
     }
 }

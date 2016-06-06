@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Hosting;
 using System.Web.Http;
@@ -29,20 +30,20 @@ namespace CancerLabWeb.Areas.Client.Controllers
         /// </remarks>
         /// <param>Multipart stream with file info</param>
         /// <returns>List of ids for uploaded images</returns>
-        [ApiAuthorize]
+        //[ApiAllowAnonymous]
         [System.Web.Http.HttpPost, System.Web.Http.Route("api/upload")]
         public async Task<UploadResult> Upload()
         {
             if (!Request.Content.IsMimeMultipartContent())
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
-
+            int userId = int.Parse(Thread.CurrentPrincipal.Identity.Name);
             var provider = new MultipartFormDataStreamProvider(HostingEnvironment.MapPath("~/Images/Issues/"));
-            string apiKey = provider.FormData.Get("sessionId");
             await Request.Content.ReadAsMultipartAsync(provider);
             var imageIds = new List<int>();
-            foreach (var file in provider.Contents)
+            foreach (var file in provider.FileData)
             {
-                var buffer = await file.ReadAsByteArrayAsync();
+                FileInfo fileInfo = new FileInfo(file.LocalFileName);
+                var buffer = File.ReadAllBytes(file.LocalFileName);
                 var srcImage = Image.FromStream(new MemoryStream(buffer));
                 var thumbnailImage = ImageProcessor.FixedSize(srcImage, 150, 150, true);
                 var img = new ImageModel
@@ -50,7 +51,7 @@ namespace CancerLabWeb.Areas.Client.Controllers
                     ThumbnailPath = ImageProcessor.SaveImageToServer(thumbnailImage),
                     FullSizePath = ImageProcessor.SaveImageToServer(srcImage),
                     SourceImage = buffer,
-                    Owner = _dbContext.PatientProfiles.First(x => x.SessionId == apiKey)
+                    Owner = _dbContext.PatientProfiles.First(x => x.PatientId == userId)
                 };
                 _dbContext.Images.Add(img);
                 _dbContext.SaveChanges();
@@ -82,12 +83,8 @@ namespace CancerLabWeb.Areas.Client.Controllers
         /// <returns></returns>
         public static string SaveImageToServer(Image image)
         {
-            string guid = new Guid().ToString();
-            string spath = HostingEnvironment.MapPath("~/Images/Issues/") + guid + ".jpeg";
-            if (!Directory.Exists(spath))
-            {
-                Directory.CreateDirectory(spath);
-            }
+            string guid = Guid.NewGuid().ToString();
+            string spath = HostingEnvironment.MapPath("~/Content/Images/Issues/") + guid + ".jpeg";
             image.Save(spath);
             return spath;
         }
