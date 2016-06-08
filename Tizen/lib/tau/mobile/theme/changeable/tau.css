@@ -9260,12 +9260,12 @@ a.ui-btn {
 }
 .ui-btn:not(.ui-btn-circle):not(.ui-btn-nobg):not(.ui-floatingactions-item) {
   z-index: 0;
-  border-radius: 26px;
+  border-radius: 0px;
   background-color: rgba(82, 199, 217, 1);
 }
 .ui-btn:not(.ui-btn-circle):not(.ui-btn-nobg):not(.ui-floatingactions-item)::before {
   z-index: -1;
-  border-radius: 26px;
+  border-radius: 0px;
   background-color: rgba(73, 142, 153, 1);
 }
 .ui-btn.ui-inline {

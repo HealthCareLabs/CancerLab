@@ -1,70 +1,95 @@
-jQuery(document).ready(function ($) {
-    $('.form_action_register').initForm(function(result){
-        localStorage.setItem('ApiKey', result['ApiKey']);
-        window.location.href = "#main";
-    }, function(result) {
-        alert(result['Message']);
-    });
+/*
+ * Copyright (c) 2012 Samsung Electronics Co., Ltd. All rights reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
-    $('.form_action_main').initForm(function(result){
-        $('.user').text(result['PatientProfile']['LastName']);
-    }, function(result) {
-        alert(result['Message']);
-    });
+/*jslint devel: true*/
+/*global $ , App  */
 
+/**
+ * This file acts as a loader for the application and its dependencies.
+ *
+ * First, the 'app.js' script is loaded .
+ * Then, scripts defined in 'app.requires' are loaded.
+ * Finally, the app is initialized - the app is instantiated ('app = new App()')
+ * and 'app.init()' is called.
+ */
 
-    $('.button_action_start').click(function() {
-        if(localStorage.getItem('ApiKey')) {
-            $('#main .text').text('API Key = ' + localStorage.getItem('ApiKey'));
-            window.location.href = "#main";
-        } else {
-            window.location.href = "#auth";
-        }
-    });
+/**
+ * App object instance.
+ *
+ * @public
+ * @type {App}
+ */
+var app = null;
 
-    $('.button_action_clear').click(function() {
-        localStorage.clear();
-    });
-});
+(function strict() { // strict mode wrapper
+    'use strict';
 
+    ({
+        /**
+         * Initializes application.
+         *
+         * @public
+         */
+        init: function init() {
+            var self = this;
 
-$.fn.serializeObject = function() {
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function() {
-        if (o[this.name] !== undefined) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
-        } else {
-            o[this.name] = this.value || '';
-        }
-    });
-    return o;
-};
+            $.getScript('js/app.js').done(function onAppLoaded() {
+                // once the app is loaded, create the app object
+                // and load the libraries
+                app = new App();
+                self.loadLibs();
+            }).fail(this.onGetScriptError);
+        },
 
-$.fn.initForm = function(successFunction, errorFunction) {
-    var frm = this;
-    frm.submit(function (ev) {
-        $.ajax({
-            type: frm.attr('method'),
-            url: frm.attr('action'),
-            contentType: 'application/json',
-            data: JSON.stringify(frm.serializeObject()),
-            dataType: 'json',
-            beforeSend: function(request){
-                localStorage.getItem('ApiKey') && request.setRequestHeader('X-ApiKey', localStorage.getItem('ApiKey'));
-            },
-            success: function (result) {
-                if(result['Success']) {
-                    successFunction(result);
-                } else {
-                    errorFunction(result);
+        /**
+         * Loads dependencies.
+         *
+         * @private
+         */
+        loadLibs: function loadLibs() {
+            var loadedLibs = 0,
+                i = 0,
+                filename = null,
+                len = app.requires.length;
+
+            function onGetScriptDone() {
+                loadedLibs += 1;
+                if (loadedLibs >= len) {
+                    app.init();
                 }
             }
-        });
 
-        ev.preventDefault();
-    });
-};
+            if ($.isArray(app.requires)) {
+                for (i = 0; i < len; i += 1) {
+                    filename = app.requires[i];
+                    $.getScript(filename)
+                        .done(onGetScriptDone)
+                        .fail(this.onGetScriptError);
+                }
+            }
+        },
+
+        /**
+         * Handles errors.
+         *
+         * @private
+         */
+        onGetScriptError: function onGetScriptError() {
+            console.error('An error occurred on loading dependencies');
+        }
+    }).init(); // run the loader
+
+}());

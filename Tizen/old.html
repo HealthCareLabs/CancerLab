@@ -5,49 +5,52 @@
     <meta charset="utf-8"/>
     <meta name="description" content="Mobile diagnostics"/>
 	<meta name="viewport" content="width=device-width,user-scalable=no"/>
-	<link rel="stylesheet"  href="./lib/tau/mobile/theme/default/tau.css">
+	<!--<link rel="stylesheet"  href="./lib/tau/mobile/theme/default/tau.css">-->
 	<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 </head>
 
 <body>
 	<!-- Start of first page: #splash -->
-    <div id="splash" class="page page_type_splash" data-role="page">
-		<div class="content" data-role="content">
-			<h2 class="title">Cancer Lab</h2>
-            <p class="text">Fast diagnostics in your smartphone</p>
-		</div>
+	<div class="ui-page splash" id="splash">
+		<section class="ui-content">
+			<h2 class="splash__title">Cancer Lab</h2>
+            <p class="splash__description">
+                Fast diagnostics in your smartphone
+            </p>
 
-        <div class="footer" data-role="footer" data-position="fixed">
-            <a class="ui-btn button button_action_start" href="#auth">Start</a>
-            <button class="button button_action_clear" data-inline="false">Clear</button>
-        </div>
+            <footer class="splash__footer">
+                <span class="button button_action_start">Start</span>
+                <span class="button button_action_clear">Clear</span>
+                <p class="splash__author">by Innopolis University Team</p>
+            </footer>
+		</section><!-- /content -->
 	</div><!-- /page splash -->
 
 
-    <!-- Start of second page: #auth -->
-    <div id="auth" class="page page_type_auth" data-role="page">
-        <div class="header" data-role="header" data-position="fixed">
-            <h1 class="title">Start</h1>
-        </div>
+	<!-- Start of second page: #auth -->
+	<div class="ui-page auth" id="auth">
+		<div class="ui-header">
+			<h1>Start</h1>
+		</div><!-- /header -->
 
-        <div class="content" data-role="content">
-            <div class="description">Do you have an account?</div>
-        </div>
+		<section class="ui-content">
+            <div class="auth__description">Do you have an account?</div>
 
-        <div class="footer" data-role="footer">
-            <a class="ui-btn button" href="#registration">No, I want to register</a>
-            <a class="ui-btn button" href="#login">Yes, but I lost an access</a>
-        </div>
-    </div><!-- /page auth -->
+            <footer class="auth__footer">
+                <a href="#registration" class="button button_type_special">No, I want to register</a>
+                <a href="#login" class="button button_type_special">Yes, but I lost an access</a>
+            </footer>
+		</section><!-- /content -->
+	</div><!-- /page auth -->
 
 
-    <!-- Start of third page: #registration -->
-    <div id="registration" class="page page_type_registration" data-role="page">
-        <div class="header" data-role="header" data-position="fixed">
-            <h1 class="title">Registration</h1>
-        </div>
+	<!-- Start of third page: #registration -->
+	<div class="ui-page" id="registration">
+		<div class="ui-header">
+			<h1>Registration</h1>
+		</div><!-- /header -->
 
-        <div class="content" data-role="content">
+		<section class="ui-content">
             <form class="form form_action_register" action="http://alpha.cancerlab.pro/api/account/register" method="post">
                 <div class="form__group">
                     <input class="ui-input-text" type="text" name="LastName" placeholder="Enter last name *" data-validate="true">
@@ -77,56 +80,51 @@
 
                 <p class="form__text">This application is for informational purposes only.</p>
 
-                <button class="button" type="submit">Register</button>
+                <button class="button btn_js_validate" type="submit">Register</button>
             </form>
-        </div>
-    </div><!-- /page registration -->
+		</section><!-- /content -->
+	</div><!-- /page registration -->
 
 
-    <!-- Start of fourth page: #login -->
-    <div id="login" class="page page_type_login" data-role="page">
-        <div class="header" data-role="header" data-position="fixed">
-            <h1 class="title">Login</h1>
-        </div>
+	<!-- Start of fourth page: #login -->
+	<div class="ui-page" id="login">
+		<div class="ui-header">
+			<h1>Login</h1>
+		</div><!-- /header -->
 
-        <div class="content" data-role="content">
+		<section class="ui-content">
             <form class="form form_action_login" action="http://alpha.cancerlab.pro/api/account/login" method="post">
                 <p class="form__text">Enter verification code into this field</p>
                 <div class="form__group">
                     <input class="ui-input-text" type="number" name="Code" placeholder="Enter code" data-validate="true">
                 </div>
 
-                <button class="button" type="submit">Enter</button>
+                <button class="button btn_js_validate" type="submit">Enter</button>
             </form>
-        </div>
-    </div><!-- /page login -->
+		</section><!-- /content -->
+	</div><!-- /page login -->
 
 
-    <!-- Start of fifth page: #home -->
-    <div id="home" class="page page_type_home" data-role="page">
-        <div class="header" data-role="header">
-            <h1 class="title">Cancer Lab</h1>
-        </div>
+	<!-- Start of fifth page: #main -->
+	<div class="ui-page" id="main">
+		<div class="ui-header">
+			<h1>Cancer Lab</h1>
+		</div><!-- /header -->
 
-        <div class="content" data-role="content">
+		<section class="ui-content">
             <form class="form form_action_main" action="http://alpha.cancerlab.pro/api/account/getProfile" method="get">
                 <button type="submit">Получить</button>
             </form>
 
             <div class="text"></div>
             <div class="user"></div>  
-        </div>
+            <a class="" href="#splash">Return to the start</a>
+		</section><!-- /content -->
+	</div><!-- /page main -->
 
-        <div class="footer" data-role="footer" data-position="fixed">
-            <a class="ui-btn button" href="#splash">Return to the start</a>
-        </div>
 
-        <div id="popup" class="ui-popup">
-            <div id="popupText" class="ui-popup-content popup-content-padding"></div>
-            <div id="popupButtons" class="ui-popup-footer"></div>
-        </div>
-    </div><!-- /page home -->
 
+    <!--<a class="ui-btn ui-inline" data-rel="back">Button</a>-->
 
     <script type="text/javascript" src="./lib/tau/mobile/js/jquery.min.js"></script>
 	<script type="text/javascript" src="./lib/tau/mobile/js/tau.js"></script>	
