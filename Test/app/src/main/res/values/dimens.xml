@@ -1,0 +1,17 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="profile_info_padding_vertical">5dp</dimen>
+    <dimen name="profile_info_padding_start">16dp</dimen>
+    <dimen name="profile_info_padding_end">0dp</dimen>
+
+    <dimen name="toolbar_text_size">20sp</dimen>
+    <dimen name="profile_name_text_size">18sp</dimen>
+    <dimen name="profile_info_header_text_size">18sp</dimen>
+    <dimen name="profile_info_value_text_size">16sp</dimen>
+</resources>
