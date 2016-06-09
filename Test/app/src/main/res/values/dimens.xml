@@ -5,13 +5,15 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="default_text_size">16sp</dimen>
+    <dimen name="small_text_size">14sp</dimen>
+    <dimen name="large_text_size">18sp</dimen>
+    <dimen name="subtitle_text_size">18sp</dimen>
 
+    <!-- Profile dimens -->
     <dimen name="profile_info_padding_vertical">5dp</dimen>
     <dimen name="profile_info_padding_start">16dp</dimen>
     <dimen name="profile_info_padding_end">0dp</dimen>
 
     <dimen name="toolbar_text_size">20sp</dimen>
-    <dimen name="profile_name_text_size">18sp</dimen>
-    <dimen name="profile_info_header_text_size">18sp</dimen>
-    <dimen name="profile_info_value_text_size">16sp</dimen>
 </resources>

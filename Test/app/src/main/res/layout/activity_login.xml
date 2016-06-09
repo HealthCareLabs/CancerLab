@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.astex.test.LoginActivity">
+
+    <TextView
+        android:id="@+id/login_text"
+        android:text="@string/login_text"
+        android:gravity="center_vertical"
+        style="@style/TextView.Subtitle"
+        android:paddingTop="100dp"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_login"
+        app:layout_constraintRight_toRightOf="@+id/activity_login" />
+
+    <Button
+        android:id="@+id/button_reg"
+        android:text="@string/button_reg"
+        style="@style/Button.Primary.Login"
+        app:layout_constraintLeft_toLeftOf="@+id/activity_login"
+        app:layout_constraintTop_toBottomOf="@+id/login_text"
+        android:layout_marginTop="40dp"
+        app:layout_constraintRight_toRightOf="@+id/activity_login" />
+
+    <Button
+        android:id="@+id/button_login"
+        android:text="@string/button_login"
+        style="@style/Button.Primary.Login"
+        app:layout_constraintLeft_toLeftOf="@+id/button_reg"
+        app:layout_constraintTop_toBottomOf="@+id/login_text"
+        android:layout_marginTop="120dp"
+        app:layout_constraintRight_toRightOf="@+id/button_reg" />
+
+</android.support.constraint.ConstraintLayout>

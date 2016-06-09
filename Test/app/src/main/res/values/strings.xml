@@ -1,5 +1,28 @@
 <resources>
     <string name="app_name">Test</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Profile strings -->
     <string name="profile_field_icon">Profile field icon</string>
+    <string name="information">Информация</string>
+
+    <!-- Login strings -->
+    <string name="login_text">Начать работу с приложением</string>
+    <string name="button_reg">У меня нет аккаунта</string>
+    <string name="button_login">У меня уже есть аккаунт</string>
+
+    <!-- Registration strings -->
+    <string name="last_name">Фамилия</string>
+    <string name="first_name">Имя</string>
+    <string name="second_name">Отчество</string>
+    <string name="birthday_date">Дата рождения</string>
+    <string name="gender">Пол</string>
+    <string name="male">Мужской</string>
+    <string name="female">Женский</string>
+    <string name="policy_number">Номер мед полиса</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="email">E-mail</string>
+    <string name="location">Место пребывания</string>
+    <string name="registration_label">Приложение носит исключительно информативный характер и не может являться полноценной медицинской консультацией</string>
+    <string name="button_registration">Зарегистрироваться</string>
 </resources>

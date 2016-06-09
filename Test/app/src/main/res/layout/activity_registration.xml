@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_registration"
+    tools:context="com.example.astex.test.RegistrationActivity"
+    style="@style/View"
+    android:scrollbarStyle="insideOverlay">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_registration"
+        style="@style/Layout">
+
+        <EditText
+            android:id="@+id/last_name"
+            android:hint="@string/last_name"
+            app:layout_constraintLeft_toLeftOf="@+id/layout_registration"
+            app:layout_constraintRight_toRightOf="@+id/layout_registration"
+            style="@style/Input.FullWidth"/>
+
+        <EditText
+            android:id="@+id/first_name"
+            android:hint="@string/first_name"
+            app:layout_constraintTop_toBottomOf="@+id/last_name"
+            style="@style/Input.FullWidth"/>
+
+        <EditText
+            android:id="@+id/second_name"
+            android:hint="@string/second_name"
+            app:layout_constraintTop_toBottomOf="@+id/first_name"
+            style="@style/Input.FullWidth"/>
+
+        <EditText
+            android:id="@+id/birthday_date"
+            android:inputType="date"
+            android:hint="@string/birthday_date"
+            app:layout_constraintTop_toBottomOf="@+id/second_name"
+            android:layout_marginTop="16sp"
+            style="@style/Input.FullWidth"/>
+
+        <TextView
+            android:id="@+id/gender_label"
+            android:text="@string/gender"
+            app:layout_constraintTop_toBottomOf="@+id/birthday_date"
+            app:layout_constraintLeft_toLeftOf="@+id/birthday_date"
+            style="@style/TextView.Label.Registration"/>
+
+        <RadioGroup
+            android:id="@+id/gender"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/gender_label"
+            style="@style/RadioGroup">
+
+            <RadioButton
+                android:id="@+id/female"
+                android:text="@string/female"
+                style="@style/RadioButton" />
+
+            <RadioButton
+                android:id="@+id/male"
+                android:text="@string/male"
+                style="@style/RadioButton" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/policy_number"
+            android:hint="@string/policy_number"
+            app:layout_constraintTop_toBottomOf="@+id/gender"
+            style="@style/Input.FullWidth"/>
+
+        <EditText
+            android:id="@+id/phone_number"
+            android:inputType="phone"
+            android:hint="@string/phone_number"
+            app:layout_constraintTop_toBottomOf="@+id/policy_number"
+            style="@style/Input.FullWidth"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"
+            app:layout_constraintTop_toBottomOf="@+id/phone_number"
+            style="@style/Input.FullWidth"/>
+
+        <EditText
+            android:id="@+id/location"
+            android:hint="@string/location"
+            app:layout_constraintTop_toBottomOf="@+id/email"
+            style="@style/Input.FullWidth"/>
+
+        <TextView
+            android:id="@+id/registration_label"
+            android:text="@string/registration_label"
+            app:layout_constraintTop_toBottomOf="@+id/location"
+            style="@style/TextView.Notification"/>
+
+        <Button
+            android:id="@+id/button_registration"
+            android:text="@string/button_registration"
+            app:layout_constraintTop_toBottomOf="@+id/registration_label"
+            style="@style/Button.Primary.Registration" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

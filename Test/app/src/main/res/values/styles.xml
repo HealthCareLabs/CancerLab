@@ -1,12 +1,11 @@
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:colorForeground">@color/foreground_material_light</item>
+        <item name="android:colorForeground">@color/foregroundLight</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -15,13 +14,130 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="badge">
-        <item name="android:layout_width">20dp</item>
-        <item name="android:layout_height">20dp</item>
 
+    <!-- CancerLab Theme -->
+    <style name="View">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="Layout">
+        <item name="android:paddingTop">16sp</item>
+        <item name="android:paddingRight">16sp</item>
+        <item name="android:paddingBottom">16sp</item>
+        <item name="android:paddingLeft">16sp</item>
+    </style>
+
+    <style name="TextView">
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TextView.Small">
+        <item name="android:textSize">@dimen/small_text_size</item>
+    </style>
+
+    <style name="TextView.Large">
+        <item name="android:textSize">@dimen/large_text_size</item>
+    </style>
+
+    <style name="TextView.Label">
+    </style>
+
+    <style name="TextView.Label.Profile">
+        <item name="android:layout_marginLeft">16sp</item>
+    </style>
+
+    <style name="TextView.Label.Registration">
+        <item name="android:layout_marginTop">16sp</item>
+    </style>
+
+    <style name="TextView.Subtitle">
+        <item name="android:textSize">@dimen/subtitle_text_size</item>
+    </style>
+
+    <style name="TextView.Header">
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:background">@color/headerBackgroundColor</item>
+        <item name="android:textColor">@color/headerTextColor</item>
+        <item name="android:paddingTop">10sp</item>
+        <item name="android:paddingRight">16sp</item>
+        <item name="android:paddingBottom">10sp</item>
+        <item name="android:paddingLeft">16sp</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+
+    <style name="TextView.Notification">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:paddingTop">10sp</item>
+        <item name="android:paddingBottom">10sp</item>
+    </style>
+
+    <style name="ImageView">
+    </style>
+
+    <style name="ImageView.Icon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ImageView.Icon.Profile">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginTop">24dp</item>
+    </style>
+
+    <style name="Input">
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8sp</item>
+        <item name="android:layout_marginBottom">8sp</item>
+    </style>
+
+    <style name="Input.FullWidth">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Button.Primary">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="Button.Primary.Login">
+        <item name="android:layout_width">260dp</item>
+        <item name="android:layout_marginTop">70dp</item>
+    </style>
+
+    <style name="Button.Primary.Registration">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="RadioGroup">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8sp</item>
+        <item name="android:layout_marginBottom">8sp</item>
+    </style>
+
+    <style name="RadioGroup.Registration">
+        <item name="android:layout_marginBottom">16sp</item>
+    </style>
+
+    <style name="RadioButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">16sp</item>
     </style>
 
 </resources>
