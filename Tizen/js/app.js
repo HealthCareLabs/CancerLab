@@ -46,7 +46,14 @@ var App = null;
          * @private
          * @type {string[]}
          */
-        requires: [],
+        requires: [
+            'js/app.lib.js',
+            'js/app.config.js',
+            'js/app.model.js',
+            'js/app.ui.js',
+            'js/app.ui.templateManager.js',
+            'js/app.ui.templateManager.modifiers.js'
+        ],
 
         /**
          * Config object.
@@ -80,7 +87,13 @@ var App = null;
          */
         init: function init() {
             // instantiate the libs
+            this.config = new Config();
+            this.model = new Model();
             this.ui = new Ui();
+
+            // initialize the modules
+            this.model.init(this);
+            this.ui.init(this);
 
             return this;
         },

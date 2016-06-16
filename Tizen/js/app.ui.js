@@ -13,7 +13,7 @@ function Ui() {
          * Template manager object.
          *
          * @public
-         * @type {templateManager}
+         * @type {TemplateManager}
          */
         templateManager: null,
 
@@ -25,10 +25,19 @@ function Ui() {
          */
         init: function UI_init(app) {
             this.app = app;
+            this.templateManager = new TemplateManager();
             $(document).ready(this.domInit.bind(this));
 
             // init inner objects
+            this.splash.context = this;
+            this.auth.context = this;
+            this.registration.context = this;
+            this.login.context = this;
             this.home.context = this;
+            this.new_treatment.context = this;
+            this.profile.context = this;
+            this.options.context = this;
+            this.location.context = this;
         },
 
         /**
@@ -37,7 +46,12 @@ function Ui() {
          * @private
          */
         domInit: function UI_domInit() {
-            // Disable text selection
+            this.templateManager.loadToCache(
+                [
+                    'treatment'
+                ],
+                this.initPages.bind(this)
+            );
             $.mobile.tizen.disableSelection(document);
         },
 
@@ -47,13 +61,20 @@ function Ui() {
          * @private
          */
         initPages: function UI_initPages() {
+            this.splash.init();
+            this.auth.init();
+            this.registration.init();
+            this.login.init();
             this.home.init();
+            this.new_treatment.init();
+            this.profile.init();
+            this.options.init();
+            this.location.init();
 
             window.addEventListener('tizenhwkey', function onTizenHwKey(e) {
                 var activePageId = tau.activePage.id;
-
                 if (e.keyName === 'back') {
-                    if (activePageId === 'home') {
+                    if (activePageId === 'splash') {
                         app.exit();
                     } else {
                         history.back();
@@ -61,6 +82,107 @@ function Ui() {
                 }
             });
         },
+
+        /**
+         * Contains methods related to the splash page.
+         *
+         * @public
+         * @type {object}
+         */
+        splash: {
+
+            /**
+             * Initializes splash page.
+             *
+             * @public
+             */
+            init: function UI_splash_init() {
+                this.addEvents();
+            },
+
+            /**
+             * Binds events to the splash page.
+             *
+             * @public
+             */
+            addEvents: function addEvents() {
+                $('.button_action_start').click(function() {
+                    if(localStorage.getItem('ApiKey')) {
+                        $('#main .text').text('API Key = ' + localStorage.getItem('ApiKey'));
+                        tau.changePage("#home");
+                    } else {
+                        tau.changePage("#auth");
+                    }
+                });
+
+                $('.button_action_clear').on('click', function() {
+                    localStorage.clear();
+                });
+            }
+        },
+
+
+        /**
+         * Contains methods related to the auth page.
+         *
+         * @public
+         * @type {object}
+         */
+        auth: {
+
+            /**
+             * Initializes auth page.
+             *
+             * @public
+             */
+            init: function UI_auth_init() {
+
+            }
+        },
+
+
+        /**
+         * Contains methods related to the registration page.
+         *
+         * @public
+         * @type {object}
+         */
+        registration: {
+
+            /**
+             * Initializes registration page.
+             *
+             * @public
+             */
+            init: function UI_registration_init() {
+                $('.form_action_register').initForm(function(result){
+                    localStorage.setItem('ApiKey', result['ApiKey']);
+                    tau.changePage("#home");
+                }, function(result) {
+                    console.log(result['Message']);
+                });
+            }
+        },
+
+
+        /**
+         * Contains methods related to the login page.
+         *
+         * @public
+         * @type {object}
+         */
+        login: {
+
+            /**
+             * Initializes login page.
+             *
+             * @public
+             */
+            init: function UI_login_init() {
+
+            }
+        },
+
 
         /**
          * Contains methods related to the home page.
@@ -76,203 +198,244 @@ function Ui() {
              * @public
              */
             init: function UI_home_init() {
-                this.addEvents();
-                this.beforeShow();
-            },
 
-            /**
-             * Handles pagebeforeshow event on the home page.
-             *
-             * @private
-             */
-            beforeShow: function beforeShow() {
-                var self = this;
-
-                this.displayList();
-                $('.removeExercise').on('click', function onClick() {
-                    var exerciseId = $(this).data('exerciseid');
-                    app.ui.popup('Are you sure?', {
-                        'No': function onClickedNo() {
-                            $('#popup').popup('close');
-                        },
-                        'Yes': function onClickedYes() {
-                            self.context.app.removeExercise(
-                                exerciseId,
-                                self.removeElement.bind(self, exerciseId)
-                            );
-                            $('#popup').popup('close');
-                        }
-                    });
-                });
-            },
-
-            /**
-             * Binds events to the home page.
-             *
-             * @public
-             */
-            addEvents: function addEvents() {
-                $('#home').on('pagebeforeshow', this.beforeShow.bind(this));
-            },
-
-            /**
-             * Removes exercise from list.
-             *
-             * @private
-             * @param {number} exerciseId ExerciseId of the element to remove.
-             */
-            removeElement: function removeElement(exerciseId) {
-                var i = 0,
-                    data = 0,
-                    alarmList = document.getElementById('alarms_list'),
-                    alarms = alarmList.children;
-
-                for (i = 0; i < alarms.length; i += 1) {
-                    data = alarms[i].getAttribute('data-exerciseid');
-                    if (parseInt(data, 10) === parseInt(exerciseId, 10)) {
-                        alarmList.removeChild(alarms[i]);
-                    }
-                }
-            },
-
-            /**
-             * Builds exercises HTML list and adds it to page.
-             *
-             * @private
-             * @param {object[]} [exercises] Exercises list.
-             */
-            displayList: function displayList(exercises) {
-                var len = 0,
-                    list = '',
-                    exercise = null,
-                    alarmList = document.getElementById('alarms_list');
-
-                exercises = exercises || this.context.app.getAllExercises();
-                len = exercises.length - 1;
-                while (len >= 0) {
-                    exercise = $.extend({}, exercises[len]); // copy object
-                    exercise.daysText = exercise.days.join(', ');
-                    list += this.context.templateManager.get(
-                        'exercise',
-                        exercise
-                    );
-                    len -= 1;
-                }
-                alarmList.innerHTML = list;
-                tau.engine.createWidgets(alarmList);
-                tau.widget.Listview(alarmList).refresh();
             }
-
         },
 
+
         /**
-         * Contains methods related to the new exercise page.
+         * Contains methods related to the new_treatment page.
          *
          * @public
          * @type {object}
          */
-        new_exercise: {
+        new_treatment: {
 
             /**
-             * Initializes new exercise page.
+             * Initializes new_treatment page.
              *
              * @public
              */
-            init: function init() {
+            init: function UI_new_treatment_init() {
                 this.addEvents();
             },
 
             /**
-             * Binds events to new exercise page.
+             * Binds events to the new_treatment page.
+             *
+             * @public
+             */
+            addEvents: function addEvents() {
+                $('#issueFiles').on('change', function readSelectedFiles() {
+                    var html = '',
+                        displaySection = document.getElementById('selectedFilesList'),
+                        files = document.getElementById('issueFiles').files;
+
+                    if (files.length === 0) {
+                        return;
+                    }
+
+                    for (var i = 0; i < files.length; i++) {
+                        var file = files[i];
+
+                        var reader = new FileReader();
+
+                        /* Check whether the file is an image */
+                        if (!file.type.match('image.*')) {
+                            continue;
+                        }
+
+                        reader.onload = (function(e) {
+                            var fileItem = document.createElement('div');
+                            fileItem.className = 'file-list__item';
+
+                            var img = '<img class="img" src="'+ e.target.result +'" title="'+ escape(file.name) +'"/>';
+
+                            fileItem.innerHTML = img + '<div class="file-list__inner"><strong>File name: </strong>' + escape(file.name) + '<br />' +
+                                'type: ' + file.type + '<br />' +
+                                'size: ' + file.size + 'bytes<br />' +
+                                'lastModifiedDate: ' + (file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() : '') +
+                                '<br /></div>';
+                            displaySection.appendChild(fileItem);
+                        });
+
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+        },
+
+
+        /**
+         * Contains methods related to the profile page.
+         *
+         * @public
+         * @type {object}
+         */
+        profile: {
+
+            /**
+             * Initializes profile page.
+             *
+             * @public
+             */
+            init: function UI_profile_init() {
+                this.addEvents();
+            },
+
+            /**
+             * Handles pageshow event on the profile page.
              *
              * @private
              */
+            onShow: function onShow() {
+                this.displayList();
+            },
+
+            /**
+             * Binds events to the profile page.
+             *
+             * @public
+             */
             addEvents: function addEvents() {
-                var numberOfChecked = 0,
-                    isName = false,
-                    toggleSaveButton = function toggleSaveButton() {
-                        var $button = $('#add-exercise-btn');
+                $('#profile').on('pageshow', this.onShow.bind(this));
+            },
 
-                        if (numberOfChecked && isName) {
-                            $button.removeClass('ui-disabled');
+            /**
+             * Builds profile info HTML list and adds it to page.
+             *
+             * @private
+             */
+            displayList: function displayList() {
+                var list = '',
+                    infoList = document.getElementById('profile_info');
+
+                $.ajax({
+                    type: 'get',
+                    url: app.config.get('profileRequest'),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    beforeSend: function(request){
+                        localStorage.getItem('ApiKey') && request.setRequestHeader('X-ApiKey', localStorage.getItem('ApiKey'));
+                    },
+                    success: function (result) {
+                        if(result['Success']) {
+                            list = '' +
+                                '<li class="list__item">Last name: <span class="string profile__lname">'+ result["PatientProfile"]["LastName"] +'</span></li>'+
+                                '<li class="list__item">Name: <span class="string profile__name">'+ result["PatientProfile"]["Name"] +'</span></li>'+
+                                '<li class="list__item">Second name: <span class="string profile__sname">'+ result["PatientProfile"]["SecondName"] +'</span></li>'+
+                                '<li class="list__item">Date of birth: <span class="string profile__birthday">'+ result["PatientProfile"]["BirthdayDate"] +'</span></li>'+
+                                '<li class="list__item">Gender: <span class="string profile__gender">'+ result["PatientProfile"]["Gender"] +'</span></li>'+
+                                '<li class="list__item">Policy number: <span class="string profile__policy">'+ result["PatientProfile"]["PolicyNumber"] +'</span></li>'+
+                                '<li class="list__item">Phone number: <span class="string profile__phone">'+ result["PatientProfile"]["PhoneNumber"] +'</span></li>'+
+                                '<li class="list__item">Email: <span class="string profile__email">'+ result["PatientProfile"]["Email"] +'</span></li>'+
+                                '<li class="list__item">Registration date: <span class="string profile__ger">'+ result["PatientProfile"]["RegisterDate"] +'</span></li>';
+                            infoList.innerHTML = list;
+                            tau.engine.createWidgets(infoList);
+                            tau.widget.Listview(infoList).refresh();
                         } else {
-                            $button.addClass('ui-disabled');
+                            console.log('no');
                         }
-                    };
-
-                function padZero(number) {
-                    number = number.toString();
-                    if (number.length === 1) {
-                        return '0' + number;
                     }
-                    return number;
+                });
+            }
+        },
+
+
+        /**
+         * Contains methods related to the options page.
+         *
+         * @public
+         * @type {object}
+         */
+        options: {
+
+            /**
+             * Initializes options page.
+             *
+             * @public
+             */
+            init: function UI_options_init() {
+
+            }
+        },
+
+        /**
+         * Contains methods related to the location page.
+         *
+         * @public
+         * @type {object}
+         */
+        location: {
+
+            /**
+             * Initializes location page.
+             *
+             * @public
+             */
+            init: function UI_location_init() {
+                this.addEvents();
+            },
+
+            /**
+             * Binds events to the location page.
+             *
+             * @public
+             */
+            addEvents: function addEvents() {
+                // Holds information that uniquely identifies a watch operation.
+                var watchId;
+
+                function successCallback(position) {
+                    document.getElementById("locationInfo").innerHTML = "Latitude: " +
+                        position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
                 }
 
-                $('#new_exercise').on('pagebeforeshow', function beforeShow() {
-                    var checked = false,
-                        len = 0,
-                        date = new Date(),
-                        startTime = padZero(date.getHours()) + ':' +
-                            padZero(date.getMinutes());
+                function errorCallback(error) {
+                    var errorInfo = document.getElementById("locationInfo");
 
-                    // clear everything
-                    numberOfChecked = 0;
-                    isName = false;
-                    $('#name').val('');
-                    $('#comment').val('');
-                    $('#startTime').val(startTime);
-                    checked = $('#newExerciseDays input:checkbox:checked');
-                    len = checked.length - 1;
-                    while (len >= 0) {
-                        $(checked[len]).attr('checked', false);
-                        len -= 1;
+                    switch (error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorInfo.innerHTML = "User denied the request for Geolocation.";
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorInfo.innerHTML = "Location information is unavailable.";
+                            break;
+                        case error.TIMEOUT:
+                            errorInfo.innerHTML = "The request to get user location timed out.";
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            errorInfo.innerHTML = "An unknown error occurred.";
+                            break;
                     }
-                    toggleSaveButton();
-                });
+                }
 
-                // bind buttons
-                $('#add-exercise-btn').on('click', function onClick() {
-                    var exercise = {},
-                        days = [],
-                        len = 0;
-
-                    days = $('#newExerciseDays input:checkbox:checked');
-                    len = days.length - 1;
-                    exercise.days = [];
-                    while (len >= 0) {
-                        exercise.days.unshift($(days[len]).data('day'));
-                        len -= 1;
+                $('#oneShot').on('click', function oneShotFunc() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+                    } else {
+                        document.getElementById("locationInfo").innerHTML = "Geolocation is not supported.";
                     }
-
-                    exercise.name = $('#name').val().trim();
-                    exercise.startTime = $('#startTime').val();
-                    exercise.comment = $('#comment').val().trim();
-
-                    this.app.addExercise(exercise, function goToHome() {
-                        tau.changePage('#home');
-                    });
-
-                }.bind(this.context));
-
-                $('#add-exercise-cancel-btn').on('click', function onClick() {
-                    history.back();
                 });
 
-                $('#name').on('input', function onInput() {
-                    isName = ($(this).val().trim().length > 0);
-                    toggleSaveButton();
+                $('#watchPos').on('click', function watchFunc() {
+                    if (navigator.geolocation) {
+                        watchId = navigator.geolocation.watchPosition(successCallback, errorCallback);
+                    } else {
+                        document.getElementById("locationInfo").innerHTML = "Geolocation is not supported.";
+                    }
                 });
 
-                $('#newExerciseDays input[type=checkbox]')
-                    .on('change', function onChange() {
-                        numberOfChecked = $(
-                            '#newExerciseDays input[type=checkbox]:checked'
-                        ).size();
-                        toggleSaveButton();
-                    });
+                $('#stopWatchPos').on('click', function stopWatchFunc() {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.clearWatch(watchId);
+                    } else {
+                        document.getElementById("locationInfo").innerHTML = "Geolocation is not supported.";
+                    }
+                });
             }
-
         }
+
     };
 
     /**

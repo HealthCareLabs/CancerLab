@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/CancerLab" version="1.0.0" viewmodes="maximized">
-    <access origin="*" subdomains="true"/>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/CancerLab" version="1.0.0" viewmodes="maximized">
+    <access origin="*" subdomains="true"></access>
     <tizen:application id="4a1Nw290BR.CancerLab" package="4a1Nw290BR" required_version="2.4"/>
     <author>Innopolis University Team</author>
     <content src="index.html"/>
@@ -8,5 +8,11 @@
     <icon src="icon.png"/>
     <name>CancerLab</name>
     <tizen:profile name="mobile"/>
-    <tizen:setting context-menu="disable"/>
+    <tizen:setting context-menu="disable"/>        
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/content.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/location"/>
+    <feature name="http://tizen.org/feature/location.gps"/>
 </widget>
