@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>UQjA91z6iDSdYwkZg70taIHUTEM1KOSCmZslte+ttAA=</DigestValue>
+<DigestValue>jApzCOd2tTYCafA7bguPvkCEx+MmzSfaswFyQynT46Q=</DigestValue>
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -28,7 +28,11 @@
 </Reference>
 <Reference URI="index.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>sXDk41fDZ+DpUUbgJ1WG3G/u+OAUGqNYMp+fKc/PvFk=</DigestValue>
+<DigestValue>TXSYrF2DmDSVI50AR6eWzsHL5VZGBjUX4YPLdJjj8pE=</DigestValue>
+</Reference>
+<Reference URI="js%2F.DS_Store">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>1lFlJ5EFymdzGAUAaI30vcaaLHt3F1LwpG7xILf9jsM=</DigestValue>
 </Reference>
 <Reference URI="js%2Fapp.config.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -48,7 +52,7 @@
 </Reference>
 <Reference URI="js%2Fapp.ui.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>DR9fB9qQRUIK2K4W41l2etKajEyRVlXw4Bd0l51p8ws=</DigestValue>
+<DigestValue>3qVQs69yDHBgXVD8uMrmzAUM1Xf/LQqNCo3aAWLO3yU=</DigestValue>
 </Reference>
 <Reference URI="js%2Fapp.ui.templateManager.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -818,9 +822,9 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>IpLU+Mb1c63YvBGZWU3+8zcx7kVp3y5gE4iRP2Jt9Y4=</DigestValue>
 </Reference>
-<Reference URI="old.html">
+<Reference URI="react.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>SuocJ16bP89xwJvnL/tXjuf6EJMAHW1RCLCSYkL9R4s=</DigestValue>
+<DigestValue>e/2556lVIkIh1FBZ3UpoxuUw5iBuH5aGzQxmmQSI1Hg=</DigestValue>
 </Reference>
 <Reference URI="templates%2Ftemp.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -839,11 +843,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-YkxvRKl5ZxP63ax1J33KEPQKc2/jYlV5Q5wuq0c8jVsvDvxsuCCW0mYHN5VNYeV75rUE2oCKPqEw
-/nbVOna5QOx74xUiPQTW1WXzpcBNyCGQY8Z/xPo4H2sxV4mvMEpm7zuc9oWf7LZsQ5LPVHus2Dqr
-RD4RjHFr5lWpuq1uW/lVVgWPwUBY1BHERnC8XNnyI2BbA4y2330AtYgVCZoTegVyZDZP/DiK7KCa
-ktfAmHQuN/ebMElQbTX13unzdPLF2Vii8OIAcM8XMGBgLnOCuioWwalpU+Ekua+ACAmagQfkbrJf
-ECMTPq2q0uuJ0kCs52I0B7hyycTzj8SfOkFCLg==
+LnhuBHYt3nVaLTq3EnZewqZNeVx73v22eLyRhskQYEXMhzM8kJueQxMAN3dnn65AY+ENlgfZU6XG
+a+QkNWD1fe0j145HEiqmYxx6Of3bZ46JTmknwQJ1mb+dll8XJSSq8Jyc3QknlxecapPH+EtO9GT0
+1duTUJ5H2KBEGFytXcM1yI2SCU12AocsK74EjcuI/RU2EGetKcQvJrqiZx79QgVwZkbHxfL6aZYY
+yKZJDdgxESgFWhKh87kQSGQvH4/LzkJfRz13BYjiTLZ356NJZ6Pj5uBvemrk1NhDMb7jc8Cmw11+
+WnsB2UuWHEzGXT5jkgfs1II9+NZ4AG62dxcIog==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

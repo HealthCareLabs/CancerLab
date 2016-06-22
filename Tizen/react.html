@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cancer Lab</title>
+    <meta charset="utf-8"/>
+    <meta name="description" content="Mobile diagnostics"/>
+    <meta name="viewport" content="width=device-width,user-scalable=no"/>
+    <link rel="stylesheet"  href="./lib/tau/mobile/theme/default/tau.css">
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.js"></script>
+
+</head>
+
+<body>
+<script type="text/babel">
+    var ContactList  = React.createClass({
+        getInitialState: function (){
+            return {
+                displayedContacts: CONTACTS
+            }
+        }
+    })
+</script>
+
+
+<!-- Start of page: #splash -->
+<div id="splash" class="page page_type_splash" data-role="page">
+    <div class="content" data-role="content">
+
+        <h2 class="title">Cancer Lab</h2>
+        <p class="text">Fast diagnostics in your smartphone</p>
+    </div>
+
+    <div class="footer" data-role="footer" data-position="fixed">
+        <button class="button button_action_start" data-inline="false">Start</button>
+        <!--<button class="button button_action_clear" data-inline="false">Clear</button>-->
+    </div>
+</div><!-- /page splash -->
+
+
+
+<script type="text/javascript" src="./lib/tau/mobile/js/jquery.min.js"></script>
+<script type="text/javascript" src="./lib/tau/mobile/js/tau.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

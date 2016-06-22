@@ -38,6 +38,7 @@ function Ui() {
             this.profile.context = this;
             this.options.context = this;
             this.location.context = this;
+            this.time.context = this;
         },
 
         /**
@@ -70,6 +71,7 @@ function Ui() {
             this.profile.init();
             this.options.init();
             this.location.init();
+            this.time.init();
 
             window.addEventListener('tizenhwkey', function onTizenHwKey(e) {
                 var activePageId = tau.activePage.id;
@@ -434,8 +436,54 @@ function Ui() {
                     }
                 });
             }
-        }
+        },
 
+
+        /**
+         * Contains methods related to the time page.
+         *
+         * @public
+         * @type {object}
+         */
+        time: {
+
+            /**
+             * Initializes time page.
+             *
+             * @public
+             */
+            init: function UI_time_init() {
+                $('#currentTime').text(tizen.time.getCurrentDateTime().toLocaleString());
+                $('#currentZone').text(tizen.time.getLocalTimezone());
+                $('#zonesCount').text(tizen.time.getAvailableTimezones().length);
+                $('#dateFormat').text(tizen.time.getDateFormat());
+                $('#timeFormat').text(tizen.time.getTimeFormat());
+            }
+        },
+
+
+        /**
+         * Contains methods related to the react page.
+         *
+         * @public
+         * @type {object}
+         */
+        react: {
+
+            /**
+             * Initializes react page.
+             *
+             * @public
+             */
+            init: function UI_react_init(){
+            },
+
+            loadContacts: function loadContacts(){
+                var contacts;
+                tizen.contact.getDefaultAddressBook().find(successCallback());
+            }
+
+        }
     };
 
     /**
