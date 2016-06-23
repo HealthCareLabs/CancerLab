@@ -39,6 +39,11 @@ function Ui() {
             this.options.context = this;
             this.location.context = this;
             this.time.context = this;
+            this.sensors.context = this;
+            this.sound.context = this;
+            this.led.context = this;
+            this.system.context = this;
+            this.radio.context = this;
         },
 
         /**
@@ -72,6 +77,11 @@ function Ui() {
             this.options.init();
             this.location.init();
             this.time.init();
+            this.sensors.init();
+            this.sound.init();
+            this.led.init();
+            this.system.init();
+            this.radio.init();
 
             window.addEventListener('tizenhwkey', function onTizenHwKey(e) {
                 var activePageId = tau.activePage.id;
@@ -108,8 +118,8 @@ function Ui() {
              * @public
              */
             addEvents: function addEvents() {
-                $('.button_action_start').click(function() {
-                    if(localStorage.getItem('ApiKey')) {
+                $('.button_action_start').click(function () {
+                    if (localStorage.getItem('ApiKey')) {
                         $('#main .text').text('API Key = ' + localStorage.getItem('ApiKey'));
                         tau.changePage("#home");
                     } else {
@@ -117,7 +127,7 @@ function Ui() {
                     }
                 });
 
-                $('.button_action_clear').on('click', function() {
+                $('.button_action_clear').on('click', function () {
                     localStorage.clear();
                 });
             }
@@ -157,10 +167,10 @@ function Ui() {
              * @public
              */
             init: function UI_registration_init() {
-                $('.form_action_register').initForm(function(result){
+                $('.form_action_register').initForm(function (result) {
                     localStorage.setItem('ApiKey', result['ApiKey']);
                     tau.changePage("#home");
-                }, function(result) {
+                }, function (result) {
                     console.log(result['Message']);
                 });
             }
@@ -247,11 +257,11 @@ function Ui() {
                             continue;
                         }
 
-                        reader.onload = (function(e) {
+                        reader.onload = (function (e) {
                             var fileItem = document.createElement('div');
                             fileItem.className = 'file-list__item';
 
-                            var img = '<img class="img" src="'+ e.target.result +'" title="'+ escape(file.name) +'"/>';
+                            var img = '<img class="img" src="' + e.target.result + '" title="' + escape(file.name) + '"/>';
 
                             fileItem.innerHTML = img + '<div class="file-list__inner"><strong>File name: </strong>' + escape(file.name) + '<br />' +
                                 'type: ' + file.type + '<br />' +
@@ -317,21 +327,21 @@ function Ui() {
                     url: app.config.get('profileRequest'),
                     contentType: 'application/json',
                     dataType: 'json',
-                    beforeSend: function(request){
+                    beforeSend: function (request) {
                         localStorage.getItem('ApiKey') && request.setRequestHeader('X-ApiKey', localStorage.getItem('ApiKey'));
                     },
                     success: function (result) {
-                        if(result['Success']) {
+                        if (result['Success']) {
                             list = '' +
-                                '<li class="list__item">Last name: <span class="string profile__lname">'+ result["PatientProfile"]["LastName"] +'</span></li>'+
-                                '<li class="list__item">Name: <span class="string profile__name">'+ result["PatientProfile"]["Name"] +'</span></li>'+
-                                '<li class="list__item">Second name: <span class="string profile__sname">'+ result["PatientProfile"]["SecondName"] +'</span></li>'+
-                                '<li class="list__item">Date of birth: <span class="string profile__birthday">'+ result["PatientProfile"]["BirthdayDate"] +'</span></li>'+
-                                '<li class="list__item">Gender: <span class="string profile__gender">'+ result["PatientProfile"]["Gender"] +'</span></li>'+
-                                '<li class="list__item">Policy number: <span class="string profile__policy">'+ result["PatientProfile"]["PolicyNumber"] +'</span></li>'+
-                                '<li class="list__item">Phone number: <span class="string profile__phone">'+ result["PatientProfile"]["PhoneNumber"] +'</span></li>'+
-                                '<li class="list__item">Email: <span class="string profile__email">'+ result["PatientProfile"]["Email"] +'</span></li>'+
-                                '<li class="list__item">Registration date: <span class="string profile__ger">'+ result["PatientProfile"]["RegisterDate"] +'</span></li>';
+                                '<li class="list__item">Last name: <span class="string profile__lname">' + result["PatientProfile"]["LastName"] + '</span></li>' +
+                                '<li class="list__item">Name: <span class="string profile__name">' + result["PatientProfile"]["Name"] + '</span></li>' +
+                                '<li class="list__item">Second name: <span class="string profile__sname">' + result["PatientProfile"]["SecondName"] + '</span></li>' +
+                                '<li class="list__item">Date of birth: <span class="string profile__birthday">' + result["PatientProfile"]["BirthdayDate"] + '</span></li>' +
+                                '<li class="list__item">Gender: <span class="string profile__gender">' + result["PatientProfile"]["Gender"] + '</span></li>' +
+                                '<li class="list__item">Policy number: <span class="string profile__policy">' + result["PatientProfile"]["PolicyNumber"] + '</span></li>' +
+                                '<li class="list__item">Phone number: <span class="string profile__phone">' + result["PatientProfile"]["PhoneNumber"] + '</span></li>' +
+                                '<li class="list__item">Email: <span class="string profile__email">' + result["PatientProfile"]["Email"] + '</span></li>' +
+                                '<li class="list__item">Registration date: <span class="string profile__ger">' + result["PatientProfile"]["RegisterDate"] + '</span></li>';
                             infoList.innerHTML = list;
                             tau.engine.createWidgets(infoList);
                             tau.widget.Listview(infoList).refresh();
@@ -463,26 +473,260 @@ function Ui() {
 
 
         /**
-         * Contains methods related to the react page.
+         * Contains methods related to the sensors page.
          *
          * @public
          * @type {object}
          */
-        react: {
+        sensors: {
 
             /**
-             * Initializes react page.
+             * Initializes sensors page.
              *
              * @public
              */
-            init: function UI_react_init(){
+            init: function UI_sensors_init() {
+                var sensorCapabilities = tizen.sensorservice.getAvailableSensors();
+
+                sensorCapabilities.forEach(function (item, i, arr) {
+                    var sensor = tizen.sensorservice.getDefaultSensor(item);
+                    var line = "<li class=\"list__item\"><p class=\"text\">" + item + " val: <span id=\"" + item + "-Value\"></span></p></li>";
+                    $('#sensors-list').append(line);
+                    sensor.setChangeListener(function (sensorData) {
+                        if (typeof(sensorData.proximityState) !== 'undefined') {
+                            $('#PROXIMITY-Value').text(sensorData.proximityState);
+                        }
+                    });
+
+                    sensor.start(function () {
+                        console.log(item + ' started');
+                    });
+                })
             },
 
-            loadContacts: function loadContacts(){
-                var contacts;
-                tizen.contact.getDefaultAddressBook().find(successCallback());
-            }
+            addSensor: function addSensor(sensorType, sensor) {
+                console.log(sensorType);
+                console.log(sensor);
+            },
 
+            onSuccess: function onSuccess() {
+                console.log('Sensor started successfully');
+            }
+        },
+
+
+        /**
+         * Contains methods related to the sound page.
+         *
+         * @public
+         * @type {object}
+         */
+        sound: {
+
+            /**
+             * Initializes sound page.
+             *
+             * @public
+             */
+            init: function UI_sound_init() {
+                var SOUND_TYPES = ["SYSTEM", "NOTIFICATION", "ALARM", "MEDIA", "VOICE", "RINGTONE"];
+
+                SOUND_TYPES.forEach(function(item,i,arr){
+                    var volume = tizen.sound.getVolume(item);
+                    var line = '<li class="list__item"><p class="text">'+item+' type volume: <span id="'+ item+'-volume">'+volume+'</span>';
+                    var slider = '<br /><input class="slider" id="'+item+'-slider" type="range" min="0" max="10" step="1" value="'+ volume*10 +'"/></p></li>';
+                    $('#sound-info-list').append(line + slider);
+                    var id = '#'+item+'-slider';
+
+                    $(id).on('change',function(){
+                        var type = '#' + item + '-slider';
+                        var value = $(type).val();
+                        tizen.sound.setVolume(item,value/10);
+                    })
+                });
+
+                $('#currentSoundMode').text(tizen.sound.getSoundMode());
+                tizen.sound.setVolumeChangeListener(function (soundType, volume) {
+                    var volumeId = '#'+soundType+'-volume';
+                    $(volumeId).text(volume);
+                    var sliderId = '#'+soundType+'-slider';
+                    $(sliderId).attr("value", volume*10);
+                });
+
+                tizen.sound.setSoundModeChangeListener(function(soundMode){
+                   $('#currentSoundMode').text(soundMode);
+                });
+            }
+        },
+
+        /**
+         * Contains methods related to the led page.
+         *
+         * @public
+         * @type {object}
+         */
+        led: {
+
+            /**
+             * Initializes led page.
+             *
+             * @public
+             */
+            init: function UI_led_init() {
+                this.addEvents();
+            },
+
+            /**
+             * Binds events to the led page.
+             *
+             * @public
+             */
+            addEvents: function addEvents() {
+                $('.button_led_on').on('click', function() {
+                    $(this).hide();
+                    tizen.systeminfo.getPropertyValue("CAMERA_FLASH",
+                        function (flash) {
+                            try {
+                                flash.setBrightness(1);
+                                $('.button_led_off').show();
+                            } catch (error) {
+                                console.log("Setting flash brightness failed: " + error.message);
+                            }
+                        },
+                        function (error) {
+                            console.log("Error, name: " + error.name + ", message: " + error.message);
+                        }
+                    );
+                });
+
+                $('.button_led_off').on('click', function() {
+                    $(this).hide();
+                    tizen.systeminfo.getPropertyValue("CAMERA_FLASH",
+                        function (flash) {
+                            flash.setBrightness(0);
+                            $('.button_led_on').show();
+                        },
+                        function (error) {
+                            console.log("Error, name: " + error.name + ", message: " + error.message);
+                        }
+                    );
+                });
+            }
+        },
+
+
+        /**
+         * Contains methods related to the system page.
+         *
+         * @public
+         * @type {object}
+         */
+        system: {
+
+            /**
+             * Initializes system page.
+             *
+             * @public
+             */
+            init: function UI_system_init() {
+                function onPowerSuccessCallback(battery) { $('#batteryLevel').text((battery.level*100).toFixed(1) + '%'); }
+                function onDeviceOrientation(deviceOrientation) { $('#orientation').text(deviceOrientation.status); }
+                function onCPUSuccessCallback(cpu) { $('#cpu').text((cpu.load*100).toFixed(1) + '%'); }
+
+                tizen.systeminfo.getPropertyValue('BATTERY', onPowerSuccessCallback);
+                tizen.systeminfo.getPropertyValue('DEVICE_ORIENTATION', onDeviceOrientation);
+                tizen.systeminfo.getPropertyValue('CPU', onCPUSuccessCallback);
+                tizen.systeminfo.addPropertyValueChangeListener('BATTERY', onPowerSuccessCallback);
+                tizen.systeminfo.addPropertyValueChangeListener('DEVICE_ORIENTATION', onDeviceOrientation);
+                tizen.systeminfo.addPropertyValueChangeListener('CPU', onCPUSuccessCallback);
+
+                $('#totalMemory').text(tizen.systeminfo.getTotalMemory() + ' bytes.');
+                $('#availableMemory').text(tizen.systeminfo.getAvailableMemory() + ' bytes.');
+            }
+        },
+
+
+        /**
+         * Contains methods related to the radio page.
+         *
+         * @public
+         * @type {object}
+         */
+        radio: {
+
+            /**
+             * Initializes radio page.
+             *
+             * @public
+             */
+            init: function UI_radio_init() {
+                this.addEvents();
+            },
+
+            /**
+             * Binds events to the radio page.
+             *
+             * @public
+             */
+            addEvents: function addEvents() {
+                $('.button_radio_on').on('click', function() {
+                    startRadio();
+                });
+
+                $('.button_radio_off').on('click', function() {
+                    stopRadio();
+                });
+
+                $('.button_radio_scan').on('click', function() {
+                    if (tizen.fmradio.state === "PLAYING") {
+                        tizen.fmradio.seekUp(successCallback);
+                    }
+                });
+
+                if(tizen.fmradio.isAntennaConnected) {
+                    $('#radioTitle').text('Turn on the Radio');
+                } else {
+                    $('#radioTitle').text('Plug in a headset');
+                }
+
+                tizen.fmradio.setAntennaChangeListener(antennaCallback);
+
+                function antennaCallback(isAntennaConnected) {
+                    if(!isAntennaConnected) {
+                        stopRadio();
+                        $('#radioTitle').text('Plug in a headset')
+                    } else {
+                        $('#radioTitle').text('Turn on the Radio');
+                    }
+                }
+
+                function startRadio() {
+                    var radioState = tizen.fmradio.state;
+                    var frequencyToPlay = 92.3;
+
+                    if ((radioState == "READY" || radioState == "PLAYING") && tizen.fmradio.isAntennaConnected) {
+                        $('.button_radio_on').hide();
+                        $('.button_radio_scan, .button_radio_off').show();
+                        tizen.fmradio.start(frequencyToPlay);
+                        $('#radioTitle').text('Playing ' + frequencyToPlay);
+                        $('.fm-img').show();
+                    }
+                }
+
+                function stopRadio() {
+                    $('.button_radio_scan, .button_radio_off').hide();
+                    $('.button_radio_on').show();
+                    if (tizen.fmradio.state == "PLAYING") {
+                        tizen.fmradio.stop();
+                        $('#radioTitle').text('Turn on the Radio');
+                        $('.fm-img').hide();
+                    }
+                }
+
+                function successCallback() {
+                    $('#radioTitle').text(tizen.fmradio.frequency);
+                }
+            }
         }
     };
 

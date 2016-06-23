@@ -21,6 +21,7 @@
             <button class="button button_action_start" data-inline="false">Start</button>
             <!--<button class="button button_action_clear" data-inline="false">Clear</button>-->
         </div>
+
 	</div><!-- /page splash -->
 
 
@@ -37,6 +38,7 @@
         <div class="footer" data-role="footer">
             <a class="ui-btn button" href="#registration">No, I want to register</a>
             <a class="ui-btn button" href="#login">Yes, but I lost an access</a>
+            <a class="ui-btn button" href="#options">SysAPI</a>
         </div>
     </div><!-- /page auth -->
 
@@ -187,6 +189,11 @@
             <ul class="list" data-role="listview">
                 <li class="list__item"><a class="ui-btn button" href="#location">Geolocation</a></li>
                 <li class="list__item"><a class="ui-btn button" href="#time">Time info</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#sensors">Sensors</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#sounds">Sounds</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#led">Led</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#system">System info</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#radio">The best FM Radio</a></li>
             </ul>
         </div>
     </div><!-- /page options -->
@@ -228,6 +235,93 @@
             </ul>
         </div>
     </div><!-- /page time -->
+
+
+    <!-- Start of page: #sensors -->
+    <div id="sensors" class="page page_type_sensors" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Sensors</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h2 class="title">Sensor information </h2>
+            <ul id="sensors-list" class="list" data-role="listview">
+            </ul>
+        </div>
+    </div><!-- /page sensors -->
+
+
+    <!-- Start of page: #sound -->
+    <div id="sounds" class="page page_type_sounds" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Sound</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h2 class="title">Sound</h2>
+            <ul id="sound-info-list" class="list" data-role="listview">
+                <li class="list__item"><p class="text">Current sound mode: <span id="currentSoundMode"></span></p> </li>
+            </ul>
+        </div>
+    </div><!-- /page sound -->
+
+
+    <!-- Start of page: #led -->
+    <div id="led" class="page page_type_led" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Led</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <button class="button button_led_on ui-btn-circle">Turn led on/off</button>
+            <button class="button button_led_off ui-btn-circle">Turn led on/off</button>
+        </div>
+    </div><!-- /page led -->
+
+
+    <!-- Start of page: #system -->
+    <div id="system" class="page page_type_system" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">System info</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h3 class="title">Current state</h3>
+            <ul class="list">
+                <li class="list__item">
+                    <p class="text">CPU load is <span id="cpu"></span></p>
+                </li>
+                <li class="list__item"><p class="text">Battery level is <span id="batteryLevel"></span></p></li>
+                <li class="list__item">
+                    <p class="text">Total memory size is <span id="totalMemory"></span></p>
+                    <p class="text">Available memory size is <span id="availableMemory"></span></p>
+                </li>
+                <li class="list__item">
+                    <p class="text">Device orientation is <span id="orientation"></span></p>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /page system -->
+
+
+    <!-- Start of page: #radio -->
+    <div id="radio" class="page page_type_radio" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">FM Radio</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h3 class="title" id="radioTitle">Turn on the Radio</h3>
+
+            <div class="fm-radio">
+                <button class="button ui-btn-circle button_radio_on">On</button>
+                <button class="button ui-btn-circle button_radio_scan">Scan</button>
+                <button class="button ui-btn-circle button_radio_off">Off</button>
+            </div>
+
+            <img class="fm-img" src="img/kitten.gif">
+        </div>
+    </div><!-- /page radio -->
 
 
     <script type="text/javascript" src="./lib/tau/mobile/js/jquery.min.js"></script>

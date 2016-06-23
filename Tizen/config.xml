@@ -5,14 +5,24 @@
     <author>Innopolis University Team</author>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
+    <feature name="http://tizen.org/feature/location.gps"/>
+    <feature name="http://tizen.org/feature/sensor.accelerometer"/>
+    <feature name="http://tizen.org/feature/sensor.barometer"/>
+    <feature name="http://tizen.org/feature/sensor.gyroscope"/>
+    <feature name="http://tizen.org/feature/sensor.proximity"/>
+    <feature name="http://tizen.org/feature/sensor.magnetometer"/>
     <icon src="icon.png"/>
     <name>CancerLab</name>
-    <tizen:profile name="mobile"/>
-    <tizen:setting context-menu="disable"/>        
     <tizen:privilege name="http://tizen.org/privilege/internet"/>
     <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
     <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
     <tizen:privilege name="http://tizen.org/privilege/content.write"/>
     <tizen:privilege name="http://tizen.org/privilege/location"/>
-    <feature name="http://tizen.org/feature/location.gps"/>
+    <tizen:privilege name="http://tizen.org/privilege/healthinfo"/>
+    <tizen:privilege name="http://tizen.org/privilege/volume.set"/>
+    <tizen:privilege name="http://tizen.org/privilege/led"/>
+    <tizen:privilege name="http://tizen.org/privilege/system"/>
+    <tizen:privilege name="http://tizen.org/privilege/telephony"/>
+    <tizen:profile name="mobile"/>
+    <tizen:setting context-menu="disable"/>
 </widget>
