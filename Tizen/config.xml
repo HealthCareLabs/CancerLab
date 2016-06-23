@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/CancerLab" version="1.0.0" viewmodes="maximized">
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/CancerLab" version="1.0.0" viewmodes="maximized">
     <access origin="*" subdomains="true"></access>
     <tizen:application id="4a1Nw290BR.CancerLab" package="4a1Nw290BR" required_version="2.4"/>
     <author>Innopolis University Team</author>
@@ -11,7 +11,7 @@
     <feature name="http://tizen.org/feature/sensor.gyroscope"/>
     <feature name="http://tizen.org/feature/sensor.proximity"/>
     <feature name="http://tizen.org/feature/sensor.magnetometer"/>
-    <icon src="icon.png"/>
+    <icon src="lobster-160305_960_720.png" height="117" width="117"/>
     <name>CancerLab</name>
     <tizen:privilege name="http://tizen.org/privilege/internet"/>
     <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
