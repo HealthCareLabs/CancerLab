@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <style>
+        .card-title
+        {
+            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+            margin: 0 0 10px;
+        }
+
+        .new.badge
+        {
+            position: relative;
+            margin: 0 5px;
+            right: 0;
+        }
+
+        .collapsible
+        {
+            box-shadow: none;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="screen">
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-title">Заголовок родинка</div>
+                        <p><strong>Часть тела:</strong>  рука</p>
+                        <p><strong>Общий статус:</strong>  <span class="new badge">Ожидает проверки</span></p>
+                        <p><strong>Дата последнего обновления:</strong>  20.06.2016/14:00</p>
+                    </div>
+                    <div class="card-action">
+                        <strong>Лечащий врач:</strong> Иванов И.И.<br/>
+                        <strong>Диагноз:</strong> Жить будете. Сфоткайте родинку через месяц еще раз
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m6">
+                <ul class="collapsible mobile-list-margin" data-collapsible="accordion">
+                    <li class="card">
+                        <div class="collapsible-header card-title">Обращение 1 (20.06.2016)</div>
+                        <div class="collapsible-body white card-content" style="display: none;">
+                            <div class="photo-list">
+                                <i class="large material-icons">insert_chart</i>
+                                <i class="large material-icons">insert_chart</i>
+                                <i class="large material-icons">insert_chart</i>
+                                <i class="large material-icons">insert_chart</i>
+                                <i class="large material-icons">insert_chart</i>
+                                <i class="large material-icons">insert_chart</i>
+                            </div>
+
+                            <ul class="mobile-list-margin">
+                                <li><strong>Размер:</strong> 20мм</li>
+                                <li><strong>Цвет:</strong> Серо-буро-пошкарябаный</li>
+                                <li><strong>Поверхность:</strong> Шершавая</li>
+                                <li><strong>Наличие лимфоузлов:</strong> Да</li>
+                                <li><strong>Мой комментарий:</strong> Текст от пользователя</li>
+                            </ul>
+
+                            <div class="card-action">
+                                <strong>Врач:</strong> Иванов И.И <br/>
+                                <strong>Дата/время:</strong> 20.06.2016/13:00<br/>
+                                <strong>Ответ врача :</strong> Жить будете. Сфоткайте родинку через месяц еще раз
+                            </div>
+                        </div>
+                    </li>
+                    <li class="card">
+                        <div class="collapsible-header card-title">Обращение 1 (20.06.2016)</div>
+                        <div class="collapsible-body white card-content" style="display: none;">
+                            <div class="photo-list">
+                                <i class="large material-icons">insert_chart</i>
+                                <i class="large material-icons">insert_chart</i>
+                                <i class="large material-icons">insert_chart</i>
+                                <i class="large material-icons">insert_chart</i>
+                                <i class="large material-icons">insert_chart</i>
+                                <i class="large material-icons">insert_chart</i>
+                            </div>
+
+                            <ul class="mobile-list-margin">
+                                <li><strong>Размер:</strong> 20мм</li>
+                                <li><strong>Цвет:</strong> Серо-буро-пошкарябаный</li>
+                                <li><strong>Поверхность:</strong> Шершавая</li>
+                                <li><strong>Наличие лимфоузлов:</strong> Да</li>
+                                <li><strong>Мой комментарий:</strong> Текст от пользователя</li>
+                            </ul>
+
+                            <div class="card-action">
+                                <strong>Врач:</strong> Иванов И.И <br/>
+                                <strong>Дата/время:</strong> 20.06.2016/13:00<br/>
+                                <strong>Ответ врача :</strong> Жить будете. Сфоткайте родинку через месяц еще раз
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+</body>
+</html>
