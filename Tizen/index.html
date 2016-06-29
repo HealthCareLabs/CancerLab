@@ -187,13 +187,16 @@
 
         <div class="content" data-role="content">
             <ul class="list" data-role="listview">
-                <li class="list__item"><a class="ui-btn button" href="#location">Geolocation</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#location">Geolocation</a><br/></li>
                 <li class="list__item"><a class="ui-btn button" href="#time">Time info</a></li>
                 <li class="list__item"><a class="ui-btn button" href="#sensors">Sensors</a></li>
                 <li class="list__item"><a class="ui-btn button" href="#sounds">Sounds</a></li>
                 <li class="list__item"><a class="ui-btn button" href="#led">Led</a></li>
                 <li class="list__item"><a class="ui-btn button" href="#system">System info</a></li>
-                <li class="list__item"><a class="ui-btn button" href="#radio">The best FM Radio</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#radio">The best FM Radio</a><br/></li>
+                <li class="list__item"><a class="ui-btn button" href="#alarm">Alarm</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#battery">Battery</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#video">Video player</a></li>
             </ul>
         </div>
     </div><!-- /page options -->
@@ -322,6 +325,63 @@
             <img class="fm-img" src="img/kitten.gif">
         </div>
     </div><!-- /page radio -->
+
+
+    <!-- Start of page: #alarm -->
+    <div id="alarm" class="page page_type_alarm" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Alarm</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h3 class="title">Choose period (in minutes)</h3>
+
+            <div class="alarm-control">
+                <input class="input" id="alarm_period" type="number" min="1" max="59" placeholder="Enter number (1 to 59)">
+                <button class="button button_alarm_on">Create alarm</button>
+                <button class="button button_alarm_off">Disable all alarms</button>
+            </div>
+
+            <div class="alarm-info">
+                <h3 class="title">Alarm info</h3>
+                <p class="text">Alarms in system <span id="alarm_number"></span></p>
+                <button class="button button_alarm_update">Update information</button>
+                <!--<p class="text">The alarm will trigger at <span id="alarm_trigger"></span></p>-->
+            </div>
+        </div>
+    </div><!-- /page alarm -->
+
+
+    <!-- Start of page: #battery -->
+    <div id="battery" class="page page_type_battery" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Battery Status</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <div id="charging"></div>
+            <div>
+                <progress id="progress" value="0" max="100" ></progress>
+                <span id="level" ></span>
+            </div>
+            <div id="message"></div>
+        </div>
+    </div><!-- /page battery -->
+
+
+    <!-- Start of page: #video -->
+    <div id="video" class="page page_type_video" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Video player</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h3 class="title">Choose file</h3>
+            <input class="video-input" id="videoFile" type="file" accept="video/*">
+
+            <div id="video-container" class="video"></div>
+        </div>
+    </div><!-- /page video -->
 
 
     <script type="text/javascript" src="./lib/tau/mobile/js/jquery.min.js"></script>

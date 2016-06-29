@@ -10,19 +10,27 @@
     <feature name="http://tizen.org/feature/sensor.barometer"/>
     <feature name="http://tizen.org/feature/sensor.gyroscope"/>
     <feature name="http://tizen.org/feature/sensor.proximity"/>
-    <feature name="http://tizen.org/feature/sensor.magnetometer"/>
+    <feature name="http://tizen.org/feature/camera"/>
+    <feature name="http://tizen.org/feature/microphone"/>
+    <feature name="http://tizen.org/api/tizen" required="true"/>
+    <feature name="http://tizen.org/api/alarm" required="true"/>
+    <feature name="http://tizen.org/api/alarm.read" required="true"/>
+    <feature name="http://tizen.org/api/alarm.write" required="true"/>
     <icon src="lobster-160305_960_720.png" height="117" width="117"/>
     <name>CancerLab</name>
     <tizen:privilege name="http://tizen.org/privilege/internet"/>
     <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
     <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
     <tizen:privilege name="http://tizen.org/privilege/content.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
     <tizen:privilege name="http://tizen.org/privilege/location"/>
     <tizen:privilege name="http://tizen.org/privilege/healthinfo"/>
     <tizen:privilege name="http://tizen.org/privilege/volume.set"/>
     <tizen:privilege name="http://tizen.org/privilege/led"/>
     <tizen:privilege name="http://tizen.org/privilege/system"/>
     <tizen:privilege name="http://tizen.org/privilege/telephony"/>
+    <tizen:privilege name="http://tizen.org/privilege/alarm"/>
+
     <tizen:profile name="mobile"/>
     <tizen:setting context-menu="disable"/>
 </widget>

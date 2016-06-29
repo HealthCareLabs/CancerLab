@@ -44,6 +44,9 @@ function Ui() {
             this.led.context = this;
             this.system.context = this;
             this.radio.context = this;
+            this.alarm.context = this;
+            this.battery.context = this;
+            this.video.context = this;
         },
 
         /**
@@ -82,6 +85,9 @@ function Ui() {
             this.led.init();
             this.system.init();
             this.radio.init();
+            this.alarm.init();
+            this.battery.init();
+            this.video.init();
 
             window.addEventListener('tizenhwkey', function onTizenHwKey(e) {
                 var activePageId = tau.activePage.id;
@@ -726,6 +732,217 @@ function Ui() {
                 function successCallback() {
                     $('#radioTitle').text(tizen.fmradio.frequency);
                 }
+            }
+        },
+
+        /**
+         * Contains methods related to the alarm page.
+         *
+         * @public
+         * @type {object}
+         */
+        alarm: {
+
+            /**
+             * Initializes alarm page.
+             *
+             * @public
+             */
+            init: function UI_alarm_init() {
+                this.updateAlarmInfo();
+                this.addEvents(this);
+            },
+
+            /**
+             * Binds events to the alarm page.
+             *
+             * @public
+             */
+            addEvents: function addEvents(alarm) {
+                $('.button_alarm_on').on('click', function() {
+                    var input = $('#alarm_period');
+                    if(alarm.validateInput()) {
+                        var num = input.val();
+                        var period = tizen.alarm.PERIOD_MINUTE;
+                        var newAlarm = new tizen.AlarmRelative(num * period, num * period);
+
+                        tizen.alarm.add(newAlarm, tizen.application.getCurrentApplication().appInfo.id);
+                        input.val('');
+
+                        alarm.updateAlarmInfo();
+                    }
+                });
+
+                $('.button_alarm_off').on('click', function() {
+                    tizen.alarm.removeAll();
+                    alarm.updateAlarmInfo();
+                });
+
+                $('.button_alarm_update').on('click', function() {
+                    alarm.updateAlarmInfo();
+                });
+            },
+
+            /**
+             * Update information about available alarms
+             *
+             * @public
+             */
+            updateAlarmInfo: function updateAlarmInfo() {
+                var alarms = tizen.alarm.getAll();
+                $('#alarm_number').text(alarms.length);
+            },
+
+
+            /**
+             * Validate input for correct numeric value
+             *
+             * @public
+             */
+            validateInput: function validateInput() {
+                var input = $('#alarm_period');
+                var period = input.val();
+                if (period >= 1 && period <=59) {
+                    input.removeClass('input_error_yes');
+                    return true;
+                } else {
+                    input.addClass('input_error_yes');
+                    return false;
+                }
+            }
+        },
+
+        /**
+         * Contains methods related to the battery page.
+         *
+         * @public
+         * @type {object}
+         */
+        battery: {
+
+            /**
+             * Initializes battery page.
+             *
+             * @public
+             */
+            init: function UI_battery_init() {
+                this.addEvents();
+            },
+
+            /**
+             * Binds events to the battery page.
+             *
+             * @public
+             */
+            addEvents: function addEvents() {
+                var battery = navigator.battery || navigator.mozBattery || navigator.webkitBattery;
+
+                window.addEventListener('load', getBatteryState);
+
+                /* Detects changes in the battery charging status */
+                battery.addEventListener('chargingchange', getBatteryState);
+                /* Detects changes in the battery charging time */
+                battery.addEventListener('chargingtimechange', getBatteryState);
+                /* Detects changes in the battery discharging time */
+                battery.addEventListener('dischargingtimechange', getBatteryState);
+                /* Detects changes in the battery level */
+                battery.addEventListener('levelchange', getBatteryState);
+
+                function getBatteryState()
+                {
+                    var message = "";
+
+                    var charging = battery.charging;
+                    var chargingTime = getTimeFormat(battery.chargingTime);
+                    var dischargingTime = getTimeFormat(battery.dischargingTime);
+                    var level = Math.floor(battery.level * 100);
+
+                    if (charging == false && level < 100)
+                    {
+                        /* Not charging */
+                        message = dischargingTime.hour + ":" + dischargingTime.minute + " remained.";
+                        if (battery.dischargingTime == "Infinity")
+                        {
+                            message = "";
+                        }
+                    }
+                    else if (charging && level < 100)
+                    {
+                        /* Charging */
+                        message = "Charging is complete after "
+                            + chargingTime.hour + ":" + chargingTime.minute;
+                        if (battery.chargingTime == "Infinity")
+                        {
+                            message = "";
+                        }
+                    }
+                    else if (level == 100)
+                    {
+                        message = "Charging is completed";
+                    }
+
+                    if (charging) {
+                        document.querySelector('#charging').textContent = 'charging...';
+                    } else if (!charging && level <= 90) {
+                        document.querySelector('#charging').textContent = 'Please connect the charger';
+                    } else if (!charging && level > 90) {
+                        document.querySelector('#charging').textContent = 'You do not need the charger';
+                    }
+
+                    document.querySelector('#level').textContent = level + "%";
+                    document.querySelector('#progress').value = level;
+                    document.querySelector('#message').textContent = message;
+                }
+
+                /* Time is received in seconds, converted to hours and minutes, and returned */
+                function getTimeFormat(time)
+                {
+                    /* Time parameter is second */
+                    var tempMinute = time / 60;
+
+                    var hour = parseInt(tempMinute / 60, 10);
+                    var minute = parseInt(tempMinute % 60, 10);
+                    minute = minute < 10 ? "0" + minute : minute;
+
+                    return {"hour": hour, "minute": minute};
+                }
+            }
+        },
+
+        /**
+         * Contains methods related to the video page.
+         *
+         * @public
+         * @type {object}
+         */
+        video: {
+
+            /**
+             * Initializes video page.
+             *
+             * @public
+             */
+            init: function UI_video_init() {
+                this.addEvents();
+            },
+
+            /**
+             * Binds events to the video page.
+             *
+             * @public
+             */
+            addEvents: function addEvents() {
+                $('.video-input').on('change', function readSelectedFiles() {
+                    var URL = window.URL || window.webkitURL;
+                    var files = document.getElementById('videoFile').files,
+                        displaySection = document.getElementById('video-container');
+
+                    if (files.length === 0) {
+                        return;
+                    } else {
+                        displaySection.innerHTML = '<video class="video-player" id="video-p" src="' + URL.createObjectURL(files[0]) + '" poster="" preload="auto" controls muted></video>';
+                    }
+                });
             }
         }
     };
