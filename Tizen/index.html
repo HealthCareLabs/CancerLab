@@ -10,7 +10,7 @@
 </head>
 
 <body>
-	<!-- Start of first page: #splash -->
+	<!-- Start of page: #splash -->
     <div id="splash" class="page page_type_splash" data-role="page">
 		<div class="content" data-role="content">
 			<h2 class="title">Cancer Lab</h2>
@@ -18,13 +18,14 @@
 		</div>
 
         <div class="footer" data-role="footer" data-position="fixed">
-            <a class="ui-btn button button_action_start" href="#auth">Start</a>
-            <button class="button button_action_clear" data-inline="false">Clear</button>
+            <button class="button button_action_start" data-inline="false">Start</button>
+            <!--<button class="button button_action_clear" data-inline="false">Clear</button>-->
         </div>
+
 	</div><!-- /page splash -->
 
 
-    <!-- Start of second page: #auth -->
+    <!-- Start of page: #auth -->
     <div id="auth" class="page page_type_auth" data-role="page">
         <div class="header" data-role="header" data-position="fixed">
             <h1 class="title">Start</h1>
@@ -37,11 +38,12 @@
         <div class="footer" data-role="footer">
             <a class="ui-btn button" href="#registration">No, I want to register</a>
             <a class="ui-btn button" href="#login">Yes, but I lost an access</a>
+            <a class="ui-btn button" href="#options">SysAPI</a>
         </div>
     </div><!-- /page auth -->
 
 
-    <!-- Start of third page: #registration -->
+    <!-- Start of page: #registration -->
     <div id="registration" class="page page_type_registration" data-role="page">
         <div class="header" data-role="header" data-position="fixed">
             <h1 class="title">Registration</h1>
@@ -50,15 +52,15 @@
         <div class="content" data-role="content">
             <form class="form form_action_register" action="http://alpha.cancerlab.pro/api/account/register" method="post">
                 <div class="form__group">
-                    <input class="ui-input-text" type="text" name="LastName" placeholder="Enter last name *" data-validate="true">
-                    <input class="ui-input-text" type="text" name="Name" placeholder="Enter name *" data-validate="true">
-                    <input class="ui-input-text" type="text" name="SecondName" placeholder="Enter second name">
+                    <input class="ui-input-text" type="text" name="LastName" placeholder="Enter last name *" value="LN">
+                    <input class="ui-input-text" type="text" name="Name" placeholder="Enter name *" value="N">
+                    <input class="ui-input-text" type="text" name="SecondName" placeholder="Enter second name" value="SN">
                 </div>
 
                 <div class="form__group">
                     <label class="label">
                         Date of birth *
-                        <input class="ui-input-text" type="date" name="BirthdayDate" placeholder="Enter birthday date *" data-validate="true">
+                        <input class="ui-input-text" type="date" name="BirthdayDate" placeholder="Enter birthday date *" value="2010-10-10">
                     </label>
                 </div>
 
@@ -69,21 +71,21 @@
                 </div>
 
                 <div class="form__group">
-                    <input class="ui-input-text" type="text" name="PolicyNumber" placeholder="Enter policy number *" data-validate="true">
-                    <input class="ui-input-text" type="text" name="PhoneNumber" placeholder="Enter phone number *" data-validate="true">
-                    <input class="ui-input-text" type="email" name="Email" placeholder="Enter email *" data-validate="true">
-                    <input class="ui-input-text" type="text" name="Location" placeholder="Enter location *" data-validate="true">
+                    <input class="ui-input-text" type="text" name="PolicyNumber" placeholder="Enter policy number *" value="12">
+                    <input class="ui-input-text" type="text" name="PhoneNumber" placeholder="Enter phone number *" value="34">
+                    <input class="ui-input-text" type="email" name="Email" placeholder="Enter email *" value="v@v.v">
+                    <input class="ui-input-text" type="text" name="Location" placeholder="Enter location *" value="Inn">
                 </div>
 
                 <p class="form__text">This application is for informational purposes only.</p>
 
-                <button class="button" type="submit">Register</button>
+                <button class="button button_action_register" type="submit">Register</button>
             </form>
         </div>
     </div><!-- /page registration -->
 
 
-    <!-- Start of fourth page: #login -->
+    <!-- Start of page: #login -->
     <div id="login" class="page page_type_login" data-role="page">
         <div class="header" data-role="header" data-position="fixed">
             <h1 class="title">Login</h1>
@@ -102,23 +104,26 @@
     </div><!-- /page login -->
 
 
-    <!-- Start of fifth page: #home -->
+    <!-- Start of page: #home -->
     <div id="home" class="page page_type_home" data-role="page">
         <div class="header" data-role="header">
             <h1 class="title">Cancer Lab</h1>
+            <div data-role="tabbar">
+                <ul>
+                    <li><a href="#home" class="ui-btn-active ui-state-persist">Treatments</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#options">Features</a></li>
+                </ul>
+            </div>
         </div>
 
         <div class="content" data-role="content">
-            <form class="form form_action_main" action="http://alpha.cancerlab.pro/api/account/getProfile" method="get">
-                <button type="submit">Получить</button>
-            </form>
-
-            <div class="text"></div>
-            <div class="user"></div>  
+            <ul id="treatment_list" data-role="listview" data-inset="true">
+            </ul>
         </div>
 
         <div class="footer" data-role="footer" data-position="fixed">
-            <a class="ui-btn button" href="#splash">Return to the start</a>
+            <a href="#new_treatment" class="ui-btn button button_action_add">Add New Treatment</a>
         </div>
 
         <div id="popup" class="ui-popup">
@@ -128,8 +133,199 @@
     </div><!-- /page home -->
 
 
+    <!-- Start of page: #new_treatment -->
+    <div id="new_treatment" class="page page_type_treatment" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">New treatment</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <input id="issueFiles" type="file" accept="image/*" name="issueFiles" multiple />
+
+            <div id="selectedFilesList" class="file-list"></div>
+        </div>
+
+        <div class="footer" data-role="footer" data-position="fixed">
+            <button class="ui-btn button button_action_issue">Create issue</button>
+        </div>
+    </div><!-- /page new_treatment -->
+
+
+    <!-- Start of page: #profile -->
+    <div id="profile" class="page page_type_profile" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Cancer Lab</h1>
+            <div data-role="tabbar">
+                <ul>
+                    <li><a href="#home">Treatments</a></li>
+                    <li><a href="#profile" class="ui-btn-active ui-state-persist">Profile</a></li>
+                    <li><a href="#options">Features</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content profile" data-role="content">
+             <ul id="profile_info" class="list" data-role="listview">
+
+            </ul>
+        </div>
+    </div><!-- /page profile -->
+
+
+    <!-- Start of page: #options -->
+    <div id="options" class="page page_type_options" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Cancer Lab</h1>
+            <div data-role="tabbar">
+                <ul>
+                    <li><a href="#home">Treatments</a></li>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#options" class="ui-btn-active ui-state-persist">Features</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content" data-role="content">
+            <ul class="list" data-role="listview">
+                <li class="list__item"><a class="ui-btn button" href="#location">Geolocation</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#time">Time info</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#sensors">Sensors</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#sounds">Sounds</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#led">Led</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#system">System info</a></li>
+                <li class="list__item"><a class="ui-btn button" href="#radio">The best FM Radio</a></li>
+            </ul>
+        </div>
+    </div><!-- /page options -->
+
+
+    <!-- Start of page: #location -->
+    <div id="location" class="page page_type_location" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Cancer Lab</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h2 class="title">Actual position </h2>
+            <span class="text" id="locationInfo">Click one of the below buttons:</span>
+
+            <ul class="list" data-role="listview">
+                <li class="list__item"><button id="oneShot" class="button" type="button">One shot position</button></li>
+                <li class="list__item"><button id="watchPos" class="button" type="button">Watch my position</button></li>
+                <li class="list__item"><button id="stopWatchPos" class="button" type="button">Stop watch</button></li>
+            </ul>
+        </div>
+    </div><!-- /page location -->
+
+
+    <!-- Start of page: #time -->
+    <div id="time" class="page page_type_time" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Cancer Lab</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h2 class="title">Time info </h2>
+            <ul class="list" data-role="listview">
+                <li class="list__item"><p class="text">Current time|date is <span id="currentTime"></span></p></li>
+                <li class="list__item"><p class="text">The current time zone is <span id="currentZone"></span></p></li>
+                <li class="list__item"><p class="text">The device supports <span id="zonesCount"></span></p></li>
+                <li class="list__item"><p class="text">Date format is <span id="dateFormat"></span></p></li>
+                <li class="list__item"><p class="text">Time format is <span id="timeFormat"></span></p></li>
+            </ul>
+        </div>
+    </div><!-- /page time -->
+
+
+    <!-- Start of page: #sensors -->
+    <div id="sensors" class="page page_type_sensors" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Sensors</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h2 class="title">Sensor information </h2>
+            <ul id="sensors-list" class="list" data-role="listview">
+            </ul>
+        </div>
+    </div><!-- /page sensors -->
+
+
+    <!-- Start of page: #sound -->
+    <div id="sounds" class="page page_type_sounds" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Sound</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h2 class="title">Sound</h2>
+            <ul id="sound-info-list" class="list" data-role="listview">
+                <li class="list__item"><p class="text">Current sound mode: <span id="currentSoundMode"></span></p> </li>
+            </ul>
+        </div>
+    </div><!-- /page sound -->
+
+
+    <!-- Start of page: #led -->
+    <div id="led" class="page page_type_led" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">Led</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <button class="button button_led_on ui-btn-circle">Turn led on/off</button>
+            <button class="button button_led_off ui-btn-circle">Turn led on/off</button>
+        </div>
+    </div><!-- /page led -->
+
+
+    <!-- Start of page: #system -->
+    <div id="system" class="page page_type_system" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">System info</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h3 class="title">Current state</h3>
+            <ul class="list">
+                <li class="list__item">
+                    <p class="text">CPU load is <span id="cpu"></span></p>
+                </li>
+                <li class="list__item"><p class="text">Battery level is <span id="batteryLevel"></span></p></li>
+                <li class="list__item">
+                    <p class="text">Total memory size is <span id="totalMemory"></span></p>
+                    <p class="text">Available memory size is <span id="availableMemory"></span></p>
+                </li>
+                <li class="list__item">
+                    <p class="text">Device orientation is <span id="orientation"></span></p>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /page system -->
+
+
+    <!-- Start of page: #radio -->
+    <div id="radio" class="page page_type_radio" data-role="page">
+        <div class="header" data-role="header">
+            <h1 class="title">FM Radio</h1>
+        </div>
+
+        <div class="content" data-role="content">
+            <h3 class="title" id="radioTitle">Turn on the Radio</h3>
+
+            <div class="fm-radio">
+                <button class="button ui-btn-circle button_radio_on">On</button>
+                <button class="button ui-btn-circle button_radio_scan">Scan</button>
+                <button class="button ui-btn-circle button_radio_off">Off</button>
+            </div>
+
+            <img class="fm-img" src="img/kitten.gif">
+        </div>
+    </div><!-- /page radio -->
+
+
     <script type="text/javascript" src="./lib/tau/mobile/js/jquery.min.js"></script>
-	<script type="text/javascript" src="./lib/tau/mobile/js/tau.js"></script>	
-	<script type="text/javascript" src="./js/main.js"></script>
+	<script type="text/javascript" src="./lib/tau/mobile/js/tau.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
