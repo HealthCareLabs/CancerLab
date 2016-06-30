@@ -16,4 +16,5 @@
     <dimen name="profile_info_padding_end">0dp</dimen>
 
     <dimen name="toolbar_text_size">20sp</dimen>
+    <dimen name="profile_info_margin_top">25dp</dimen>
 </resources>

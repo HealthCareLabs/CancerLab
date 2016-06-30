@@ -80,9 +80,9 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager){
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        viewPagerAdapter.addFragment(new TestFragment(),"");
+        viewPagerAdapter.addFragment(new ProfileFragment(),"");
         viewPagerAdapter.addFragment(new HistoryFragment(),"");
-        viewPagerAdapter.addFragment(new TestFragment(),"");
+        viewPagerAdapter.addFragment(new CreateTreatmentFragment(),"");
         viewPager.setAdapter(viewPagerAdapter);
     }
 

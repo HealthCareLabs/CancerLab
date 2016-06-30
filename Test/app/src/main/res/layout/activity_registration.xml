@@ -16,91 +16,133 @@
         <EditText
             android:id="@+id/last_name"
             android:hint="@string/last_name"
-            app:layout_constraintLeft_toLeftOf="@+id/layout_registration"
-            app:layout_constraintRight_toRightOf="@+id/layout_registration"
-            style="@style/Input.FullWidth"/>
+            style="@style/Input.FullWidth"
+            tools:layout_editor_absoluteY="102dp"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteX="39dp" />
 
         <EditText
             android:id="@+id/first_name"
             android:hint="@string/first_name"
-            app:layout_constraintTop_toBottomOf="@+id/last_name"
-            style="@style/Input.FullWidth"/>
+            style="@style/Input.FullWidth"
+            tools:layout_editor_absoluteX="39dp"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteY="150dp" />
 
         <EditText
             android:id="@+id/second_name"
             android:hint="@string/second_name"
-            app:layout_constraintTop_toBottomOf="@+id/first_name"
-            style="@style/Input.FullWidth"/>
+            style="@style/Input.FullWidth"
+            tools:layout_editor_absoluteX="64dp"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteY="190dp" />
 
         <EditText
             android:id="@+id/birthday_date"
             android:inputType="date"
             android:hint="@string/birthday_date"
-            app:layout_constraintTop_toBottomOf="@+id/second_name"
-            android:layout_marginTop="16sp"
-            style="@style/Input.FullWidth"/>
+            style="@style/Input.FullWidth"
+            tools:layout_editor_absoluteX="64dp"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteY="246dp" />
 
         <TextView
             android:id="@+id/gender_label"
             android:text="@string/gender"
-            app:layout_constraintTop_toBottomOf="@+id/birthday_date"
-            app:layout_constraintLeft_toLeftOf="@+id/birthday_date"
-            style="@style/TextView.Label.Registration"/>
+            style="@style/TextView.Label.Registration"
+            android:layout_width="30dp"
+            android:layout_height="19dp"
+            tools:layout_editor_absoluteX="64dp"
+            tools:layout_editor_absoluteY="286dp" />
 
         <RadioGroup
             android:id="@+id/gender"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/gender_label"
-            style="@style/RadioGroup">
+            style="@style/RadioGroup"
+            tools:layout_editor_absoluteX="64dp"
+            android:layout_width="352dp"
+            android:layout_height="32dp"
+            tools:layout_editor_absoluteY="305dp">
 
             <RadioButton
                 android:id="@+id/female"
                 android:text="@string/female"
-                style="@style/RadioButton" />
+                style="@style/RadioButton"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp"
+                android:layout_width="91dp"
+                android:layout_height="32dp" />
 
             <RadioButton
                 android:id="@+id/male"
                 android:text="@string/male"
-                style="@style/RadioButton" />
+                style="@style/RadioButton"
+                tools:layout_editor_absoluteX="107dp"
+                tools:layout_editor_absoluteY="0dp"
+                android:layout_width="92dp"
+                android:layout_height="32dp" />
         </RadioGroup>
 
         <EditText
             android:id="@+id/policy_number"
             android:hint="@string/policy_number"
-            app:layout_constraintTop_toBottomOf="@+id/gender"
-            style="@style/Input.FullWidth"/>
+            style="@style/Input.FullWidth"
+            android:inputType=""
+            tools:layout_editor_absoluteX="64dp"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteY="337dp" />
 
         <EditText
             android:id="@+id/phone_number"
             android:inputType="phone"
             android:hint="@string/phone_number"
-            app:layout_constraintTop_toBottomOf="@+id/policy_number"
-            style="@style/Input.FullWidth"/>
+            style="@style/Input.FullWidth"
+            tools:layout_editor_absoluteX="64dp"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteY="377dp" />
 
         <EditText
             android:id="@+id/email"
             android:inputType="textEmailAddress"
             android:hint="@string/email"
-            app:layout_constraintTop_toBottomOf="@+id/phone_number"
-            style="@style/Input.FullWidth"/>
+            style="@style/Input.FullWidth"
+            tools:layout_editor_absoluteX="64dp"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteY="417dp" />
 
         <EditText
             android:id="@+id/location"
             android:hint="@string/location"
-            app:layout_constraintTop_toBottomOf="@+id/email"
-            style="@style/Input.FullWidth"/>
+            style="@style/Input.FullWidth"
+            tools:layout_editor_absoluteX="64dp"
+            android:layout_width="352dp"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteY="457dp" />
 
         <TextView
             android:id="@+id/registration_label"
             android:text="@string/registration_label"
-            app:layout_constraintTop_toBottomOf="@+id/location"
-            style="@style/TextView.Notification"/>
+            style="@style/TextView.Notification"
+            tools:layout_editor_absoluteX="64dp"
+            android:layout_width="352dp"
+            android:layout_height="96dp"
+            tools:layout_editor_absoluteY="497dp" />
 
         <Button
             android:id="@+id/button_registration"
             android:text="@string/button_registration"
-            app:layout_constraintTop_toBottomOf="@+id/registration_label"
-            style="@style/Button.Primary.Registration" />
+            style="@style/Button.Primary.Registration"
+            tools:layout_editor_absoluteX="64dp"
+            android:layout_width="352dp"
+            android:layout_height="48dp"
+            tools:layout_editor_absoluteY="593dp" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
