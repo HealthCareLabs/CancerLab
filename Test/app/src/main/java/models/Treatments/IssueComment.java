@@ -6,5 +6,4 @@ package models.Treatments;
 
 public class IssueComment {
     public String comment;
-    public String created;
 }

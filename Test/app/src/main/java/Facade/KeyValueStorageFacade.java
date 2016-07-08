@@ -58,5 +58,4 @@ public class KeyValueStorageFacade extends  AbstractStorageFacade {
         return sharedPreferences.contains(key);
     }
 
-
 }

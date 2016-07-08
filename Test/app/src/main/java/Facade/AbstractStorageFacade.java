@@ -1,7 +1,10 @@
 package Facade;
 
+import java.util.List;
+
 import models.PatientModel;
 import models.PatientRegistrationResult;
+import models.Treatments.TreatmentModel;
 
 /**
  * Created by AsTex on 28.06.2016.

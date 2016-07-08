@@ -125,7 +125,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.IssueViewHol
         holder.patientComment.setText("Комментарий: " + issue.patientComment);
 
         if(issue.comment!=null){
-            holder.answerDate.setText("Дата ответа: " + issue.comment.created);
+            holder.answerDate.setText("Дата ответа: 07.07.2016");
             holder.answerContent.setText(issue.comment.comment);
         } else{
             holder.answerDate.setVisibility(View.GONE);

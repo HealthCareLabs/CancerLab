@@ -81,7 +81,7 @@ public class CreateTreatmentFragment extends Fragment {
 
         String gender = "Man";
         String title = mTitle.getText().toString();
-        String bodyField = mTitle.getText().toString();
+        String bodyField = mBodyField.getText().toString();
 
         boolean cancel = false;
         View focusView = null;

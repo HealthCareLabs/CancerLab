@@ -2,6 +2,7 @@
  * Created by AsTex on 25.06.2016.
  */
 var express = require('express');
+var cors = require('cors');
 var session = require('express-session');
 var logger = require('morgan');
 var log = require('./libs/log')(module);
@@ -26,7 +27,7 @@ var treatments = require('./libs/routes/treatments');
 var app = express();
 
 
-
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json({uploadDir:'./temp/images'}));
 app.use(methodOverride());
