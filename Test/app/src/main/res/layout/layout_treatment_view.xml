@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center"
+            android:background="?attr/colorPrimary"
+            android:title="@string/registration"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Просмотр обращения"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/toolbar_text_size" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    style="@style/TextView"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Странная родинка на руке"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textSize="18sp"
+                    app:layout_constraintLeft_toRightOf="@+id/profile_image"
+                    app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+
+                <TextView
+                    android:id="@+id/bodyField"
+                    style="@style/TextView.Small"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Часть тела: запястье"
+                    app:layout_constraintLeft_toRightOf="@+id/profile_image"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+                <TextView
+                    android:id="@+id/created"
+                    style="@style/TextView.Small"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Создано: 6 Июня 2016"
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+                    app:layout_constraintLeft_toRightOf="@+id/profile_image"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_weight="2">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/status"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/profile_field_icon"
+                    android:src="@drawable/ic_verified_user_black_24dp"
+                    android:tint="#00E676" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,6 +1,12 @@
 package com.example.astex.test;
 
+import android.app.ActivityManager;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -19,17 +25,34 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import Services.UpdateService;
+
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout  tabLayout;
     private Toolbar toolbar;
     private TextView toolbarTitle;
+    private Intent serviceIntent;
+    private UpdateService updateService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        serviceIntent = new Intent(this, UpdateService.class);
+
+        if (isMyServiceRunning()) {
+            //Bind to the service
+            bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+        }else{
+            updateService=new UpdateService();
+            //Start the service
+            startService(serviceIntent);
+            //Bind to the service
+            bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+        }
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -76,13 +99,32 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            updateService = ((UpdateService.UpdateBinder) service).getService();
+        }
 
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            updateService = null;
+        }
+    };
+    private boolean isMyServiceRunning() {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (UpdateService.class.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
     private void setupViewPager(ViewPager viewPager){
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
-        viewPagerAdapter.addFragment(new TestFragment(),"");
+        viewPagerAdapter.addFragment(new ProfileFragment(),"");
         viewPagerAdapter.addFragment(new HistoryFragment(),"");
-        viewPagerAdapter.addFragment(new TestFragment(),"");
+        viewPagerAdapter.addFragment(new CreateTreatmentFragment(),"");
         viewPager.setAdapter(viewPagerAdapter);
     }
 

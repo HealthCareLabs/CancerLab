@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.astex.test.LoginActivity">
+    android:orientation="vertical"
+    tools:context="com.example.astex.test.LoginActivity"
+    android:weightSum="3">
 
     <TextView
         android:id="@+id/login_text"
         android:text="@string/login_text"
-        android:gravity="center_vertical"
+        android:gravity="center"
         style="@style/TextView.Subtitle"
-        android:paddingTop="100dp"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_login"
-        app:layout_constraintRight_toRightOf="@+id/activity_login" />
+        tools:layout_editor_absoluteY="0dp"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:layout_weight="1"/>
 
     <Button
         android:id="@+id/button_reg"
         android:text="@string/button_reg"
         style="@style/Button.Primary.Login"
-        app:layout_constraintLeft_toLeftOf="@+id/activity_login"
-        app:layout_constraintTop_toBottomOf="@+id/login_text"
-        android:layout_marginTop="40dp"
-        app:layout_constraintRight_toRightOf="@+id/activity_login" />
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/button_login"
         android:text="@string/button_login"
         style="@style/Button.Primary.Login"
-        app:layout_constraintLeft_toLeftOf="@+id/button_reg"
-        app:layout_constraintTop_toBottomOf="@+id/login_text"
-        android:layout_marginTop="120dp"
-        app:layout_constraintRight_toRightOf="@+id/button_reg" />
+        android:layout_width="260dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

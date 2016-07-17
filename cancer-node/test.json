@@ -1,0 +1,28 @@
+[
+  {
+    "firstName": "Vladmir",
+    "lastName": "Milenko",
+    "secondName": "Romanovich",
+    "email": "v.milenko@innopolis.ru",
+    "password": "760326Skrask",
+    "phone": "89996024873",
+    "location": "Innopolis",
+    "gender": "man",
+    "birthDate": "12-01-1997",
+    "policyNumber": "123123123",
+    "id": "576e0edb3a2a7840286f3a82",
+    "mail": "v.milenko@innopoli1.ru",
+    "apikey": "974b03ffd8f2a2a89ef72fa2305da4768258e67f9d5d25e0005e4a7e3eacae97a71f404b95dbcc11435e7722fdb0ebc2d0bb87086ab5d1127b40082e000441d576c5e1073e7680f590857255ad7ae2fa1071f598fd98d263a2bc7c39ad87e9d7ab9c26216cdcb2816f05195e2c46ad72dfa28c946e795885064161a9e91de566"
+  },
+  {
+    "firstName":"Владимир",
+    "lastName":"Миленко",
+    "secondName":"Романович",
+    "organisation":"Университет Иннполис",
+    "position":"Студент",
+    "phone":"89996024873",
+    "email":"v.milenko@innopolis.ru",
+    "password":"760326Skrask"
+  }
+  //db.issues.updated({_id : ObjectId("5774b58d381d5c881f347277" }, )
+]

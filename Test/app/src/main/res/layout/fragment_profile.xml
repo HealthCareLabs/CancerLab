@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="5"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:background="@drawable/profile_bg"
+        android:orientation="vertical"
+        android:weightSum="3"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/profile"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp"
+            />
+
+        <TextView
+            android:id="@+id/fullName"
+            style="@style/TextView.Subtitle"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Миленко Владимир Романович"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/registerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4">
+
+        <LinearLayout
+            android:id="@+id/lienarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="300dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                style="@style/TextView.Header"
+                android:gravity="center_vertical"
+                android:text="@string/information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:layout_marginTop="@dimen/profile_info_margin_top">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/emailImage"
+                    style="@style/ImageView.Icon.Profile"
+                    android:contentDescription="@string/profile_field_icon"
+                    android:src="@drawable/ic_email_black_24dp"
+                    android:tint="@color/colorPrimaryDark"
+                    android:layout_height="wrap_content"
+                    android:minWidth="60dp"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/email"
+                    style="@style/TextView.Label.Profile"
+                    android:text="v.milenko@innopolis.ru"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:layout_marginTop="@dimen/profile_info_margin_top">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/phoneImage"
+                    style="@style/ImageView.Icon.Profile"
+                    android:src="@drawable/ic_local_phone_black_24dp"
+                    android:tint="@color/colorPrimaryDark"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/phone"
+                    style="@style/TextView.Label.Profile"
+                    android:text="+7996024873"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:layout_marginTop="@dimen/profile_info_margin_top">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/locationImage"
+                    style="@style/ImageView.Icon.Profile"
+                    android:src="@drawable/ic_place_black_24dp"
+                    android:tint="@color/colorPrimaryDark"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/location"
+                    style="@style/TextView.Label.Profile"
+                    android:text="Иннополис"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:layout_marginTop="@dimen/profile_info_margin_top">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/policyNumberIcon"
+                    style="@style/ImageView.Icon.Profile"
+                    android:src="@drawable/ic_email_black_24dp"
+                    android:tint="@color/colorPrimaryDark"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/policyNumber"
+                    style="@style/TextView.Label.Profile"
+                    android:text="3211-442-11123"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>
