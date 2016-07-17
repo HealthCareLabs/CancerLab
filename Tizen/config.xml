@@ -30,6 +30,8 @@
     <tizen:privilege name="http://tizen.org/privilege/system"/>
     <tizen:privilege name="http://tizen.org/privilege/telephony"/>
     <tizen:privilege name="http://tizen.org/privilege/alarm"/>
+    <tizen:privilege name="http://tizen.org/privilege/contact.read"/>
+    <tizen:privilege name="http://tizen.org/privilege/contact.write"/>
 
     <tizen:profile name="mobile"/>
     <tizen:setting context-menu="disable"/>

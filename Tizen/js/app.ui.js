@@ -47,6 +47,8 @@ function Ui() {
             this.alarm.context = this;
             this.battery.context = this;
             this.video.context = this;
+            this.health.context = this;
+            this.addressbook.context = this;
         },
 
         /**
@@ -88,6 +90,8 @@ function Ui() {
             this.alarm.init();
             this.battery.init();
             this.video.init();
+            this.addressbook.init();
+            this.health.init();
 
             window.addEventListener('tizenhwkey', function onTizenHwKey(e) {
                 var activePageId = tau.activePage.id;
@@ -414,42 +418,32 @@ function Ui() {
 
                     switch (error.code) {
                         case error.PERMISSION_DENIED:
-                            errorInfo.innerHTML = "User denied the request for Geolocation.";
-                            break;
+                            errorInfo.innerHTML = "User denied the request for Geolocation."; break;
                         case error.POSITION_UNAVAILABLE:
-                            errorInfo.innerHTML = "Location information is unavailable.";
-                            break;
+                            errorInfo.innerHTML = "Location information is unavailable."; break;
                         case error.TIMEOUT:
-                            errorInfo.innerHTML = "The request to get user location timed out.";
-                            break;
+                            errorInfo.innerHTML = "The request to get user location timed out."; break;
                         case error.UNKNOWN_ERROR:
-                            errorInfo.innerHTML = "An unknown error occurred.";
-                            break;
+                            errorInfo.innerHTML = "An unknown error occurred."; break;
                     }
                 }
 
                 $('#oneShot').on('click', function oneShotFunc() {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-                    } else {
+                    navigator.geolocation ?
+                        navigator.geolocation.getCurrentPosition(successCallback, errorCallback) :
                         document.getElementById("locationInfo").innerHTML = "Geolocation is not supported.";
-                    }
                 });
 
                 $('#watchPos').on('click', function watchFunc() {
-                    if (navigator.geolocation) {
-                        watchId = navigator.geolocation.watchPosition(successCallback, errorCallback);
-                    } else {
+                    navigator.geolocation ?
+                        watchId = navigator.geolocation.watchPosition(successCallback, errorCallback) :
                         document.getElementById("locationInfo").innerHTML = "Geolocation is not supported.";
-                    }
                 });
 
                 $('#stopWatchPos').on('click', function stopWatchFunc() {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.clearWatch(watchId);
-                    } else {
+                    navigator.geolocation ?
+                        navigator.geolocation.clearWatch(watchId) :
                         document.getElementById("locationInfo").innerHTML = "Geolocation is not supported.";
-                    }
                 });
             }
         },
@@ -943,6 +937,86 @@ function Ui() {
                         displaySection.innerHTML = '<video class="video-player" id="video-p" src="' + URL.createObjectURL(files[0]) + '" poster="" preload="auto" controls muted></video>';
                     }
                 });
+            }
+        },
+
+        /**
+         * Contains methods related to the addressbook page.
+         *
+         * @public
+         * @type {object}
+         */
+        addressbook: {
+
+            /**
+             * Initializes addressbook page.
+             *
+             * @public
+             */
+            init: function UI_addressbook_init() {
+                var myAddressbook = tizen.contact.getDefaultAddressBook();
+                console.log(myAddressbook);
+
+                var filter = new tizen.AttributeFilter("name.firstName", "CONTAINS", "n");
+                var sortMode = new tizen.SortMode("name.lastName", "ASC");
+
+                // try {
+                //     myAddressbook.find(contactsFoundCB, null, filter, sortMode);
+                // }
+                //
+                // /* Define the event success callback */
+                // function contactsFoundCB(contacts)
+                // {
+                //     contacts[0].name.firstName = "Christopher";
+                //     myAddressbook.update(contacts[0]);
+                //
+                //     console.log(contacts[0].name.firstName);
+                //     for(var i = 0; i < contacts.length; i++) {
+                //         console.log(contacts[i].name.firstName);
+                //     }
+                // }
+
+                this.addEvents();
+            },
+
+            /**
+             * Binds events to the addressbook page.
+             *
+             * @public
+             */
+            addEvents: function addEvents() {
+
+
+
+            }
+        },
+
+        /**
+         * Contains methods related to the health page.
+         *
+         * @public
+         * @type {object}
+         */
+        health: {
+
+            /**
+             * Initializes health page.
+             *
+             * @public
+             */
+            init: function UI_health_init() {
+                this.addEvents();
+            },
+
+            /**
+             * Binds events to the health page.
+             *
+             * @public
+             */
+            addEvents: function addEvents() {
+
+
+
             }
         }
     };
